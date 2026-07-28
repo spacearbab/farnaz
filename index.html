@@ -171,11 +171,11 @@
   <section style="position:relative;min-height:100vh;overflow:hidden;background:#f2ebdd">
     <canvas ref="{{ terminalRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
     <div style="position:relative;z-index:5;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(20px,3.4vw,34px);padding:clamp(110px,15vh,150px) 20px 26px;text-align:center">
-      <div style="background:#141210;border:5px solid #141210;border-radius:30px;box-shadow:14px 14px 0 #ffc21a;padding:clamp(22px,4.4vw,44px) clamp(26px,5.5vw,58px);max-width:min(940px,96%)">
+      <div style="order:-3;background:#141210;border:5px solid #141210;border-radius:30px;box-shadow:14px 14px 0 #ffc21a;padding:clamp(22px,4.4vw,44px) clamp(26px,5.5vw,58px);max-width:min(940px,96%)">
         <div style="font-weight:900;font-size:clamp(1.8rem,7vw,4.4rem);line-height:1.06;letter-spacing:-2px;color:#f2ebdd;text-wrap:pretty">مرورهای قبل امتحانِ فرناز</div>
       </div>
 
-      <div style="width:100%;max-width:840px;background:#f2ebdd;border:5px solid #141210;border-radius:26px;box-shadow:11px 11px 0 #141210;padding:clamp(16px,3vw,24px);text-align:right">
+      <div style="order:-2;width:100%;max-width:840px;background:#f2ebdd;border:5px solid #141210;border-radius:26px;box-shadow:11px 11px 0 #141210;padding:clamp(16px,3vw,24px);text-align:right">
         <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:15px">
           <div style="font-weight:900;font-size:clamp(1rem,3.2vw,1.4rem);display:flex;align-items:center;gap:9px;flex-wrap:wrap">مانده تا آزمونِ <span style="{{ cdNameStyle }}">{{ cdName }}</span></div>
@@ -222,6 +222,40 @@
         </button>
       </div>
 
+      <div style="order:-1;width:100%;max-width:840px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(14px,3vw,22px);padding:0 4px 10px">
+        <button onClick="{{ goHomeDefs }}" style="position:relative;cursor:pointer;font-family:'Vazirmatn',sans-serif;text-align:right;overflow:hidden;background:#12b981;border:5px solid #141210;border-radius:22px;padding:clamp(16px,3vw,22px) clamp(15px,3vw,22px) clamp(14px,2.6vw,18px);transform:rotate(1deg);animation:adPulse 1.6s ease-in-out .4s infinite;box-shadow:9px 9px 0 #141210">
+          <span style="position:absolute;inset:0;opacity:.16;background:repeating-linear-gradient(45deg,#141210 0 14px,transparent 14px 28px);animation:adStripes 1.2s linear infinite;pointer-events:none"></span>
+          <span style="position:absolute;top:-4px;left:-30px;z-index:3;background:#ffc21a;color:#141210;font-weight:900;font-size:11px;letter-spacing:.5px;padding:5px 34px;transform:rotate(-32deg);border-top:3px solid #141210;border-bottom:3px solid #141210;animation:adBlink 1s steps(1,end) infinite">هویت!</span>
+          <span style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:9px">
+            <span style="display:flex;align-items:center;gap:10px;animation:adWob 2.4s ease-in-out infinite">
+              <img src="assets/lg-quill.png" alt="" style="flex:none;width:clamp(38px,9vw,48px);height:clamp(52px,12vw,64px);object-fit:contain;image-rendering:pixelated">
+              <span style="font-weight:900;font-size:clamp(1.15rem,4.4vw,1.7rem);line-height:1.1;color:#141210;letter-spacing:-.5px">تمام تعریف‌های<br>هویت اجتماعی</span>
+            </span>
+            <span style="font-weight:900;font-size:clamp(.85rem,2.9vw,1rem);background:#f2ebdd;color:#141210;border:3px solid #141210;border-radius:999px;padding:7px 20px;box-shadow:4px 4px 0 #141210">همین حالا باز کن ←</span>
+          </span>
+        </button>
+
+        <button onClick="{{ goHomeTrees }}" style="position:relative;cursor:pointer;font-family:'Vazirmatn',sans-serif;text-align:right;overflow:hidden;background:#2563ff;border:5px solid #141210;border-radius:22px;padding:clamp(16px,3vw,22px) clamp(15px,3vw,22px) clamp(14px,2.6vw,18px);transform:rotate(-1deg);animation:adPulse 1.6s ease-in-out 1.2s infinite;box-shadow:9px 9px 0 #141210">
+          <span style="position:absolute;inset:0;opacity:.2;background:repeating-linear-gradient(-45deg,#141210 0 14px,transparent 14px 28px);animation:adStripes 1.4s linear infinite;pointer-events:none"></span>
+          <span style="position:absolute;top:-4px;right:-30px;z-index:3;background:#ffc21a;color:#141210;font-weight:900;font-size:11px;letter-spacing:.5px;padding:5px 34px;transform:rotate(32deg);border-top:3px solid #141210;border-bottom:3px solid #141210;animation:adBlink 1s steps(1,end) .5s infinite">مرور سریع</span>
+          <span style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:9px">
+            <span style="display:flex;align-items:center;gap:10px;animation:adWob2 2.4s ease-in-out infinite">
+              <img src="assets/lg-clipboard.png" alt="" style="flex:none;width:clamp(36px,8.5vw,46px);height:clamp(52px,12vw,64px);object-fit:contain;image-rendering:pixelated">
+              <span style="font-weight:900;font-size:clamp(1.15rem,4.4vw,1.7rem);line-height:1.1;color:#f2ebdd;letter-spacing:-.5px">مهم‌ترین چندموردی‌های<br>هویت اجتماعی</span>
+            </span>
+            <span style="font-weight:900;font-size:clamp(.85rem,2.9vw,1rem);background:#f2ebdd;color:#141210;border:3px solid #141210;border-radius:999px;padding:7px 20px;box-shadow:4px 4px 0 #141210">همین حالا باز کن ←</span>
+          </span>
+        </button>
+      </div>
+
+      <div style="order:-4;width:100%;max-width:960px;padding:0 4px 2px">
+        <div style="position:relative;overflow:hidden;background:#141210;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #e53e3e;padding:9px 14px;display:flex;align-items:center;gap:13px;flex-wrap:wrap">
+          <span style="position:absolute;inset:0;opacity:.14;background:repeating-linear-gradient(45deg,#e53e3e 0 16px,transparent 16px 32px);animation:adStripes 2s linear infinite;pointer-events:none"></span>
+          <img src="assets/farnaz-sticker.gif" alt="" style="position:relative;z-index:2;flex:none;width:clamp(52px,12vw,68px);height:clamp(52px,12vw,68px);object-fit:contain">
+          <span style="position:relative;z-index:2;flex:none;background:#ffc21a;color:#141210;border-radius:999px;padding:3px 12px;font-weight:900;font-size:.74rem">برای فرناز</span>
+          <span style="position:relative;z-index:2;flex:1;min-width:200px;text-align:right;font-weight:900;font-size:clamp(.86rem,2.9vw,1.02rem);line-height:1.7;color:#f2ebdd;text-wrap:pretty">فرناز، می‌دونم که حالت خوب نبوده و سرما خوردی، ولی مطمئنم که <span style="background:#12b981;color:#141210;padding:1px 8px;border-radius:8px">از پسش برمیای</span>؛ پس نگران نباش و تلاش خودتو بکن و <span style="background:#ffc21a;color:#141210;padding:1px 8px;border-radius:8px">زودتر خوب شو</span>.</span>
+        </div>
+      </div>
       <div style="width:100%;max-width:840px;display:flex;flex-direction:column;gap:9px;text-align:right">
         <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:2px">
           <span style="font-weight:900;font-size:clamp(1rem,3.2vw,1.3rem);background:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:4px 13px;box-shadow:4px 4px 0 #141210">تایم‌لاین آزمون‌ها</span>
@@ -1074,6 +1108,25 @@
             <span style="display:flex;flex-direction:column;gap:4px">
               <span style="font-weight:900;font-size:.98rem;line-height:1.35;color:#f2ebdd">ابعاد جمعیتی و اقتصادی</span>
               <span class="en" style="font-size:9px;letter-spacing:2px;font-weight:700;color:#ffc21a">LESSON 10</span>
+            </span>
+          </a>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(11px,2.2vw,18px)">
+          <a onClick="{{ goIdentDefs }}" style="position:relative;overflow:hidden;cursor:pointer;display:flex;align-items:center;gap:14px;background:rgba(255,194,26,.92);border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #141210;padding:clamp(14px,2.8vw,20px);transition:transform .18s,box-shadow .18s" style-hover="transform:translate(3px,3px);box-shadow:4px 4px 0 #141210">
+            <span style="position:absolute;inset:0;opacity:.13;background:repeating-linear-gradient(-45deg,#141210 0 14px,transparent 14px 28px);animation:adStripes 1.3s linear infinite;pointer-events:none"></span>
+            <img src="assets/lg-quill.png" alt="" style="position:relative;z-index:2;flex:none;width:44px;height:60px;object-fit:contain;image-rendering:pixelated">
+            <span style="position:relative;z-index:2;display:flex;flex-direction:column;gap:5px">
+              <span style="font-weight:900;font-size:clamp(1.05rem,4vw,1.28rem);line-height:1.3;color:#141210">تمام تعریف‌های هویت</span>
+              <span style="font-weight:900;font-size:.8rem;background:#141210;color:#ffc21a;border-radius:999px;padding:3px 12px;align-self:flex-start">مرور همهٔ تعریف‌ها ←</span>
+            </span>
+          </a>
+          <a onClick="{{ goIdentTrees }}" style="position:relative;overflow:hidden;cursor:pointer;display:flex;align-items:center;gap:14px;background:rgba(18,185,129,.92);border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #141210;padding:clamp(14px,2.8vw,20px);transition:transform .18s,box-shadow .18s" style-hover="transform:translate(3px,3px);box-shadow:4px 4px 0 #141210">
+            <span style="position:absolute;inset:0;opacity:.13;background:repeating-linear-gradient(45deg,#141210 0 14px,transparent 14px 28px);animation:adStripes 1.5s linear infinite;pointer-events:none"></span>
+            <img src="assets/lg-clipboard.png" alt="" style="position:relative;z-index:2;flex:none;width:42px;height:60px;object-fit:contain;image-rendering:pixelated">
+            <span style="position:relative;z-index:2;display:flex;flex-direction:column;gap:5px">
+              <span style="font-weight:900;font-size:clamp(1.05rem,4vw,1.28rem);line-height:1.3;color:#141210">مهم‌ترین چندموردی‌های هویت</span>
+              <span style="font-weight:900;font-size:.8rem;background:#141210;color:#12b981;border-radius:999px;padding:3px 12px;align-self:flex-start">همهٔ نمودارها ←</span>
             </span>
           </a>
         </div>
@@ -2785,7 +2838,7 @@
             <span style="background:#2563ff;color:#f2ebdd;border-radius:999px;padding:2px 12px;font-weight:900;font-size:.84rem;align-self:flex-start">دکتر علی شریعتی</span>
           </div>
           <div style="display:flex;flex-direction:column;gap:10px;background:rgba(7,46,35,.74);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:clamp(14px,2.8vw,18px)">
-            <img src="assets/lg-book-5.png" alt="" style="width:52px;height:38px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(3px 3px 0 rgba(20,18,16,.5))">
+            <img src="assets/lg-book-5.png" alt="" style="width: 36px; height: 50px; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(3px 3px 0 rgba(20,18,16,.5))">
             <span style="font-weight:900;font-size:1.05rem;color:#f2ebdd;line-height:1.5">خدمات متقابل اسلام و ایران — فطرت</span>
             <span style="background:#12b981;color:#141210;border-radius:999px;padding:2px 12px;font-weight:900;font-size:.84rem;align-self:flex-start">شهید مطهری</span>
           </div>
@@ -3054,7 +3107,7 @@
             </div>
           </div>
           <div style="display:flex;gap:14px;align-items:flex-start">
-            <img src="assets/lg-cleric.png" alt="" style="flex:none;width:32px;height:64px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(3px 3px 0 rgba(20,18,16,.5))">
+            <img src="assets/lg-cleric.png" alt="" style="flex: none; width: 58px; height: 105px; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(3px 3px 0 rgba(20,18,16,.5))">
             <div style="flex:1;min-width:0">
               <div style="font-weight:900;font-size:clamp(1rem,3.8vw,1.16rem);color:#ffc21a;margin-bottom:5px">جمهوری اسلامی</div>
               <p style="margin:0;font-weight:400;font-size:clamp(.93rem,3.4vw,1.05rem);line-height:1.9;color:#f2ebdd;text-wrap:pretty">نظامی سیاسی که قوانین و مقررات آن با <span style="background:#ffc21a;color:#141210;padding:1px 8px;border-radius:7px;font-weight:900">خواست مردم</span> و در ذیل ارادهٔ و مشیت الهی شکل می‌گیرد.</p>
@@ -3324,6 +3377,488 @@
           <img src="assets/lg-kiss2.png" alt="" style="flex:none;width:64px;height:56px;object-fit:contain;image-rendering:pixelated">
           <span style="font-weight:900;font-size:clamp(1.05rem,4.1vw,1.32rem);line-height:1.7;color:#141210;text-align:center">خسته نباشی فرناز خانوم</span>
           <img src="assets/lg-kiss2.png" alt="" style="flex:none;width:64px;height:56px;object-fit:contain;image-rendering:pixelated">
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===== IDENTITY — ALL DEFINITIONS ===== -->
+  <sc-if value="{{ showIdentDefs }}">
+  <main style="max-width:1180px;margin:0 auto;padding:26px clamp(8px,2.6vw,18px) 80px">
+    <section style="position:relative;overflow:hidden;background:#24100b;border:4px solid #141210;border-radius:clamp(22px,4vw,44px);box-shadow:11px 11px 0 #141210;padding:clamp(20px,4vw,44px) clamp(14px,3.4vw,40px)">
+      <canvas ref="{{ identLessonRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block;filter:{{ bgFilter }};-webkit-mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%);mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%)"></canvas>
+      <span style="position:absolute;inset:0;background:rgba(20,18,16,.52);pointer-events:none"></span>
+
+      <div style="position:relative;z-index:5;display:flex;flex-direction:column;gap:clamp(16px,3vw,26px)">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="flex:1;min-width:10px"></span>
+          <button onClick="{{ toggleBg }}" title="ثابت و محو کردن بک‌گراند" style="cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:flex-end;background:none;border:0;box-shadow:none;min-height:52px;padding:0 4px">
+            <span style="position:relative;width:62px;height:44px;flex:none;display:block">
+              <span style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#3a3632;border:3px solid #f2ebdd;border-radius:9px;display:block">
+                <span style="position:absolute;inset:3px;background:{{ bgTrack }};border-radius:5px;display:block"></span>
+              </span>
+              <span style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%) rotate({{ bgLeverRot }});transform-origin:bottom center;transition:transform .18s cubic-bezier(.2,1.3,.5,1);display:block">
+                <span style="display:block;width:8px;height:28px;background:#f2ebdd;border:3px solid #141210;border-radius:5px"></span>
+                <span style="position:absolute;top:-13px;left:-8px;width:20px;height:20px;background:#ffc21a;border:3px solid #141210;border-radius:50%;display:block"></span>
+              </span>
+            </span>
+          </button>
+          <button onClick="{{ backToLessons }}" style="cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px;font-weight:900;font-size:.95rem"><img src="assets/lg-home.png" alt="" style="flex:none;width:36px;height:36px;object-fit:contain;image-rendering:pixelated">کتابخانه</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#141210;border:4px solid #ffc21a;border-radius:22px;box-shadow:8px 8px 0 #ffc21a;padding:clamp(12px,2.4vw,18px)">
+          <img src="assets/lg-quill.png" alt="" style="flex:none;width:clamp(40px,9vw,58px);height:clamp(54px,12vw,78px);object-fit:contain;image-rendering:pixelated">
+          <h2 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.3rem,5.2vw,2.5rem);letter-spacing:-1.5px;line-height:1.15;color:#f2ebdd">تمام تعریف‌های هویت اجتماعی</h2>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(7,46,35,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px dashed #ffc21a;border-radius:18px;padding:11px 15px">
+          <span style="background:#ffc21a;color:#141210;border-radius:8px;padding:2px 11px;font-weight:900;font-size:.76rem">راهنما</span>
+          <span style="flex:1;min-width:190px;font-weight:700;font-size:clamp(.9rem,3.3vw,1.01rem);line-height:1.8;color:#f2ebdd">همهٔ تعریف‌های ده درس، به تفکیک درس و پشت سر هم برای مرور سریع.</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:clamp(16px,3vw,24px)">
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#2563ff;color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">01</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">کنش‌های ما</span><span style="flex:1;min-width:20px;height:4px;background:#2563ff;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">کنش</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">فعالیتی که انسان انجام دهد؛ مثل راه رفتن و ورزش کردن.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">کنشگر</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">انجام‌دهندهٔ کنش — یعنی خودِ انسان.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">پیامدهای ارادی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">خودشان کنش‌اند و باید کنشگری آن‌ها را انجام دهد، پس احتمالی‌اند؛ به خودِ کنشگر و دیگران وابسته‌اند.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">پیامدهای غیرارادی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">به ارادهٔ انسان وابسته نیستند و نتیجهٔ طبیعی کنش‌اند، پس قطعی‌اند.</p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#ff5c22;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">02</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">پدیده‌های اجتماعی</span><span style="flex:1;min-width:20px;height:4px;background:#ff5c22;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">کنش فردی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">بدون توجه به دیگران انجام می‌شود.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">کنش اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">با توجه به دیگران انجام می‌شود؛ آگاهی و ارادهٔ کنشگر ناظر بر دیگران، ویژگی‌ها و اعمال آن‌هاست.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">پدیدهٔ اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">کنش اجتماعی و پیامدهای آن.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">هنجار اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">درست انجام دادن کنش اجتماعی.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">ارزش اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">پدیدهٔ اجتماعی مطلوب و خواستنی برای اکثر مردم؛ از جنس هدف و مقصود.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">سالمندی جمعیت</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">کاهش نسبت افراد ۱۳ تا ۵۰ سال و افزایش نسبت ۶۰ تا ۶۵ سال و بالاتر.</p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#ffc21a;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">03</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">جامعه و فرهنگ</span><span style="flex:1;min-width:20px;height:4px;background:#ffc21a;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">جامعه</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">گروهی از انسان‌ها که سالیان متمادی با یکدیگر زندگی می‌کنند.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">فرهنگ</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">شیوهٔ زندگی گروهی از انسان‌ها — آگاهی و شناخت مشترک انسان.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">جهان اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">جامعه + فرهنگ.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">هنجار</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">بایدها و نبایدها — شیوهٔ انجام کنش اجتماعی.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">نماد</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">نشان‌دهندهٔ یک معنی؛ مثل چراغ راهنمایی و رانندگی.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">ارزش‌ها</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">خوب و بد — پدیدهٔ خواستنی و مطلوب مورد توجه مردم.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">فرهنگ عمومی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">بخشی از فرهنگ که همهٔ مردم جامعه در آن اشتراک دارند.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">خرده‌فرهنگ</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">بخشی از فرهنگ که مربوط به یک قوم، قشر، صنف یا گروه است (موافق و مخالف).</p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#b57bf5;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">04</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">ارزیابی فرهنگ‌ها</span><span style="flex:1;min-width:20px;height:4px;background:#b57bf5;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">فرهنگ آرمانی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">ارزش‌هایی که مردم از آن جانبداری می‌کنند و رعایتش را لازم می‌دانند، اما در عمل ممکن است نادیده بگیرند.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">فرهنگ واقعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">آن بخش از فرهنگ که مردم به آن عمل می‌کنند.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">فرهنگ حق</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">بخش‌هایی از فرهنگ که از نظر علمی صحیح و مطابق فطرت انسان است.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">فرهنگ باطل</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">بخش‌هایی که از نظر علمی قابل دفاع نیستند و بر اساس خرافات شکل گرفته‌اند.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">شناخت شهودی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">از راه حس و استدلال عقلی به دست نمی‌آید؛ مانند غم و شادی درون خود. مهم‌ترین ابزار: وحی.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">شناخت عقلی و حسی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">عقلی: امور غیرمحسوس مانند قوانین علمی و قضایای ریاضی — حسی: مشاهده و حس برای امور طبیعی.</p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#12b981;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">05</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">هویت</span><span style="flex:1;min-width:20px;height:4px;background:#12b981;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">هویت</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">آنچه در پاسخ به «کیستی» گفته می‌شود و هر شخص با آن از دیگران متمایز می‌گردد.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">هویت انتسابی / اکتسابی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">انتسابی: در شکل‌گیری‌شان نقشی نداریم — اکتسابی: خودمان آن‌ها را شکل می‌دهیم.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">هویت ثابت / متغیر</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">ثابت: تغییر نمی‌کنند — متغیر: تغییر می‌کنند، مثل جایگاه فرد در جامعه.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">هویت فردی / اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">فردی: ویژگی‌های شخصی — اجتماعی: با عضویت در گروه‌ها و ارتباط با دیگران به دست می‌آید.</p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#e53e3e;color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">06</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">بازتولید هویت اجتماعی</span><span style="flex:1;min-width:20px;height:4px;background:#e53e3e;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #e53e3e;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">غریزه</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">کشش درونی موجود زنده که او را به رفتارهای معینی وا می‌دارد.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #e53e3e;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">جامعه‌پذیری</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">فرایندی که هر فرد برای مشارکت در زندگی اجتماعی دنبال می‌کند؛ مسیر شکل‌گیری هویت اجتماعی.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #e53e3e;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">کژروی اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">کنش‌هایی که خلاف عقاید، ارزش‌ها و هنجارهای جامعه است.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #e53e3e;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">کنترل اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">مجموعه فعالیت‌هایی که برای پذیرش فرهنگ جامعه و انطباق افراد با انتظارات آن انجام می‌گیرد.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #e53e3e;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">تحرک اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">صعودی، افقی و نزولی — جابه‌جایی افراد میان موقعیت‌های اجتماعی.</p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#2563ff;color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">07</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">تحولات هویت اجتماعی</span><span style="flex:1;min-width:20px;height:4px;background:#2563ff;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">هویت فرهنگی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">هویت فرهنگی هر جامعه بر اساس عقاید و ارزش‌های اجتماعی شکل می‌گیرد.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">تحول فرهنگی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">جامعه بر عقاید خود پافشاری نکند و به مرور به ارزش‌های خود پشت کند.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">خودباختگی فرهنگی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">مبهوت و مقهور فرهنگ دیگر شدن و از دست دادن حالت خلاق و فعال در گزینش عناصر فرهنگی.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">غرب‌زدگی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">خودباختگی جوامع غیرغربی در برابر جهان غرب.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">از خودبیگانگی تاریخی و فطری</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">تاریخی: فراموشی فرهنگ تاریخی — فطری: مانع آشنایی با حقیقت انسان و جهان.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">فرهنگ توحیدی / اساطیری</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">توحیدی: انسان را با حقیقت خود و جهان آشنا می‌کند — اساطیری و دنیوی: او را از خود بیگانه می‌کند.</p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#ff5c22;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">08</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">بُعد فرهنگی هویت ایرانی</span><span style="flex:1;min-width:20px;height:4px;background:#ff5c22;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">هویت ایرانیان قبل از اسلام</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">اقوام مختلف با هویت‌های قومی متفاوت، در عقاید دین زرتشتی آمیخته با اساطیر مشترک شدند.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">هویت ایرانیان بعد از اسلام</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">عناصر مشرکانه را کنار گذاشتند، به تفسیر توحیدی رسیدند و هویت ایرانی بخشی از هویت اسلام شد.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">قلب تپندهٔ بیداری اسلامی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">ایران با بازگشت به حکومت اسلامی خود، هویتی مستقل، فعال و تأثیرگذار یافت.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">قطب فرهنگی جوامع اسلامی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">با الهام از انقلاب اسلامی، ایران هویت خود را بیرون از تصاویر فرهنگ غرب جست‌وجو می‌کند.</p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#b57bf5;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">09</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">بُعد سیاسی هویت ایران</span><span style="flex:1;min-width:20px;height:4px;background:#b57bf5;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">قدرت</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">موجودی که بتواند کاری را با آگاهی و ارادهٔ خود انجام دهد دارای قدرت است.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">قدرت اجتماعی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">تأثیر گذاشتن بر ارادهٔ دیگران و به خدمت گرفتن کار ارادی آن‌ها برای رسیدن به اهداف.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">مقبولیت و اقتدار</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">مقبولیت: قدرت با رضایت طرف مقابل و بدون تهدید — اقتدار: قدرتی با مقبولیت که رسماً پذیرفته شده است.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">مشروعیت</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">حقیقی: قدرت مطابق حکم و قانون الهی — دروغین: قدرت موافق ایدئولوژی ساختگی بشر.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">سیاست و نظام سیاسی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">سیاست: اعمال قدرت سازمان‌یافته برای هدفی معین — نظام سیاسی: سازوکارهای اعمال سیاست در جامعه.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">مدینهٔ فاضله / جاهله</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">فاضله: جامعه بر اساس قوانین الهی — جاهله: جامعه بدون آرمان و ارزش‌های الهی و عقلانی.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">جمهوری / دمکراسی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">جمهوری: حکومت اکثریت بر اساس حقیقت و فضیلت — دمکراسی: حکومت اکثریت بر مدار تمایلات خود.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">لیبرالیسم و لیبرال دمکراسی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">لیبرالیسم: مباح دانستن همهٔ امور — لیبرال دمکراسی: نظامی دنیوی که هیچ حقیقت و فضیلتی را نمی‌شناسد.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">جمهوری اسلامی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">نظامی که قوانینش با خواست مردم و در ذیل ارادهٔ و مشیت الهی شکل می‌گیرد.</p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#12b981;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">10</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">ابعاد جمعیتی و اقتصادی</span><span style="flex:1;min-width:20px;height:4px;background:#12b981;border-radius:2px"></span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">سیاست‌های جمعیتی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">تدابیر و راه‌حل‌هایی که نظام سیاسی با همراهی مردم برای حل مشکل کاهش یا افزایش جمعیت اجرا می‌کند.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">راه گسترش فرهنگ</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd">شناختن، پذیرفتن و عمل کردن به آن است.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">اقتصاد مقاومتی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">الگویی از اقتصاد پیشرفته، مستقل و مستحکم با تکیه بر تعالیم اسلام، دانش و فناوری و ظرفیت‌های مردمی و دولتی.</p></div>
+              <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">حمایت از تولید ملی</div><p style="margin:0;font-weight:400;font-size:.96rem;line-height:1.85;color:#f2ebdd;text-wrap:pretty">از راهکارهای تحقق اقتصاد مقاومتی؛ کمک به صنعت کشور برای تولید کالای باکیفیت با قیمت مناسب.</p></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===== IDENTITY — ALL TREES ===== -->
+  <sc-if value="{{ showIdentTrees }}">
+  <main style="max-width:1180px;margin:0 auto;padding:26px clamp(8px,2.6vw,18px) 80px">
+    <section style="position:relative;overflow:hidden;background:#24100b;border:4px solid #141210;border-radius:clamp(22px,4vw,44px);box-shadow:11px 11px 0 #141210;padding:clamp(20px,4vw,44px) clamp(14px,3.4vw,40px)">
+      <canvas ref="{{ identLessonRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block;filter:{{ bgFilter }};-webkit-mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%);mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%)"></canvas>
+      <span style="position:absolute;inset:0;background:rgba(20,18,16,.54);pointer-events:none"></span>
+
+      <div style="position:relative;z-index:5;display:flex;flex-direction:column;gap:clamp(16px,3vw,26px)">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="flex:1;min-width:10px"></span>
+          <button onClick="{{ toggleBg }}" title="ثابت و محو کردن بک‌گراند" style="cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:flex-end;background:none;border:0;box-shadow:none;min-height:52px;padding:0 4px">
+            <span style="position:relative;width:62px;height:44px;flex:none;display:block">
+              <span style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#3a3632;border:3px solid #f2ebdd;border-radius:9px;display:block">
+                <span style="position:absolute;inset:3px;background:{{ bgTrack }};border-radius:5px;display:block"></span>
+              </span>
+              <span style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%) rotate({{ bgLeverRot }});transform-origin:bottom center;transition:transform .18s cubic-bezier(.2,1.3,.5,1);display:block">
+                <span style="display:block;width:8px;height:28px;background:#f2ebdd;border:3px solid #141210;border-radius:5px"></span>
+                <span style="position:absolute;top:-13px;left:-8px;width:20px;height:20px;background:#ffc21a;border:3px solid #141210;border-radius:50%;display:block"></span>
+              </span>
+            </span>
+          </button>
+          <button onClick="{{ backToLessons }}" style="cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px;font-weight:900;font-size:.95rem"><img src="assets/lg-home.png" alt="" style="flex:none;width:36px;height:36px;object-fit:contain;image-rendering:pixelated">کتابخانه</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#141210;border:4px solid #12b981;border-radius:22px;box-shadow:8px 8px 0 #12b981;padding:clamp(12px,2.4vw,18px)">
+          <img src="assets/lg-clipboard.png" alt="" style="flex:none;width:clamp(40px,9vw,54px);height:clamp(56px,12vw,78px);object-fit:contain;image-rendering:pixelated">
+          <h2 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.25rem,5vw,2.4rem);letter-spacing:-1.5px;line-height:1.15;color:#f2ebdd">مهم‌ترین چندموردی‌های هویت</h2>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(7,46,35,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px dashed #12b981;border-radius:18px;padding:11px 15px">
+          <span style="background:#12b981;color:#141210;border-radius:8px;padding:2px 11px;font-weight:900;font-size:.76rem">راهنما</span>
+          <span style="flex:1;min-width:190px;font-weight:700;font-size:clamp(.9rem,3.3vw,1.01rem);line-height:1.8;color:#f2ebdd">همهٔ نمودارهای درختی ده درس، با یک سبک یکسان و به تفکیک درس — مناسب مرور شب امتحان.</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:clamp(18px,3.4vw,26px)">
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#2563ff;color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">01</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">کنش‌های ما</span><span style="flex:1;min-width:20px;height:4px;background:#2563ff;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#2563ff;color:#f2ebdd;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">ویژگی‌های کنش</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#2563ff"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #2563ff;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">آگاهانه بودن</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">ارادی بودن</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">هدف‌دار بودن</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">معنادار بودن</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#12b981;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">آثار و پیامدهای کنش</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#12b981"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #12b981;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">پیامدهای ارادی — احتمالی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">پیامدهای غیرارادی — قطعی</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#ff5c22;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">02</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">پدیده‌های اجتماعی</span><span style="flex:1;min-width:20px;height:4px;background:#ff5c22;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#ff5c22;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">انواع کنش</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#ff5c22"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #ff5c22;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ff5c22"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">کنش فردی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ff5c22"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">کنش اجتماعی</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#2563ff;color:#f2ebdd;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">راه‌های انتقال ارزش</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#2563ff"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #2563ff;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">تعلیم و تربیت</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">تشویق</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">تنبیه</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#12b981;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">انواع پدیده‌ها</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#12b981"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #12b981;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">طبیعی — انسان خلق نکرده، بی‌معنا، محسوس</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">اجتماعی — انسان خلق می‌کند، معنادار، محسوس</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#ffc21a;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">03</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">جامعه و فرهنگ</span><span style="flex:1;min-width:20px;height:4px;background:#ffc21a;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#ffc21a;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">لایه‌های فرهنگ</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#ffc21a"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #ffc21a;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">سطحی (بیرونی) — هنجارها، نمادها</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">عمیق (درونی) — ارزش‌ها، عقاید</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#12b981;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">انواع فرهنگ</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#12b981"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #12b981;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">فرهنگ عمومی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">خرده‌فرهنگ — موافق / مخالف</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#b57bf5;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">04</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">ارزیابی فرهنگ‌ها</span><span style="flex:1;min-width:20px;height:4px;background:#b57bf5;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#b57bf5;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">ابزار شناخت</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#b57bf5"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #b57bf5;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">علوم تجربی — بدون داوری حق و باطل</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">عقل و وحی — توان داوری حق و باطل</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#ffc21a;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">ابزار شناخت پدیده‌ها</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#ffc21a"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #ffc21a;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">شناخت شهودی — مهم‌ترین ابزار: وحی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">شناخت عقلی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">شناخت حسی</span></div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:clamp(10px,2vw,14px)">
+              <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+                <span style="flex:none;width:clamp(100px,24vw,132px);background:#e53e3e;color:#f2ebdd;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:10px 12px;font-weight:900;font-size:.92rem;text-align:center">ارزش‌های باطل</span>
+                <span style="flex:none;width:18px;height:5px;background:#e53e3e"></span>
+                <div style="flex:1;min-width:min(100%,140px);border-right:5px solid #e53e3e;border-radius:3px;display:flex;flex-direction:column;gap:8px">
+                  <div style="display:flex;align-items:center"><span style="flex:none;width:14px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:6px 11px;font-weight:900;font-size:.88rem">شرک</span></div>
+                  <div style="display:flex;align-items:center"><span style="flex:none;width:14px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:6px 11px;font-weight:900;font-size:.88rem">پول‌پرستی</span></div>
+                  <div style="display:flex;align-items:center"><span style="flex:none;width:14px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:6px 11px;font-weight:900;font-size:.88rem">نژادپرستی</span></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+                <span style="flex:none;width:clamp(100px,24vw,132px);background:#12b981;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:10px 12px;font-weight:900;font-size:.92rem;text-align:center">ارزش‌های حق</span>
+                <span style="flex:none;width:18px;height:5px;background:#12b981"></span>
+                <div style="flex:1;min-width:min(100%,140px);border-right:5px solid #12b981;border-radius:3px;display:flex;flex-direction:column;gap:8px">
+                  <div style="display:flex;align-items:center"><span style="flex:none;width:14px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:6px 11px;font-weight:900;font-size:.88rem">توحید</span></div>
+                  <div style="display:flex;align-items:center"><span style="flex:none;width:14px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:6px 11px;font-weight:900;font-size:.88rem">عدالت</span></div>
+                  <div style="display:flex;align-items:center"><span style="flex:none;width:14px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:6px 11px;font-weight:900;font-size:.88rem">آزادی از موانع سعادت</span></div>
+                  <div style="display:flex;align-items:center"><span style="flex:none;width:14px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:6px 11px;font-weight:900;font-size:.88rem">شرایط رشد و تعالی</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#12b981;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">05</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">هویت</span><span style="flex:1;min-width:20px;height:4px;background:#12b981;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#12b981;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">ویژگی‌های هویت</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#12b981"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #12b981;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">اکتسابی / انتسابی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">ثابت / متغیر</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">فردی / اجتماعی</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#b57bf5;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">سه بُعد هویت انسان</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#b57bf5"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #b57bf5;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">جسمانی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">نفسانی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">اجتماعی — هر سه بر هم تأثیر دارند</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#ff5c22;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">بخش‌های هویت</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#ff5c22"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #ff5c22;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ff5c22"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">آگاهانه</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ff5c22"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">ناآگاهانه ← راه‌های شناخت: تأمل و اندیشیدن، کمک گرفتن از دیگران</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#e53e3e;color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">06</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">بازتولید هویت اجتماعی</span><span style="flex:1;min-width:20px;height:4px;background:#e53e3e;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#e53e3e;color:#f2ebdd;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">روش‌های کنترل کژروی</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#e53e3e"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #e53e3e;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">تبلیغ و اقناع</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">تشویق و پاداش</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">تنبیه و مجازات</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#b57bf5;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">انواع تحرک اجتماعی</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#b57bf5"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #b57bf5;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">صعودی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">افقی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">نزولی</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#2563ff;color:#f2ebdd;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">07</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">تحولات هویت اجتماعی</span><span style="flex:1;min-width:20px;height:4px;background:#2563ff;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#ffc21a;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">علل تحولات فرهنگی</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#ffc21a"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #ffc21a;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">درونی — کاستی‌ها و بن‌بست‌ها، نوآوری اعضا</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">بیرونی — ارتباط با جوامع دیگر</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#e53e3e;color:#f2ebdd;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">انواع از خودبیگانگی</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#e53e3e"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #e53e3e;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">تاریخی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">فطری</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#12b981;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">دو نوع فرهنگ</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#12b981"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #12b981;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">توحیدی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">اساطیری و دنیوی</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#ff5c22;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">08</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">بُعد فرهنگی هویت ایرانی</span><span style="flex:1;min-width:20px;height:4px;background:#ff5c22;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#2563ff;color:#f2ebdd;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">مقابله با هجوم نظامی و سیاسی</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#2563ff"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #2563ff;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">جنگ‌های صلیبی — دفع مهاجمان</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">حملهٔ مغول — هضم و جذب مهاجمان</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">فرهنگ جدید غرب — تجربه‌ای ناتمام</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#12b981;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">آثار نقد فرهنگ غرب</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#12b981"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #12b981;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">غرب‌زدگی — جلال آل احمد</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">بازگشت به خویشتن — دکتر شریعتی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">خدمات متقابل اسلام و ایران، فطرت — شهید مطهری</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#b57bf5;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">09</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">بُعد سیاسی هویت ایران</span><span style="flex:1;min-width:20px;height:4px;background:#b57bf5;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#ffc21a;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">مشروعیت</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#ffc21a"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #ffc21a;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">حقیقی — مطابق حکم و قانون الهی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">دروغین — موافق ایدئولوژی ساختگی بشر</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#2563ff;color:#f2ebdd;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">تقسیم‌بندی نظام‌های سیاسی</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#2563ff"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #2563ff;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">افراد تصمیم‌گیرنده — یک فرد / اقلیت / اکثریت</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">روش تصمیم‌گیری — امیال حاکم / حقیقت و فضیلت</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">دین‌مداری یا دنیامداری — مدینهٔ فاضله / جاهله</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#12b981;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">حکومت بر اساس اکثریت</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#12b981"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #12b981;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">جمهوری — بر اساس حقیقت و فضیلت</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#12b981"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">دمکراسی — بر مدار تمایلات</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap"><span class="en" style="background:#12b981;color:#141210;border:3px solid #141210;border-radius:11px;padding:2px 10px;font-weight:700;font-size:13px">10</span><span style="font-weight:900;font-size:clamp(1.02rem,3.9vw,1.28rem);color:#f2ebdd">ابعاد جمعیتی و اقتصادی</span><span style="flex:1;min-width:20px;height:4px;background:#12b981;border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#2563ff;color:#f2ebdd;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">راه‌های گسترش فرهنگ</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#2563ff"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #2563ff;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">گسترش جامعه از راه گسترش فرهنگ</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">شناختن، پذیرفتن، عمل کردن به آن</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#2563ff"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">هرچه عاملان و حاملان بیشتر، گسترش بیشتر</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#ffc21a;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">سیاست‌های جمعیتی</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#ffc21a"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #ffc21a;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">برای کاهش جمعیت</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#ffc21a"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">برای افزایش جمعیت</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#e53e3e;color:#f2ebdd;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">راه‌های نجات و احیای هویت</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#e53e3e"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #e53e3e;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">بازسازی هویت اقتصادی با اجرای قانون اساسی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#e53e3e"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">سیاست اقتصاد مقاومتی</span></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;background:rgba(7,46,35,.66);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:20px;padding:clamp(13px,2.6vw,18px)">
+              <span style="flex:none;width:clamp(120px,28vw,168px);background:#b57bf5;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:11px 13px;font-weight:900;font-size:.98rem;text-align:center">وظایف دولت</span>
+              <span style="flex:none;width:clamp(12px,2.6vw,26px);height:5px;background:#b57bf5"></span>
+              <div style="flex:1;min-width:min(100%,190px);border-right:5px solid #b57bf5;border-radius:3px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">ارائهٔ تسهیلات به تولیدکننده</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">ممنوعیت واردات کالاهای دارای مشابه داخلی</span></div>
+                <div style="display:flex;align-items:center"><span style="flex:none;width:16px;height:5px;background:#b57bf5"></span><span style="background:rgba(20,18,16,.72);color:#f2ebdd;border:3px solid #141210;border-radius:12px;padding:7px 12px;font-weight:900;font-size:.9rem">افزایش تعرفه‌های گمرکی بر کالاهای وارداتی</span></div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -4002,7 +4537,7 @@ class Component extends DCLogic {
 
   setIdentity = (el)=>{ if(el){ if(this._idn) return; this._idn=this.buildIrid(el); this._addScene(this._idn); } else if(this._idn){ this._removeScene(this._idn); this._idn=null; } };
   setIdentLesson = (el)=>{ if(el){ if(this._idl) return; const n=this.state.lesson;
-      const b = n===1 ? this.buildChrome(el) : n===2 ? this.buildSnow(el) : n===3 ? this.buildHyper(el) : n===4 ? this.buildDither(el) : n===5 ? this.buildTerminal(el) : n===6 ? this.buildBlinds(el) : n===7 ? this.buildChrome(el) : n===8 ? this.buildWaves(el) : n===9 ? this.buildBeams(el) : this.buildBurst(el);
+      const b = n==='defs' ? this.buildHyper(el) : n==='trees' ? this.buildFall(el) : n===1 ? this.buildChrome(el) : n===2 ? this.buildSnow(el) : n===3 ? this.buildHyper(el) : n===4 ? this.buildDither(el) : n===5 ? this.buildTerminal(el) : n===6 ? this.buildBlinds(el) : n===7 ? this.buildChrome(el) : n===8 ? this.buildWaves(el) : n===9 ? this.buildBeams(el) : this.buildBurst(el);
       this._idl=b; this._addScene(this._idl); } else if(this._idl){ this._removeScene(this._idl); this._idl=null; } };
   setHealth = (el)=>{ if(el){ if(this._hlt) return; this._hlt=this.buildChrome(el); this._addScene(this._hlt); } else if(this._hlt){ this._removeScene(this._hlt); this._hlt=null; } };
   setIdentMini = (el)=>{ if(el){ if(this._m4) return; this._m4=this.buildBlinds(el); this._addScene(this._m4); } else if(this._m4){ this._removeScene(this._m4); this._m4=null; } };
@@ -4020,20 +4555,20 @@ class Component extends DCLogic {
 uniform vec2 R; uniform float T; uniform vec2 M;
 ${'$'}{PAL}
 void main(){
-  float PIX = 3.0;
+  float PIX = 2.0;
   vec2 fc = PIX*floor(gl_FragCoord.xy/PIX);
   vec2 uv = fc/R;
   float aspect = R.x/R.y;
   vec3 CREAM = vec3(0.949,0.922,0.867), INK = vec3(0.078,0.071,0.063);
   vec2 p = uv*2.0-1.0; p.x *= aspect;
-  float a = 0.35;
+  float a = 0.35 + 0.05*sin(T*0.18);
   vec2 pr = vec2(p.x*cos(a) - p.y*sin(a), p.x*sin(a) + p.y*cos(a));
   pr.x /= aspect;
   vec2 q = pr*0.5 + 0.5;
   float n = max(4.0, floor(R.x/46.0));
-  float s = q.x*n;
+  float s = q.x*n + T*0.55 + 0.22*sin(q.y*2.6 + T*0.35);
   float idx = floor(s), f = fract(s);
-  float g = mod(idx + floor(T*0.7), 6.0);
+  float g = mod(idx, 6.0);
   vec3 col = pal(g);
   float d = length((uv - M)*vec2(aspect,1.0));
   if(d < 0.52){ col = (f < 0.5) ? CREAM : pal(mod(g+3.0,6.0)); }
@@ -4830,6 +5365,8 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       showHome:isHome, showLang:s.view==='language', showPhysics:s.view==='physics', showChem:s.view==='chem',
       showIdent:s.view==='identity', showHealth:s.view==='health',
       showIdentGrid: s.view==='identity' && !s.lesson,
+      goHomeDefs: ()=>{ this.setState({view:'identity',menuOpen:false,lesson:'defs'}); try{ window.scrollTo(0,0); }catch(e){} },
+      goHomeTrees: ()=>{ this.setState({view:'identity',menuOpen:false,lesson:'trees'}); try{ window.scrollTo(0,0); }catch(e){} },
       showIdentL1: s.view==='identity' && s.lesson===1,
       showIdentL2: s.view==='identity' && s.lesson===2,
       showIdentL3: s.view==='identity' && s.lesson===3,
@@ -4838,6 +5375,10 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       showIdentL6: s.view==='identity' && s.lesson===6,
       showIdentL7: s.view==='identity' && s.lesson===7,
       showIdentL8: s.view==='identity' && s.lesson===8,
+      showIdentDefs: s.view==='identity' && s.lesson==='defs',
+      showIdentTrees: s.view==='identity' && s.lesson==='trees',
+      goIdentDefs: ()=>this.openLesson('defs'),
+      goIdentTrees: ()=>this.openLesson('trees'),
       showIdentL9: s.view==='identity' && s.lesson===9,
       showIdentL10: s.view==='identity' && s.lesson===10,
       showIdentSoon: false,
