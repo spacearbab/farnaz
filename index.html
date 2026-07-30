@@ -61,6 +61,14 @@
   </div>
   </sc-if>
 
+  <!-- ===== SECTION LOADING (between-page transition) ===== -->
+  <sc-if value="{{ sectionLoading }}">
+  <div onClick="{{ onSkipLoadingClick }}" style="position:fixed;inset:0;z-index:210;background:{{ loadingBg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(18px,3.4vw,30px);padding:24px;cursor:pointer">
+    <div style="font-weight:900;font-size:clamp(1rem,3.4vw,1.35rem);color:#141210;letter-spacing:-.3px;font-family:'Vazirmatn',sans-serif;min-width:11ch;text-align:center">در حال لود صفحه<span class="en" style="display:inline-block;width:2.2ch;text-align:left">{{ loadingDotsTxt }}</span></div>
+    <img src="{{ loadingGifSrc }}" alt="" style="width:min(72vw,360px);max-height:60vh;object-fit:contain">
+  </div>
+  </sc-if>
+
   <!-- ===== TOP BAR (all views) ===== -->
   <div style="{{ barWrapStyle }}">
     <div style="{{ barInnerStyle }}">
@@ -7635,7 +7643,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { view:'home', menuOpen:false, cat:'tenses', open:null, group:'all', q:'', now:Date.now(), pchap:1, pdfIdx:0, booting:true, lesson:null, winW: (typeof window!=='undefined' ? window.innerWidth : 1200) };
+  state = { view:'home', menuOpen:false, cat:'tenses', open:null, group:'all', q:'', now:Date.now(), pchap:1, pdfIdx:0, booting:true, lesson:null, winW: (typeof window!=='undefined' ? window.innerWidth : 1200), sectionLoading:false, loadingGif:0, loadingBg:'#ffe1ec', loadingDots:1 };
   _scenes = [];
 
   faDigits(n){ const m='۰۱۲۳۴۵۶۷۸۹'; return String(n).replace(/[0-9]/g,d=>m[+d]); }
@@ -7684,14 +7692,38 @@ class Component extends DCLogic {
     { head:'مقاومت شخص', body:'شامل وضعیت بزاق فرد، شکل و نحوهٔ قرارگیری دندان‌ها، مقدار مقاومت دندان‌ها به اسید، نوع میکروب‌های دهان و وضعیت سلامت عمومی فرد.' },
     { head:'زمان', body:'چند دقیقه بعد از خوردن غذا اسید تولید می‌شود، سپس به حداکثر می‌رسد و دوباره به حالت عادی برمی‌گردد. پوسیدگی دندان روندی تدریجی و نسبتاً طولانی است و با تغییر رنگ دندان به قهوه‌ای یا سیاه همراه است.' },
   ];
-  openHLesson(n){ this.setState({ hles:n }); try{ window.scrollTo(0,0); }catch(e){} }
+  openHLesson(n){ this.goWithLoading(()=>{ this.setState({ hles:n }); try{ window.scrollTo(0,0); }catch(e){} }); }
   setHealthLesson = (el)=>{ if(el){ if(this._hls) return; const n=this.state.hles;
       const b = n===1 ? this.buildWaves(el) : n===2 ? this.buildBurst(el) : n===3 ? this.buildDither(el) : n===4 ? this.buildChrome(el) : n===5 ? this.buildSnow(el) : n===6 ? this.buildHyper(el) : n===7 ? this.buildTerminal(el) : n===8 ? this.buildBlinds(el) : n===9 ? this.buildIrid(el) : n===10 ? this.buildWaves(el) : n===11 ? this.buildDither(el) : n===12 ? this.buildTerminal(el) : n===13 ? this.buildBurst(el) : this.buildBeams(el);
       this._hls=b; this._addScene(this._hls); } else if(this._hls){ this._removeScene(this._hls); this._hls=null; } };
   lessonLabel(n){ if(!n || n<1 || n>10) return ''; const name=this.identLessonNames[n]; const ord=this.identOrdinals[n];
     return name && name!==ord ? (ord + ' — ' + name) : ord; }
 
-  openLesson(n){ this.setState({ lesson:n }); try{ window.scrollTo(0,0); }catch(e){} }
+  openLesson(n){ this.goWithLoading(()=>{ this.setState({ lesson:n }); try{ window.scrollTo(0,0); }catch(e){} }); }
+
+  LOAD_BG = ['#ffe1ec','#fff2b0','#d6f7e4','#dbe8ff','#ecdcff','#ffe2c9','#d2f4f1','#ffd9d9','#e6f0c9','#f6d9ff'];
+  LOAD_GIF_COUNT = 11;
+
+  goWithLoading(navFn){
+    clearTimeout(this._loadTimer); clearInterval(this._loadDotsTimer);
+    const gif = Math.floor(Math.random()*this.LOAD_GIF_COUNT);
+    const bg = this.LOAD_BG[Math.floor(Math.random()*this.LOAD_BG.length)];
+    this._pendingNav = navFn; this._loadSkipClicks = 0;
+    this.setState({ sectionLoading:true, loadingGif:gif, loadingBg:bg, loadingDots:1 });
+    try{ window.scrollTo(0,0); }catch(e){}
+    this._loadDotsTimer = setInterval(()=>{ this.setState({ loadingDots: (this.state.loadingDots % 3) + 1 }); }, 500);
+    this._loadTimer = setTimeout(()=>this.finishLoading(), 6000);
+  }
+  finishLoading(){
+    clearTimeout(this._loadTimer); clearInterval(this._loadDotsTimer);
+    const fn = this._pendingNav; this._pendingNav = null;
+    this.setState({ sectionLoading:false });
+    if(fn) fn();
+  }
+  skipLoadingClick(){
+    this._loadSkipClicks = (this._loadSkipClicks||0) + 1;
+    if(this._loadSkipClicks >= 3) this.finishLoading();
+  }
 
   cats = [
     { id:'tenses',  label:'زمان‌ها',        c:'#2563ff' },
@@ -9156,8 +9188,8 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
         ? ('width:900px;zoom:' + (Math.max(0.42, s.winW/900).toFixed(4)) + ';margin:0 auto;padding:26px 14px 80px')
         : 'max-width:1180px;margin:0 auto;padding:26px clamp(8px,2.6vw,18px) 80px',
       showIdentGrid: s.view==='identity' && !s.lesson,
-      goHomeDefs: ()=>{ this.setState({view:'identity',menuOpen:false,lesson:'defs'}); try{ window.scrollTo(0,0); }catch(e){} },
-      goHomeTrees: ()=>{ this.setState({view:'identity',menuOpen:false,lesson:'trees'}); try{ window.scrollTo(0,0); }catch(e){} },
+      goHomeDefs: ()=>this.goWithLoading(()=>{ this.setState({view:'identity',menuOpen:false,lesson:'defs'}); try{ window.scrollTo(0,0); }catch(e){} }),
+      goHomeTrees: ()=>this.goWithLoading(()=>{ this.setState({view:'identity',menuOpen:false,lesson:'trees'}); try{ window.scrollTo(0,0); }catch(e){} }),
       showIdentL1: s.view==='identity' && s.lesson===1,
       showIdentL2: s.view==='identity' && s.lesson===2,
       showIdentL3: s.view==='identity' && s.lesson===3,
@@ -9193,11 +9225,11 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       openL4: ()=>this.openLesson(4), openL5: ()=>this.openLesson(5), openL6: ()=>this.openLesson(6),
       openL7: ()=>this.openLesson(7), openL8: ()=>this.openLesson(8), openL9: ()=>this.openLesson(9),
       openL10: ()=>this.openLesson(10),
-      pickChem:()=>this.setState({view:'chem',menuOpen:false}),
+      pickChem:()=>this.goWithLoading(()=>this.setState({view:'chem',menuOpen:false})),
       pickIdent:()=>this.setState({view:'identity',menuOpen:false,lesson:null}),
-      pickHealth:()=>this.setState({view:'health',menuOpen:false,hles:null}),
-      goHealthReview1:()=>{ this.setState({view:'health',menuOpen:false,hles:101}); try{ window.scrollTo(0,0); }catch(e){} },
-      goHealthReview2:()=>{ this.setState({view:'health',menuOpen:false,hles:102}); try{ window.scrollTo(0,0); }catch(e){} },
+      pickHealth:()=>this.goWithLoading(()=>this.setState({view:'health',menuOpen:false,hles:null})),
+      goHealthReview1:()=>this.goWithLoading(()=>{ this.setState({view:'health',menuOpen:false,hles:101}); try{ window.scrollTo(0,0); }catch(e){} }),
+      goHealthReview2:()=>this.goWithLoading(()=>{ this.setState({view:'health',menuOpen:false,hles:102}); try{ window.scrollTo(0,0); }catch(e){} }),
       identRef: this.setIdentity, healthRef: this.setHealth,
       identMiniRef: this.setIdentMini, healthMiniRef: this.setHealthMini,
       exams, hasNext: !!next, cdName: next? next.fa : '', cdJalali: next? next.jalali : '',
@@ -9231,6 +9263,11 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
         _select:()=>{ this.setState({ pdfIdx:i }); setTimeout(()=>this.renderPdf(), 0); },
         _style:this.chip((s.pdfIdx||0)===i, '#ffc21a') })),
       booting: !!s.booting,
+      sectionLoading: !!s.sectionLoading,
+      loadingBg: s.loadingBg || '#ffe1ec',
+      loadingGifSrc: 'assets/' + (s.loadingGif==null?0:s.loadingGif) + '.gif',
+      loadingDotsTxt: '.'.repeat(s.loadingDots||1),
+      onSkipLoadingClick: ()=>this.skipLoadingClick(),
       toastTxt: s.toast || '', hasToast: !!s.toast,
       pdfFullTxt: s.pdfFull ? '✕ بستن' : '⤢ تمام‌صفحه',
       pdfToggleFull:()=>{ this.setState({ pdfFull:!s.pdfFull });
@@ -9266,8 +9303,8 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       toggleMenu:()=>this.setState(st=>({menuOpen:!st.menuOpen})),
       closeMenu:()=>this.setState({menuOpen:false}),
       goHome:()=>this.setState({view:'home',menuOpen:false}),
-      pickLang:()=>this.setState({view:'language',menuOpen:false}),
-      pickPhysics:()=>this.setState({view:'physics',menuOpen:false}),
+      pickLang:()=>this.goWithLoading(()=>this.setState({view:'language',menuOpen:false})),
+      pickPhysics:()=>this.goWithLoading(()=>this.setState({view:'physics',menuOpen:false})),
       barWrapStyle, barInnerStyle, line1Style, line2Style,
       terminalRef: this.setTerminalHome,
       physicsTerminalRef: this.setTerminalPhysics,
