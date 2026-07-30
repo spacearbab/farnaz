@@ -170,7 +170,8 @@
   <sc-if value="{{ showHome }}">
   <section style="position:relative;min-height:100vh;overflow:hidden;background:#f2ebdd">
     <canvas ref="{{ terminalRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
-    <div style="position:relative;z-index:5;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(20px,3.4vw,34px);padding:clamp(110px,15vh,150px) 20px 26px;text-align:center">
+    <div style="position:relative;z-index:5;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:clamp(110px,15vh,150px) 20px 26px">
+    <div style="{{ identMainStyle }};display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3.4vw,34px);text-align:center">
       <div style="order:-3;background:#141210;border:5px solid #141210;border-radius:30px;box-shadow:14px 14px 0 #ffc21a;padding:clamp(22px,4.4vw,44px) clamp(26px,5.5vw,58px);max-width:min(940px,96%)">
         <div style="font-weight:900;font-size:clamp(1.8rem,7vw,4.4rem);line-height:1.16;letter-spacing:-2px;color:#f2ebdd;text-wrap:pretty">مرورهای قبل امتحانِ فرناز</div>
       </div>
@@ -216,6 +217,32 @@
             <span style="display:flex;align-items:center;gap:10px;animation:adWob2 2.4s ease-in-out infinite">
               <span style="width:clamp(44px,10vw,56px);height:clamp(44px,10vw,56px);flex:none;background:#141210;color:#b57bf5;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(1.25rem,4vw,1.7rem)">+</span>
               <span style="font-weight:900;font-size:clamp(1.15rem,4.4vw,1.7rem);line-height:1.1;color:#fff;letter-spacing:-.5px">جزوه‌ی کامل<br>حفظیات پلاس</span>
+            </span>
+            <span style="font-weight:900;font-size:clamp(.85rem,2.9vw,1rem);background:#f2ebdd;color:#141210;border:3px solid #141210;border-radius:999px;padding:7px 20px;box-shadow:4px 4px 0 #141210">همین حالا باز کن ←</span>
+          </span>
+        </button>
+      </div>
+
+      <div style="order:-1.5;width:100%;max-width:840px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(14px,3vw,22px);padding:0 4px 10px">
+        <button onClick="{{ goHealthReview1 }}" style="position:relative;cursor:pointer;font-family:'Vazirmatn',sans-serif;text-align:right;overflow:hidden;background:#e53e3e;border:5px solid #141210;border-radius:22px;padding:clamp(16px,3vw,22px) clamp(15px,3vw,22px) clamp(14px,2.6vw,18px);transform:rotate(-1deg);animation:adPulse 1.6s ease-in-out .2s infinite;box-shadow:9px 9px 0 #141210">
+          <span style="position:absolute;inset:0;opacity:.18;background:repeating-linear-gradient(-45deg,#141210 0 14px,transparent 14px 28px);animation:adStripes 1.2s linear infinite;pointer-events:none"></span>
+          <span style="position:absolute;top:-4px;left:-30px;z-index:3;background:#ffc21a;color:#141210;font-weight:900;font-size:11px;letter-spacing:.5px;padding:5px 34px;transform:rotate(-32deg);border-top:3px solid #141210;border-bottom:3px solid #141210;animation:adBlink 1s steps(1,end) infinite">سلامت!</span>
+          <span style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:9px">
+            <span style="display:flex;align-items:center;gap:10px;animation:adWob 2.4s ease-in-out infinite">
+              <img src="assets/lg-heart.png" alt="" style="flex:none;width:clamp(44px,10vw,56px);height:clamp(44px,10vw,56px);object-fit:contain;image-rendering:pixelated">
+              <span style="font-weight:900;font-size:clamp(1.15rem,4.4vw,1.7rem);line-height:1.1;color:#f2ebdd;letter-spacing:-.5px">مرور فشردهٔ<br>سلامت درس ۱ تا ۷</span>
+            </span>
+            <span style="font-weight:900;font-size:clamp(.85rem,2.9vw,1rem);background:#f2ebdd;color:#141210;border:3px solid #141210;border-radius:999px;padding:7px 20px;box-shadow:4px 4px 0 #141210">همین حالا باز کن ←</span>
+          </span>
+        </button>
+
+        <button onClick="{{ goHealthReview2 }}" style="position:relative;cursor:pointer;font-family:'Vazirmatn',sans-serif;text-align:right;overflow:hidden;background:#12b981;border:5px solid #141210;border-radius:22px;padding:clamp(16px,3vw,22px) clamp(15px,3vw,22px) clamp(14px,2.6vw,18px);transform:rotate(1deg);animation:adPulse 1.6s ease-in-out .9s infinite;box-shadow:9px 9px 0 #141210">
+          <span style="position:absolute;inset:0;opacity:.18;background:repeating-linear-gradient(45deg,#141210 0 14px,transparent 14px 28px);animation:adStripes 1.3s linear infinite;pointer-events:none"></span>
+          <span style="position:absolute;top:-4px;right:-30px;z-index:3;background:#ffc21a;color:#141210;font-weight:900;font-size:11px;letter-spacing:.5px;padding:5px 34px;transform:rotate(32deg);border-top:3px solid #141210;border-bottom:3px solid #141210;animation:adBlink 1s steps(1,end) .3s infinite">جدید!</span>
+          <span style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:9px">
+            <span style="display:flex;align-items:center;gap:10px;animation:adWob2 2.4s ease-in-out infinite">
+              <img src="assets/lg-clipboard.png" alt="" style="flex:none;width:clamp(38px,9vw,48px);height:clamp(52px,12vw,64px);object-fit:contain;image-rendering:pixelated">
+              <span style="font-weight:900;font-size:clamp(1.15rem,4.4vw,1.7rem);line-height:1.1;color:#141210;letter-spacing:-.5px">مرور فشردهٔ<br>سلامت درس ۸ تا ۱۴</span>
             </span>
             <span style="font-weight:900;font-size:clamp(.85rem,2.9vw,1rem);background:#f2ebdd;color:#141210;border:3px solid #141210;border-radius:999px;padding:7px 20px;box-shadow:4px 4px 0 #141210">همین حالا باز کن ←</span>
           </span>
@@ -273,6 +300,7 @@
         <span class="en" style="font-weight:700;font-size:13px;color:#f2ebdd;letter-spacing:.4px">made by moli.cpu@gmail.com</span>
       </div>
     </div>
+    </div>
   </section>
   </sc-if>
 
@@ -299,7 +327,7 @@
     </div>
   </nav>
 
-  <main style="max-width:1180px;margin:0 auto;padding:22px 18px 0">
+  <main style="{{ identMainStyle }}">
 
   <!-- ============ TENSES ============ -->
   <sc-if value="{{ showTenses }}" hint-placeholder-val="{{ true }}">
@@ -899,7 +927,7 @@
 
   <!-- ===== PHYSICS VIEW ===== -->
   <sc-if value="{{ showPhysics }}">
-  <main style="max-width:1180px;margin:0 auto;padding:34px clamp(8px,2.6vw,18px) 90px">
+  <main style="{{ identMainStyle }}">
     <section>
       <div style="position:relative;border:4px solid #141210;border-radius:26px;box-shadow:9px 9px 0 #141210;overflow:hidden;min-height:clamp(300px,44vh,500px);background:#f2ebdd;margin-bottom:18px">
         <canvas ref="{{ hyperRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
@@ -995,7 +1023,7 @@
 
   <!-- ===== CHEMISTRY VIEW ===== -->
   <sc-if value="{{ showChem }}">
-  <main style="max-width:1180px;margin:0 auto;padding:34px clamp(8px,2.6vw,18px) 90px">
+  <main style="{{ identMainStyle }}">
     <section>
       <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px">
         <h2 style="font-weight:900;font-size:clamp(1.9rem,6vw,3.4rem);margin:0;letter-spacing:-1px">شیمی</h2>
@@ -4029,6 +4057,24 @@
             <img src="assets/lg-home.png" alt="" style="width:100%;flex:1;min-height:0;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(3px 3px 0 rgba(20,18,16,.55));margin:6px 0 4px">
             <span style="display:flex;flex-direction:column;gap:4px"><span style="font-weight:900;font-size:.98rem;line-height:1.35;color:#f2ebdd">پیشگیری از حوادث خانگی</span></span>
           </a>
+
+          <a onClick="{{ openHR1 }}" style="position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.7);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:13px;transition:transform .18s,box-shadow .18s" style-hover="transform:translate(2px,2px);box-shadow:4px 4px 0 #12b981">
+            <span style="width:34px;height:34px;flex:none;background:#12b981;color:#141210;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.86rem" class="en">۱-۷</span>
+            <img src="assets/lg-clipboard.png" alt="" style="width:100%;flex:1;min-height:0;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(3px 3px 0 rgba(20,18,16,.55));margin:6px 0 4px">
+            <span style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-weight:900;font-size:.98rem;line-height:1.35;color:#f2ebdd">مرور فشردهٔ درس ۱ تا ۷</span>
+              <span style="font-weight:700;font-size:.72rem;color:#ffc21a;opacity:.9">آخرین مرور</span>
+            </span>
+          </a>
+
+          <a onClick="{{ openHR2 }}" style="position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.7);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #2563ff;padding:13px;transition:transform .18s,box-shadow .18s" style-hover="transform:translate(2px,2px);box-shadow:4px 4px 0 #2563ff">
+            <span style="width:34px;height:34px;flex:none;background:#2563ff;color:#f2ebdd;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.86rem" class="en">۸-۱۴</span>
+            <img src="assets/lg-clipboard.png" alt="" style="width:100%;flex:1;min-height:0;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(3px 3px 0 rgba(20,18,16,.55));margin:6px 0 4px">
+            <span style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-weight:900;font-size:.98rem;line-height:1.35;color:#f2ebdd">مرور فشردهٔ درس ۸ تا ۱۴</span>
+              <span style="font-weight:700;font-size:.72rem;color:#ffc21a;opacity:.9">آخرین مرور</span>
+            </span>
+          </a>
           <sc-for list="{{ healthSoonCards }}" as="c" hint-placeholder-count="7">
           <a onClick="{{ c.open }}" style="position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.62);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 rgba(242,235,221,.35);padding:13px;transition:transform .18s,box-shadow .18s" style-hover="transform:translate(2px,2px);box-shadow:4px 4px 0 rgba(242,235,221,.35)">
             <span style="width:34px;height:34px;flex:none;background:rgba(242,235,221,.9);color:#141210;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">{{ c.fa }}</span>
@@ -4128,7 +4174,7 @@
           </div>
           <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:clamp(14px,2.8vw,20px)">
             <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px"><img src="assets/lg-wash.png" alt="" style="flex: none; width: 57px; height: 60px; object-fit: contain; image-rendering: pixelated"><span style="font-weight:900;font-size:1.05rem;color:#f2ebdd">بهداشت</span></div>
-            <p style="margin: 0 0 10px; font-weight: 700; font-size: clamp(.93rem,3.4vw,1.05rem); line-height: 1.9; color: #f2ebdd; text-wrap: pretty; width: 455px; height: 26px">حفظ، تأمین و ارتقای سطح سلامت.</p>
+            <p style="margin: 0 0 10px; font-weight: 700; font-size: clamp(.93rem,3.4vw,1.05rem); line-height: 1.9; color: #f2ebdd; text-wrap: pretty">بهداشت عبارت است از زیرشاخه‌ای که حفظ، تأمین و ارتقای سطح سلامت را بر عهده دارد.</p>
             <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;background:rgba(20,18,16,.6);border:3px solid #141210;border-radius:13px;padding:9px 12px">
               <span style="background:#12b981;color:#141210;border-radius:999px;padding:2px 11px;font-weight:900;font-size:.82rem">تأمین سلامتی</span>
               <img src="assets/lg-hand.png" alt="" style="flex:none;width:28px;height:17px;object-fit:contain;image-rendering:pixelated">
@@ -4344,7 +4390,7 @@
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #ffc21a;border-radius:20px;box-shadow:7px 7px 0 #ffc21a;padding:12px 16px">
           <img src="assets/lg-hands-heart.png" alt="" style="width:44px;height:42px;flex:none;object-fit:contain;image-rendering:pixelated">
           <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">انواع خودمراقبتی</h3>
-          <span style="background:#ffc21a;color:#141210;border-radius:999px;padding:2px 11px;font-weight:900;font-size:.74rem">گام اول حفظ سلامت</span>
+          <span style="background:#ffc21a;color:#141210;border-radius:999px;padding:2px 11px;font-weight:900;font-size:.74rem">گام اول حفظ سلامتی خویشتن</span>
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:clamp(11px,2.2vw,16px)">
@@ -4431,6 +4477,11 @@
           <img src="assets/lg-like.png" alt="" style="flex:none;width:38px;height:30px;object-fit:contain;image-rendering:pixelated">
           <span style="flex:1;min-width:200px;font-weight:700;font-size:clamp(.92rem,3.3vw,1.03rem);line-height:1.8;color:#f2ebdd;text-wrap:pretty">مدنظر داشتن موفقیت‌ها اعتماد به نفس را افزایش می‌دهد و توانایی ما را در اجرای برنامه بیشتر می‌کند.</span>
         </div>
+
+        <button onClick="{{ openH3 }}" style="align-self:center;cursor:pointer;text-align:right;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:12px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:6px 6px 0 #141210;min-height:54px;padding:8px 18px;margin-top:6px">
+          <span style="display:flex;flex-direction:column;gap:2px;align-items:flex-start"><span style="font-weight:700;font-size:.68rem;opacity:.75">درس بعد</span><span style="font-weight:900;font-size:.98rem;line-height:1.4">درس سوم — برنامهٔ غذایی سالم</span></span>
+          <span style="font-size:1.5em;line-height:1">←</span>
+        </button>
       </div>
     </section>
   </main>
@@ -4591,14 +4642,21 @@
 
         <p style="margin:0;font-weight:400;font-size:clamp(.93rem,3.4vw,1.05rem);line-height:1.9;color:#f2ebdd;background:rgba(7,46,35,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:4px solid #141210;border-radius:18px;box-shadow:6px 6px 0 #141210;padding:clamp(13px,2.6vw,18px);text-wrap:pretty">تقسیم‌بندی ساده‌ای است که نیاز روزانهٔ ما به مواد غذایی مختلف را نشان می‌دهد. هرچه از قاعدهٔ هرم به سمت رأس حرکت کنیم، سهم مواد موجود <b style="color:#ffc21a">کمتر</b> می‌شود؛ برای مثال در قاعدهٔ هرم گروه نان و غلات قرار دارد که بیشترین سهم را در وعده‌های روزانه دارد.</p>
 
-        <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-          <div style="width:40%;min-width:150px;display:flex;align-items:center;justify-content:center;gap:9px;background:#e53e3e;color:#f2ebdd;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:9px 12px;font-weight:900;font-size:.9rem;text-align:center"><img src="assets/lg-candy.png" alt="" style="flex:none;width:30px;height:20px;object-fit:contain;image-rendering:pixelated">متفرقه <span style="font-weight:700;font-size:.74rem;opacity:.85">(فرعی — قند و چربی به مقدار کم)</span></div>
-          <div style="width:50%;min-width:180px;display:flex;align-items:center;justify-content:center;background:#ff5c22;color:#141210;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:9px 12px;font-weight:900;font-size:.94rem;gap:9px"><img src="assets/lg-nuts.png" alt="" style="flex:none;width:24px;height:27px;object-fit:contain;image-rendering:pixelated">حبوبات و مغزها</div>
-          <div style="width:60%;min-width:210px;display:flex;align-items:center;justify-content:center;background:#b57bf5;color:#141210;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:10px 12px;font-weight:900;font-size:.96rem;gap:9px"><img src="assets/lg-meat.png" alt="" style="flex:none;width:34px;height:23px;object-fit:contain;image-rendering:pixelated">گوشت و تخم‌مرغ</div>
-          <div style="width:70%;min-width:240px;display:flex;align-items:center;justify-content:center;background:#f2ebdd;color:#141210;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:10px 12px;font-weight:900;font-size:.98rem;gap:9px"><img src="assets/lg-milk.png" alt="" style="flex:none;width:22px;height:26px;object-fit:contain;image-rendering:pixelated">شیر و فرآورده‌ها</div>
-          <div style="width:80%;min-width:270px;display:flex;align-items:center;justify-content:center;background:#2563ff;color:#f2ebdd;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:11px 12px;font-weight:900;font-size:1rem;gap:9px"><img src="assets/lg-apple.png" alt="" style="flex:none;width:26px;height:25px;object-fit:contain;image-rendering:pixelated">میوه‌ها</div>
-          <div style="width:90%;min-width:300px;display:flex;align-items:center;justify-content:center;background:#12b981;color:#141210;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:12px;font-weight:900;font-size:1.02rem;gap:9px"><img src="assets/lg-broccoli.png" alt="" style="flex:none;width:27px;height:28px;object-fit:contain;image-rendering:pixelated">سبزی‌ها</div>
-          <div style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#ffc21a;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:13px;font-weight:900;font-size:clamp(1rem,3.8vw,1.15rem)"><img src="assets/lg-bread.png" alt="" style="flex:none;width:34px;height:30px;object-fit:contain;image-rendering:pixelated">نان و غلات <span style="background:#141210;color:#ffc21a;border-radius:999px;padding:2px 11px;font-size:.74rem">بیشترین سهم</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:9px">
+          <div style="width:38%;min-width:160px;display:flex;align-items:center;justify-content:center;gap:9px;background:#e53e3e;color:#f2ebdd;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:9px 12px;font-weight:900;font-size:.9rem;text-align:center"><img src="assets/lg-candy.png" alt="" style="flex:none;width:30px;height:20px;object-fit:contain;image-rendering:pixelated">متفرقه <span style="font-weight:700;font-size:.74rem;opacity:.85">(قند و چربی، به مقدار کم)</span></div>
+
+          <div style="width:68%;min-width:300px;display:flex;align-items:stretch;justify-content:center;gap:8px;flex-wrap:wrap">
+            <div style="flex:1;min-width:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:#ff5c22;color:#141210;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:9px 8px;text-align:center"><span style="display:flex;align-items:center;gap:6px;font-weight:900;font-size:.86rem"><img src="assets/lg-nuts.png" alt="" style="flex:none;width:20px;height:23px;object-fit:contain;image-rendering:pixelated">حبوبات و مغزها</span><span style="background:#141210;color:#ffc21a;border-radius:999px;padding:1px 10px;font-size:.72rem;font-weight:900">۱ واحد</span></div>
+            <div style="flex:1;min-width:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:#b57bf5;color:#141210;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:9px 8px;text-align:center"><span style="display:flex;align-items:center;gap:6px;font-weight:900;font-size:.86rem"><img src="assets/lg-meat.png" alt="" style="flex:none;width:28px;height:19px;object-fit:contain;image-rendering:pixelated">گوشت و تخم‌مرغ</span><span style="background:#141210;color:#ffc21a;border-radius:999px;padding:1px 10px;font-size:.72rem;font-weight:900">۲ واحد</span></div>
+            <div style="flex:1;min-width:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:#f2ebdd;color:#141210;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:9px 8px;text-align:center"><span style="display:flex;align-items:center;gap:6px;font-weight:900;font-size:.86rem"><img src="assets/lg-milk.png" alt="" style="flex:none;width:18px;height:21px;object-fit:contain;image-rendering:pixelated">لبنیات و فرآورده‌ها</span><span style="background:#141210;color:#ffc21a;border-radius:999px;padding:1px 10px;font-size:.72rem;font-weight:900">۳ واحد</span></div>
+          </div>
+
+          <div style="width:88%;min-width:320px;display:flex;align-items:stretch;justify-content:center;gap:9px;flex-wrap:wrap">
+            <div style="flex:1;min-width:150px;display:flex;align-items:center;justify-content:center;gap:8px;background:#2563ff;color:#f2ebdd;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:10px 12px;font-weight:900;font-size:.94rem"><img src="assets/lg-apple.png" alt="" style="flex:none;width:24px;height:23px;object-fit:contain;image-rendering:pixelated">میوه‌ها <span style="background:#141210;color:#ffc21a;border-radius:999px;padding:1px 10px;font-size:.72rem;font-weight:900">۳ تا ۴ واحد</span></div>
+            <div style="flex:1;min-width:150px;display:flex;align-items:center;justify-content:center;gap:8px;background:#12b981;color:#141210;border:4px solid #141210;border-radius:14px;box-shadow:4px 4px 0 #141210;padding:10px 12px;font-weight:900;font-size:.94rem"><img src="assets/lg-broccoli.png" alt="" style="flex:none;width:24px;height:25px;object-fit:contain;image-rendering:pixelated">سبزی‌ها <span style="background:#141210;color:#ffc21a;border-radius:999px;padding:1px 10px;font-size:.72rem;font-weight:900">۴ تا ۵ واحد</span></div>
+          </div>
+
+          <div style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;background:#ffc21a;color:#141210;border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #141210;padding:13px;font-weight:900;font-size:clamp(1rem,3.8vw,1.15rem)"><img src="assets/lg-bread.png" alt="" style="flex:none;width:34px;height:30px;object-fit:contain;image-rendering:pixelated">نان و غلات <span style="background:#141210;color:#ffc21a;border-radius:999px;padding:2px 11px;font-size:.74rem">بیشترین سهم</span><span style="background:#141210;color:#ffc21a;border-radius:999px;padding:2px 11px;font-size:.74rem">۹ تا ۱۱ واحد</span></div>
         </div>
 
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #12b981;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:12px 16px;margin-top:6px">
@@ -4758,7 +4816,7 @@
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,168px),1fr));gap:clamp(10px,2vw,14px)">
           <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:18px;box-shadow:6px 6px 0 #141210;overflow:hidden">
-            <span style="background:#2563ff;color:#f2ebdd;padding:10px 12px;font-weight:900;font-size:.95rem">ژنتیکی</span>
+            <span style="background:#2563ff;color:#f2ebdd;padding:10px 12px;font-weight:900;font-size:.95rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap">ژنتیکی <span style="background:#141210;color:#ffc21a;border-radius:999px;padding:1px 9px;font-size:.68rem">بیشترین سهم</span></span>
             <span style="flex:1;background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:12px;font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">چاقی در فرزند و نزدیکان فرد چاق</span>
           </div>
           <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:18px;box-shadow:6px 6px 0 #141210;overflow:hidden">
@@ -4933,7 +4991,7 @@
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(11px,2.2vw,16px)">
           <div style="background:rgba(7,46,35,.76);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #ff5c22;padding:clamp(14px,2.8vw,20px)">
-            <div style="font-weight:900;font-size:1rem;color:#ff5c22;margin-bottom:8px">بیشترین آلودگی کجا رخ می‌دهد؟</div>
+            <div style="font-weight:900;font-size:1rem;color:#ff5c22;margin-bottom:8px">بیشترین آلودگی در مواد غذایی در کجا رخ می‌دهد؟</div>
             <div style="display:flex;flex-wrap:wrap;gap:8px">
               <span style="background:rgba(242,235,221,.14);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:3px 12px;font-weight:900;font-size:.86rem">تولید</span>
               <span style="background:rgba(242,235,221,.14);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:3px 12px;font-weight:900;font-size:.86rem">فرآوری</span>
@@ -5051,6 +5109,11 @@
 
           </div>
         </div>
+
+        <button onClick="{{ openH6 }}" style="align-self:center;cursor:pointer;text-align:right;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:12px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:6px 6px 0 #141210;min-height:54px;padding:8px 18px;margin-top:6px">
+          <span style="display:flex;flex-direction:column;gap:2px;align-items:flex-start"><span style="font-weight:700;font-size:.68rem;opacity:.75">درس بعد</span><span style="font-weight:900;font-size:.98rem;line-height:1.4">درس ششم — بیماری‌ها</span></span>
+          <span style="font-size:1.5em;line-height:1">←</span>
+        </button>
       </div>
     </section>
   </main>
@@ -5192,6 +5255,10 @@
                   <span style="background:rgba(242,235,221,.14);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:900;font-size:.85rem">عدم تحرک</span>
                   <span style="background:rgba(242,235,221,.14);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:900;font-size:.85rem">دیابت</span>
                   <span style="display:flex;align-items:center;gap:7px;background:rgba(242,235,221,.14);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:900;font-size:.85rem"><img src="assets/lg-cig.png" alt="" style="flex:none;width:20px;height:20px;object-fit:contain;image-rendering:pixelated">استعمال دخانیات</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:13px;padding:8px 11px">
+                  <span style="flex:none;background:#141210;color:#ffc21a;border-radius:7px;padding:2px 9px;font-weight:900;font-size:.72rem">سایر</span>
+                  <span style="font-weight:900;font-size:.93rem;line-height:1.7;color:#141210">استرس، مصرف الکل و تغذیهٔ نامناسب</span>
                 </div>
               </div>
             </div>
@@ -5362,6 +5429,16 @@
           <p style="margin:0;flex:1;min-width:0;font-weight:700;font-size:clamp(.92rem,3.3vw,1.03rem);line-height:1.9;color:#f2ebdd;text-wrap:pretty">چگونه سرطان باعث مرگ می‌شود؟ تومور رشد می‌کند و نیاز زیادی به اکسیژن و مواد غذایی دارد؛ در نتیجه دریافت اکسیژن و مواد غذایی توسط بافت‌های سالم کاهش می‌یابد.</p>
         </div>
 
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #12b981;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:12px 16px;margin-top:6px">
+          <img src="assets/lg-micro.png" alt="" style="width:30px;height:42px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">راه‌های تشخیص سرطان</h3>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(18,185,129,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="background:#141210;color:#12b981;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">نکته</span>
+          <span style="font-weight:900;font-size:.94rem;line-height:1.75;color:#141210">سرطان‌ها اگر به‌موقع تشخیص داده شوند، قابل درمان‌اند.</span>
+        </div>
+
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(11px,2.2vw,16px)">
           <div style="overflow:hidden;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #141210;display:flex;flex-direction:column">
             <div style="background:#ffc21a;color:#141210;padding:10px 14px;font-weight:900;font-size:1rem;display:flex;align-items:center;gap:9px"><img src="assets/lg-masks.png" alt="" style="flex:none;width:26px;height:20px;object-fit:contain;image-rendering:pixelated">خودآزمایی از طریق علائم</div>
@@ -5385,7 +5462,6 @@
               <span style="display:flex;gap:9px;align-items:flex-start"><span style="flex:none;background:#2563ff;color:#f2ebdd;border-radius:8px;padding:2px 9px;font-weight:900;font-size:.76rem">دهانهٔ رحم</span><span style="font-weight:400;font-size:.92rem;line-height:1.8;color:#f2ebdd">پاپ اسمیر یا ویروس پاپیلوم انسانی</span></span>
               <span style="display:flex;gap:9px;align-items:flex-start"><span style="flex:none;background:#2563ff;color:#f2ebdd;border-radius:8px;padding:2px 9px;font-weight:900;font-size:.76rem">پروستات</span><span style="font-weight:400;font-size:.92rem;line-height:1.8;color:#f2ebdd">آزمایش خون در مردان</span></span>
               <span style="display:flex;gap:9px;align-items:flex-start"><span style="flex:none;background:#2563ff;color:#f2ebdd;border-radius:8px;padding:2px 9px;font-weight:900;font-size:.76rem">روده</span><span style="font-weight:400;font-size:.92rem;line-height:1.8;color:#f2ebdd">کولونوسکوپی و آزمایش خون مخفی در مدفوع</span></span>
-              <span style="margin-top:auto;background:#12b981;color:#141210;border:3px solid #141210;border-radius:12px;padding:7px 11px;font-weight:900;font-size:.9rem;line-height:1.7">سرطان‌ها اگر به‌موقع تشخیص داده شوند، قابل درمان‌اند.</span>
             </div>
           </div>
         </div>
@@ -5444,7 +5520,7 @@
             </div>
           </div>
           <div style="background:rgba(7,46,35,.76);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;padding:clamp(13px,2.6vw,18px);display:flex;flex-direction:column;gap:10px">
-            <span style="align-self:flex-start;background:#b57bf5;color:#141210;border:3px solid #141210;border-radius:999px;padding:2px 13px;font-weight:900;font-size:.9rem">خطر غیرقابل پیشگیری</span>
+            <span style="align-self:flex-start;background:#b57bf5;color:#141210;border:3px solid #141210;border-radius:999px;padding:2px 13px;font-weight:900;font-size:.9rem">خطر غیرقابل پیشگیری — نوع ۲</span>
             <div style="display:flex;flex-wrap:wrap;gap:7px">
               <span style="background:rgba(242,235,221,.13);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 11px;font-weight:900;font-size:.84rem">ژنتیک</span>
               <span style="background:rgba(242,235,221,.13);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 11px;font-weight:900;font-size:.84rem">سن بالای ۳۰</span>
@@ -5806,6 +5882,11 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #b57bf5;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;padding:12px 16px;margin-top:6px">
+          <img src="assets/lg-speaker.png" alt="" style="width:36px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">قوانین استفاده از ابزارهای شنیداری و هدفون</h3>
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:clamp(11px,2.2vw,16px)">
@@ -7193,6 +7274,328 @@
         </div>
 
         <button onClick="{{ backToHealth }}" style="align-self:center;cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px;font-weight:900;font-size:.95rem;margin-top:2px"><img src="assets/lg-home.png" alt="" style="flex:none;width:36px;height:36px;object-fit:contain;image-rendering:pixelated">بازگشت به کتابخانه</button>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===== HEALTH — REVIEW 1 ===== -->
+  <sc-if value="{{ showHealthReview1 }}">
+  <main style="{{ identMainStyle }}">
+    <section style="position:relative;overflow:hidden;background:#24100b;border:4px solid #141210;border-radius:clamp(22px,4vw,44px);box-shadow:11px 11px 0 #141210;padding:clamp(20px,4vw,44px) clamp(14px,3.4vw,40px)">
+      <canvas ref="{{ healthLessonRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block;filter:{{ bgFilter }};-webkit-mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%);mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%)"></canvas>
+      <span style="position:absolute;inset:0;background:rgba(20,18,16,.5);pointer-events:none"></span>
+
+      <div style="position:relative;z-index:5;display:flex;flex-direction:column;gap:clamp(16px,3vw,26px)">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          
+          <span style="flex:1;min-width:10px"></span>
+          <button onClick="{{ backToHealth }}" style="cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px;font-weight:900;font-size:.95rem"><img src="assets/lg-home.png" alt="" style="flex:none;width:36px;height:36px;object-fit:contain;image-rendering:pixelated">همهٔ درس‌ها</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#141210;border:4px solid #12b981;border-radius:22px;box-shadow:8px 8px 0 #12b981;padding:clamp(12px,2.4vw,18px)">
+          <img src="assets/lg-clipboard.png" alt="" style="flex:none;width:clamp(52px,12vw,74px);height:clamp(52px,12vw,74px);object-fit:contain;image-rendering:pixelated;filter:drop-shadow(4px 4px 0 rgba(20,18,16,.6))">
+          <div style="flex:1;min-width:0">
+            <h2 style="margin:0;font-weight:900;font-size:clamp(1.2rem,4.8vw,2.3rem);letter-spacing:-1.5px;line-height:1.2;color:#f2ebdd">مرور فشردهٔ درس ۱ تا ۷</h2>
+          </div>
+          <span style="background:#ffc21a;color:#141210;border-radius:999px;padding:3px 12px;font-weight:900;font-size:.76rem;white-space:nowrap">مرور فشرده</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">راهنما</span>
+          <span style="font-weight:900;font-size:.92rem;line-height:1.75;color:#141210">این صفحه خلاصهٔ فشردهٔ نکته‌های کلیدی هر درس است — برای توضیح کامل و مصور، از کارت هر درس در صفحهٔ اصلی سلامت و بهداشت استفاده کن.</span>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #e53e3e;overflow:hidden">
+          <div style="background:#e53e3e;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#e53e3e;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۱</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#f2ebdd">درس اول — سلامت چیست؟</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">سلامت از نظر لغت‌نامهٔ دهخدا:</b> بی‌عیب شدن</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">سلامت از نظر فرهنگ فارسی معین:</b> رهایی یافتن</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">سلامت از نظر بقراط:</b> تعادل بین صفرا، سودا، بلغم و خون</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">سلامت از نظر ابن‌سینا:</b> حالت درست اعمال بدن (نقطهٔ مقابل بیماری نیست.)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">سلامت از نظر دانشمندان طب سنتی:</b> تعادل میان سردی، گرمی، خشکی و تری</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">سلامت از نظر سازمان بهداشت جهانی (WHO):</b> برخورداری از رفاه جسمی، روانی و اجتماعی و نه فقط نداشتن بیماری و نقص عضو</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">تعریف جامع سلامت:</b> داشتن سلامت جسمی، روانی - عاطفی، خانوادگی - اجتماعی و معنوی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">سلامتی بزرگ‌ترین سرمایهٔ هر انسان</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">دو کلمهٔ بهداشت و سلامت مترادف هم نیستند.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">در بهداشت هر دو موضوع پیشگیری و درمان مورد توجه قرار می‌گیرد. (پیشگیری بر درمان مقدم است.)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">ابعاد سلامت:</b> سلامت جسمانی، سلامت روانی، سلامت اجتماعی و سلامت معنوی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">عوامل مؤثر بر سلامت:</b> سبک زندگی، عوامل ژنتیکی و فردی، عوامل محیطی و دسترسی به خدمات بهداشتی - درمانی</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #12b981;overflow:hidden">
+          <div style="background:#12b981;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#12b981;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۲</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#141210">درس دوم — سبک زندگی و خودمراقبتی</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">سبک زندگی سالم:</b> مجموعهٔ انتخاب‌های سالم افراد متناسب با موقعیت‌های زندگی و اثرگذار بر روی سلامت فرد</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">خودمراقبتی:</b> مراقبت از خود و خانواده در چارچوب فرهنگ جامعه</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">گام اول در حفظ سلامت، خودمراقبتی است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">برای خودمراقبتی داشتن برنامه ضروری است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">خودمراقبتی شامل اعمال اکتسابی، آگاهانه و هدف‌دار است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">انواع خودمراقبتی:</b> جسمی، روانی - عاطفی، اجتماعی و معنوی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">خلاصه‌ای از گام‌های برنامه‌ریزی برای خودمراقبتی:</b> مشخص کردن هدف، پیمان (عهد) بستن و برداشتن گام‌های کوچک در شروع</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #ffc21a;overflow:hidden">
+          <div style="background:#ffc21a;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#ffc21a;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۳</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#141210">درس سوم — برنامهٔ غذایی سالم</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">تغذیهٔ سالم:</b> تأمین انرژی مورد نیاز برای انجام کارهای روزمره، رشد و نمو، ترمیم بافت‌ها، انجام واکنش‌ها و فرایندهای حیاتی، پیشگیری از ابتلا به بیماری‌ها، افزایش کیفیت زندگی و طول عمر</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">مهم‌ترین عوامل حفظ و ارتقای سلامت در طول زندگی:</b> برنامهٔ غذایی سالم و فعالیت‌های بدنی منظم</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">انواع کربوهیدرات‌ها:</b> ساده (قندهای موجود در میوه‌ها) و پیچیده (نشاسته: نان، برنج و سیب‌زمینی)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">نقش کربوهیدرات‌ها:</b> عملکرد اندام‌های درونی (قلب و کلیه) و سیستم عصبی و ماهیچه‌ها</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">انواع چربی‌ها:</b> اشباع (لبنیات، روغن‌های حیوانی، گوشت و مرغ) و غیراشباع (محصولات گیاهی و ماهی)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">شناخته‌شده‌ترین منبع چربی:</b> روغن و کره</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">انواع پروتئین‌ها:</b> ۱. کامل (گوشت، ماهی، مرغ، شیر و تخم‌مرغ) شامل تمام اسیدهای آمینهٔ ضروری ۲. ناقص (غلات، حبوبات، خشکبار و مغزها) که همهٔ اسیدهای آمینهٔ ضروری را ندارند.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">بدن ۲۰ نوع اسید آمینه نیاز دارد. (تولید ۱۱ نوع اسیدآمیه در شرایط طبیعی و تأمین ۹ اسیدآمیه از طریق مصرف مواد غذایی)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">انواع ویتامین‌ها:</b> ۱. محلول در چربی (A, D, E و K) که معمولاً در کبد ذخیره می‌شوند. ۲. محلول در آب (C و گروه B) که بدن قادر به ذخیره‌سازی آن‌ها نیست.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">نقش مواد معدنی:</b> حفظ تندرستی و تشکیل اجزای ساختمانی بافت</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">انواع مواد معدنی:</b> آهن (در ترکیب هموگلوبین خون و حمل اکسیژن)، کلسیم (ساخت، حفظ و استحکام دندان‌ها و استخوان‌ها) و سدیم (حفظ تعادل مایعات بدن)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">آب (پرمصرف‌ترین مادهٔ غذایی):</b> انرژی‌زا نیست؛ حیاتی‌ترین نیاز غذایی انسان است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">نقش آب:</b> تمام فعل و انفعالات بدن، دفع مواد زائد، تنظیم دمای بدن و انتقال مواد مغذی مورد نیاز تمام سلول‌های بدن</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">منابع تأمین آب بدن:</b> مستقیم: آب آشامیدنی و غیرمستقیم: آبمیوه، شیر، سوپ، آب موجود در سبزی‌ها و میوه‌ها</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">جذب روی موجود در مواد غذایی حیوانی نسبت به گیاهی بهتر انجام می‌شود.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">تغذیهٔ صحیح:</b> دریافت مقدار لازم و کافی از هر یک از مواد مغذی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">دلیل تفاوت مقدار لازم مواد غذایی در افراد:</b> سن، جنس، میزان فعالیت، شرایط محیطی، سلامت و بیماری فرد</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">اصول تغذیهٔ سالم:</b> اصل تعادل، اصل تنوع و اصل تناسب</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">نیازمندی‌های تغذیه‌ای:</b> مقدار مناسب مواد مغذی برای حفظ سلامت</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">اساس تعیین نیازمندی‌های تغذیه‌ای:</b> سن، جنس، وزن و میزان فعالیت بدنی فرد</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">انواع اختلالات غذا خوردن:</b> بی‌اشتهایی عصبی و پرخوری عصبی</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #2563ff;overflow:hidden">
+          <div style="background:#2563ff;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#2563ff;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۴</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#f2ebdd">درس چهارم — کنترل وزن و تناسب اندام</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">اضافه‌وزن و چاقی:</b> تغییر در سبک زندگی، کاهش فعالیت بدنی و مصرف غذاهای پرچرب و آماده</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">مشکلات اضافه‌وزن و چاقی:</b> بیماری‌های قلبی و عروقی، دیابت، انواع سرطان، تأثیر منفی بر ظاهر افراد و مشکلات روحی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">چاقی:</b> تجمع غیرطبیعی و بیش از اندازهٔ تودهٔ چربی در بدن به‌طوری که سلامتی فرد را به خطر بیندازد.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">انواع چاقی:</b> الگوی سیب: تمرکز چربی‌های اضافی بیشتر در ناحیهٔ شکم (در مردان) و الگوی گلابی: تمرکز چربی‌های اضافه بیشتر در ناحیهٔ باسن و ران‌ها (در زنان)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">خطر ابتلا به بیماری‌های قلبی - عروقی در الگوی سیب بیشتر است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">عوامل چاقی:</b> عامل ژنتیک (بیشترین سهم)، عامل محیطی، عامل روانی، بیماری‌های جسمی و داروها</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">عوارض چاقی:</b> مشکلات سیستم عصبی، مشکلات روانی، مشکلات تنفسی، مشکلات گوارشی، مشکلات کلیوی، مشکلات عضلانی - استخوانی، مشکلات قلبی - عروقی و مشکلات غددی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">وزن مطلوب:</b> محدوده‌ای از مقدار وزن با مرگ و میر کمتر</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">شاخص تودهٔ بدنی (BMI) = وزن (کیلوگرم) ÷ مجذور قد (متر) — مبنای تصمیم‌گیری‌های پزشکی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">شاخص تودهٔ بدنی برای افراد ورزشکار، زنان باردار و شیرده، افراد خیلی بلند یا خیلی کوتاه کاربرد ندارد.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">واحد اندازه‌گیری انرژی، کالری است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">براساس قانون تعادل انرژی، تنظیم وزن و برخورداری از وزن مطلوب به تغذیه و فعالیت بدنی بستگی دارد.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">اصول کاهش وزن:</b> اصل اول: پیروی از یک برنامهٔ پیوسته و پایدار برای کاهش وزن و اصل دوم: افراط نکردن در کاهش وزن</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">برخورداری از وزن مطلوب علاوه بر ارتقای سلامت جسمی به سلامت روان نیز کمک می‌کند.</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #b57bf5;overflow:hidden">
+          <div style="background:#b57bf5;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#b57bf5;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۵</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#141210">درس پنجم — بهداشت و ایمنی مواد غذایی</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">بهداشت مواد غذایی:</b> رعایت اصول بهداشتی (کاهش آلودگی‌های فیزیکی، شیمیایی و بیولوژیکی) در تمام مراحل تهیه و تولید، حمل‌ونقل، نگهداری، فروش و مصرف مواد غذایی تا حدی که برای سلامت انسان زیان‌بار نباشد.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">اصول بهداشتی در جلوگیری از آلودگی و فساد مواد غذایی:</b> ۱. رعایت بهداشت فردی افراد مؤثر در فرایند تولید غذا ۲. رعایت بهداشت مواد غذایی از تهیه تا مصرف ۳. رعایت بهداشت محیط</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">فساد مادهٔ غذایی:</b> تغییرات یک مادهٔ غذایی از نظر رنگ، بو، طعم و مزه و از بین رفتن یا کاهش ارزش غذایی آن</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">عوامل ایجاد فساد در مواد غذایی:</b> شیمیایی، بیولوژیکی، فیزیکی و مکانیکی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">بیماری‌های غذا زاد:</b> ایجاد بیماری به عللی از جمله پایین بودن سطح بهداشت فردی یا بهداشت محیط، عدم دسترسی به آب سالم، گسترش استفاده از غذاهای خیابانی و نبودن نظارت</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">عوارض بیماری‌های غذا زاد:</b> تهوع، اسهال و استفراغ</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">بیماری‌های ناشی از غذا:</b> مسمومیت‌های غذایی، عفونت‌های غذایی و بیماری‌های ناشی از انگل‌های گوشت حیوانات آلوده و بیمار</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #ff5c22;overflow:hidden">
+          <div style="background:#ff5c22;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#ff5c22;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۶</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#141210">درس ششم — بیماری‌های غیرواگیر</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">بیماری:</b> حالت ناخوشایند، رنج‌آور و اختلال در احساس تندرستی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">انواع بیماری:</b> ۱. واگیردار (انتقال از طریق عامل بیماری‌زا مانند ویروس، باکتری و قارچ) ۲. غیرواگیر (اساساً عامل مشخصی ندارد.)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">عوامل خطر بیماری‌های غیرواگیر:</b> افزایش احتمال ابتلا از طریق عوامل شناخته‌شدهٔ اجتماعی، محیطی و رفتاری</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">بیماری‌های قلبی - عروقی:</b> هرگونه بیماری که دستگاه گردش خون را تحت تأثیر قرار دهد؛ انسداد رگ‌های خون‌رسان به عضلهٔ قلب (کرونر) و سکته‌های قلبی و مغزی، بیشترین عامل مرگ و میرند.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">فشار خون:</b> نیرویی که خون را در شریان‌ها جاری می‌کند.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">فشار خون طبیعی ۱۲۰/۸۰: ۱۲۰ (سیستولی:</b> پمپ خون به شریان) و ۸۰ (دیاستولی: استراحت قلب میان دو ضربان)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">فشار خون بالا قاتل خاموش است چون علامتی ندارد، اما به‌آسانی قابل تشخیص و معمولاً قابل درمان است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">عوامل خطر فشارخون بالا:</b> سابقهٔ خانوادگی، سن بالای ۵۰ سال، مصرف دخانیات و الکل، تغذیهٔ نامناسب و کم‌تحرکی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">HDL (کلسترول خوب):</b> ارتباط عکس با بیماری قلبی‑عروقی دارد. LDL (کلسترول بد): افزایش آن خطر بیماری قلبی‑عروقی را بالا می‌برد. تری‌گلیسرید: بالارفتنش HDL را کم و خطر قلبی را زیاد می‌کند.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">مهم‌ترین علامت سکتهٔ قلبی:</b> فشار آزاردهنده و سنگینی یا درد قفسهٔ سینه با شروع ناگهانی که بیش از چند دقیقه ادامه دارد.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">علائم سکتهٔ مغزی:</b> سردرد ناگهانی شدید، گیجی ناگهانی، عدم کنترل عضلات و تعادل و از دست دادن تکلم</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">تومور خوش‌خیم رشد نمی‌کند؛ تومور بدخیم رشد و تقسیم می‌شود و به نقاط دیگر بدن دست‌اندازی می‌کند.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">آزمایش‌های غربالگری سرطان:</b> ماموگرافی (سینه)، پاپ‌اسمیر (دهانهٔ رحم)، آزمایش خون (پروستات)، خون مخفی در مدفوع و کولونوسکوپی (روده)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">انسولین از لوزالمعده (پانکراس) ترشح می‌شود. دیابت نوع یک (جوانان): لوزالمعده انسولین تولید نمی‌کند. دیابت نوع دو (بزرگسالان، شایع‌تر): تولید ناکافی یا مقاومت بدن به انسولین.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">عوارض شایع دیابت:</b> سکتهٔ مغزی، نابینایی، بیماری قلبی‑عروقی، نارسایی کلیه، اختلال جریان خون دست و پا، پای دیابتی و قطع عضو</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #e53e3e;overflow:hidden">
+          <div style="background:#e53e3e;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#e53e3e;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۷</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#f2ebdd">درس هفتم — بیماری‌های واگیردار</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">راه‌های کنترل بیماری‌های واگیردار:</b> واکسیناسیون، رعایت بهداشت فردی، بهسازی محیط و بهبود وضع تغذیه</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">شیوه‌های انتقال بیماری‌های واگیر:</b> ۱. دستگاه گوارش (اسهال خونی، وبا) ۲. دستگاه تنفس (سرماخوردگی، آنفلوآنزا) ۳. پوست و مخاط (پدیکولوزیس) ۴. دستگاه تناسلی (سوزاک، تبخال و زگیل تناسلی) ۵. خون و ترشحات بدن (هپاتیت و HIV)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">هپاتیت:</b> التهاب کبد ناشی از ویروس و آسیب به عملکرد آن. هپاتیت B و C شایع‌ترین‌اند؛ هپاتیت C احتمال مزمن‌شدن بیشتری دارد.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">HIV با ورود به بدن و ماندگاری، باعث ایدز می‌شود. علائم HIV:</b> برفک دهانی، سل و عفونت‌های ریوی. ایدز مرحلهٔ انتهایی HIV است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">دوران پنجره:</b> بین ۲ هفته تا ۳ ماه پس از ورود HIV که با وجود ویروس در بدن، آزمایش هنوز منفی است.</span></div>
+          </div>
+        </div>
+
+
+        <button onClick="{{ openHR2 }}" style="align-self:center;cursor:pointer;text-align:right;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:12px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:6px 6px 0 #141210;min-height:54px;padding:8px 18px;margin-top:6px">
+          <span style="display:flex;flex-direction:column;gap:2px;align-items:flex-start"><span style="font-weight:700;font-size:.68rem;opacity:.75">ادامهٔ مرور</span><span style="font-weight:900;font-size:.98rem;line-height:1.4">مرور درس ۸ تا ۱۴</span></span>
+          <span style="font-size:1.5em;line-height:1">←</span>
+        </button>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===== HEALTH — REVIEW 2 ===== -->
+  <sc-if value="{{ showHealthReview2 }}">
+  <main style="{{ identMainStyle }}">
+    <section style="position:relative;overflow:hidden;background:#24100b;border:4px solid #141210;border-radius:clamp(22px,4vw,44px);box-shadow:11px 11px 0 #141210;padding:clamp(20px,4vw,44px) clamp(14px,3.4vw,40px)">
+      <canvas ref="{{ healthLessonRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block;filter:{{ bgFilter }};-webkit-mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%);mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%)"></canvas>
+      <span style="position:absolute;inset:0;background:rgba(20,18,16,.5);pointer-events:none"></span>
+
+      <div style="position:relative;z-index:5;display:flex;flex-direction:column;gap:clamp(16px,3vw,26px)">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <button onClick="{{ openHR1 }}" style="cursor:pointer;text-align:right;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(7,46,35,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#f2ebdd;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px">
+            <span style="font-size:1.5em;line-height:1;color:#ffc21a">→</span>
+            <span style="display:flex;flex-direction:column;gap:2px;align-items:flex-start"><span style="font-weight:700;font-size:.68rem;color:#ffc21a;opacity:.9">بازگشت</span><span style="font-weight:900;font-size:.92rem;line-height:1.4;white-space:nowrap">همهٔ درس‌ها</span></span>
+          </button>
+          <span style="flex:1;min-width:10px"></span>
+          <button onClick="{{ backToHealth }}" style="cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px;font-weight:900;font-size:.95rem"><img src="assets/lg-home.png" alt="" style="flex:none;width:36px;height:36px;object-fit:contain;image-rendering:pixelated">همهٔ درس‌ها</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#141210;border:4px solid #2563ff;border-radius:22px;box-shadow:8px 8px 0 #2563ff;padding:clamp(12px,2.4vw,18px)">
+          <img src="assets/lg-clipboard.png" alt="" style="flex:none;width:clamp(52px,12vw,74px);height:clamp(52px,12vw,74px);object-fit:contain;image-rendering:pixelated;filter:drop-shadow(4px 4px 0 rgba(20,18,16,.6))">
+          <div style="flex:1;min-width:0">
+            <h2 style="margin:0;font-weight:900;font-size:clamp(1.2rem,4.8vw,2.3rem);letter-spacing:-1.5px;line-height:1.2;color:#f2ebdd">مرور فشردهٔ درس ۸ تا ۱۴</h2>
+          </div>
+          <span style="background:#ffc21a;color:#141210;border-radius:999px;padding:3px 12px;font-weight:900;font-size:.76rem;white-space:nowrap">مرور فشرده</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">راهنما</span>
+          <span style="font-weight:900;font-size:.92rem;line-height:1.75;color:#141210">این صفحه خلاصهٔ فشردهٔ نکته‌های کلیدی هر درس است — برای توضیح کامل و مصور، از کارت هر درس در صفحهٔ اصلی سلامت و بهداشت استفاده کن.</span>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #12b981;overflow:hidden">
+          <div style="background:#12b981;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#12b981;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۸</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#141210">درس هشتم — بهداشت فردی</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">بهداشت فردی:</b> کلیهٔ فعالیت‌ها و اقدامات مسئولانهٔ هر فرد برای حفظ، تأمین و ارتقای سلامت خود و اطرافیان</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">عیوب انکساری چشم:</b> نزدیک‌بینی (اشیای نزدیک واضح، دور تار)، دوربینی (اشیای دور واضح، نزدیک تار)، آستیگماتیسم (شکل غیرعادی قرنیه) و پیرچشمی (سخت‌شدن عدسی)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">اصلاح عیوب انکساری:</b> لنز طبی، عینک، جراحی و اشعهٔ لیزر</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">وظایف گوش:</b> دریافت امواج صوتی، حفظ تعادل بدن، ارتباط با دیگران و محیط</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">تنها راه قطعی تشخیص کم‌شنوایی، آزمایش شنوایی توسط شنوایی‌سنج است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">قوانین استفاده از هدفون:</b> قانون اول (نصف میزان حداکثر) و قانون دوم (۶۰ درصد، ۶۰ دقیقه)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">وظایف پوست:</b> محافظت از بدن در برابر میکروب‌ها و آسیب خورشید؛ دریافت پیام‌های محیط و انتقال به مغز</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">آکنه:</b> اختلال پوستی شایع دوران بلوغ در اثر التهاب غده‌های چربی و پیاز مو</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">عوامل ایجاد پوسیدگی دندان:</b> میکروب‌ها، مواد قندی، مقاومت شخص و دندان، زمان و سرعت ایجاد پوسیدگی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">عوامل جلوگیری از پوسیدگی دندان:</b> پرهیز از قند و سیگار، شست‌وشوی مرتب دهان، حداقل دو بار مسواک و یک بار نخ دندان در روز</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #ffc21a;overflow:hidden">
+          <div style="background:#ffc21a;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#ffc21a;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۹</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#141210">درس نهم — بهداشت ازدواج و باروری</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">آمادگی ازدواج:</b> بلوغ جسمانی، روانی و اجتماعی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">اقدامات بهداشتی قبل از ازدواج:</b> رعایت بهداشت فردی زوجین، آزمایش ادرار و خون، واکسن کزاز برای خانم‌ها، بررسی تالاسمی، آزمایش هپاتیت و ایدز</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a;font-weight:900">تالاسمی:</b> بیماری ارثی منتقل‌شده از والدین حامل ژن معیوب. ماژور: بیمار (هر دو ژن معیوب). مینور: فقط حامل و کم‌خون است، بیمار تالاسمی نیست.</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #2563ff;overflow:hidden">
+          <div style="background:#2563ff;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#2563ff;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۱۰</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#f2ebdd">درس دهم — بهداشت روان</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">خودشناسی:</b> شناخت توانایی‌ها، ضعف‌ها، احساسات، ارزش‌ها، مسئولیت‌ها، نیازها، آرزوها و اهداف</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">عزت نفس:</b> احساس ارزشمند بودن؛ نتیجه‌اش شکل‌گیری شخصیت درونی محکم و استوار است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">تاب‌آوری:</b> مجموعه‌ای از ظرفیت‌های فردی و روانی برای مقاومت در شرایط دشوار</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">استرس سالم موجب هوشیاری و انگیزه می‌شود؛ استرس ناسالم سبب احساس درماندگی می‌شود.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">اضطراب:</b> حالتی همراه با فشار درونی، ترس و هراس؛ شامل علائم بدنی، تفکر و روانی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">اصول مقابله با فشار روانی و اضطراب:</b> بازداری، برون‌ریزی و جایگزین کردن خواسته‌ها</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">افسردگی:</b> تداوم احساس ناخوشایند برای مدت طولانی همراه با تنهایی و غمگینی</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#2563ff;font-weight:900">خشم:</b> آثار مثبت (احقاق حق با کنترل) و منفی (مشکلات جسمی، روانی و اجتماعی)</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #b57bf5;overflow:hidden">
+          <div style="background:#b57bf5;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#b57bf5;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۱۱</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#141210">درس یازدهم — دخانیات و الکل</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">دخانیات:</b> تمام یا بخشی از مادهٔ خام گیاه توتون و تنباکو یا مشتقات آن. سیگار پرمصرف‌ترین مادهٔ دخانی جهان است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">مضرترین مواد سمی دخانیات:</b> نیکوتین (اعتیادآور)، قطران/تار (سرطان‌زا)، آرسنیک (سرطان لب)، سیانیدریک‌اسید (اختلال تنفس)، مواد رادیواکتیو (سرطان‌زا)، آمونیاک (تخریب بافت ریه) و کربورهای هیدروژن (سرطان مجاری تنفسی)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">دود دست دوم:</b> تنفس دود دخانیات توسط فرد غیرمصرف‌کننده. دود دست سوم: باقی‌ماندن بوی سیگار در محیط و لوازم منزل.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#b57bf5;font-weight:900">الکل:</b> مادهٔ اعتیادآور با اثر منفی جسمی و روانی. آثار فوری: اختلال اعصاب مرکزی. آثار بلندمدت: سیروز کبدی و سرطان.</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #ff5c22;overflow:hidden">
+          <div style="background:#ff5c22;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#ff5c22;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۱۲</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#141210">درس دوازدهم — اعتیاد به مواد مخدر</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">اعتیاد:</b> عادت کردن و خود را وقف عادتی نکوهیده کردن. معتاد: وابستگی بر اثر مصرف مکرر و مداوم مواد یا دارو.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">اختلال مصرف:</b> مصرف دارو برای هدفی که برایش ساخته نشده؛ حالتی خفیف‌تر از وابستگی که می‌تواند به آن برسد.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">وابستگی روانی:</b> میل شدید و خارج از اختیار به ادامهٔ مصرف. وابستگی جسمانی: مقاومت بدن و نیاز به مصرف بیشتر برای همان اثر.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">انواع مواد اعتیادآور:</b> محرک‌ها (کافئین، کوکائین، کراک | آمفتامین، اکستازی، ریتالین)، توهم‌زاها (شاهدانه، حشیش، گراس | ال‌اس‌دی)، مخدرها (تریاک، شیرهٔ تریاک | هروئین، ترامادول، متادون)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ff5c22;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#ff5c22;font-weight:900">مهم‌ترین عامل شروع مصرف مواد در نوجوانان:</b> اصرار دوستان و همسالان و ترس از طرد شدن از جمع دوستان</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #e53e3e;overflow:hidden">
+          <div style="background:#e53e3e;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#e53e3e;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۱۳</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#f2ebdd">درس سیزدهم — اختلالات اسکلتی‑عضلانی</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">اختلالات اسکلتی‑عضلانی:</b> ضعف عضلانی ناشی از کم‌تحرکی، وضعیت بدنی نامناسب و عدم رعایت اصول ارگونومی؛ شایع‌ترین بیماری ناشی از کار و سبک زندگی در جهان است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">شایع‌ترین نواحی درگیر:</b> کمر (آسیب‌پذیرترین)، مچ دست، شانه، بازو، زانو، مچ پا، کف پا و گردن</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">وضعیت بدنی مناسب:</b> حالتی که کمترین فشار و تنش به سیستم اسکلتی‑عضلانی وارد می‌کند.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">ارگونومی:</b> علم پیشگیری از اختلالات اسکلتی‑عضلانی ناشی از عدم تناسب توانمندی انسان و نوع کار؛ نتیجه‌اش سلامت افراد و افزایش بهره‌وری است.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">چیدمان کوله‌پشتی:</b> اجسام سنگین عقب، متوسط میانی، سبک جلو.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#e53e3e;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#e53e3e;font-weight:900">۱۰ اصل ارگونومی:</b> وضعیت بدنی خنثی، صرف نیروی کمتر، دسترسی آسان به وسایل، ارتفاع کار مناسب، کاهش حرکات اضافی، کاهش کارهای ایستا، اصلاح میز کار، فضای کافی، حرکات کششی و محیط راحت و زیبا</span></div>
+          </div>
+        </div>
+
+        <div style="border:4px solid #141210;border-radius:22px;box-shadow:8px 8px 0 #12b981;overflow:hidden">
+          <div style="background:#12b981;display:flex;align-items:center;gap:11px;padding:12px 16px">
+            <span class="en" style="flex:none;width:34px;height:34px;background:#141210;color:#12b981;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۱۴</span>
+            <span style="font-weight:900;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.5px;color:#141210">درس چهاردهم — پیشگیری از حوادث خانگی</span>
+          </div>
+          <div style="background:rgba(7,46,35,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">حوادث خانگی:</b> سوانحی در خانه یا محیط اطراف که سبب آسیب قابل‌تشخیص می‌شود.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">سطوح پیشگیری از حوادث:</b> سطح۱ (قبل: کاهش عوامل خطر)، سطح۲ (حین: کاهش شدت و تماس با امداد)، سطح۳ (بعد: توان‌بخشی و جلوگیری از ناکارآمدی)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">مسمومیت:</b> واکنش شیمیایی خطرناک ناشی از ورود دارو، شوینده، واکس، لاک پاک‌کن، ضدیخ، حشره‌کش، مرگ‌موش یا قرص برنج به بدن</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">انواع آتش‌سوزی:</b> خشک (خاکستر به‌جا می‌ماند؛ سرد کردن با آب)، مایعات قابل‌اشتعال (قطع اکسیژن با پودر/کف/شن/پتوی خیس)، برق (CO₂)، گاز (قطع منبع، بستن در و پنجره، تماس با آتش‌نشانی)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">خفگی:</b> پوشیده‌شدن راه هوایی توسط جسم خارجی. انسداد خفیف: تنفس صدادار و سرفه. انسداد کامل: ناتوانی در سرفه/تنفس/صحبت و کبودی لب‌ها.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:12px;padding:8px 12px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#12b981;margin-top:8px"></span><span style="flex:1;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd"><b style="color:#12b981;font-weight:900">شایع‌ترین حادثهٔ دوران کودکی و سالمندی:</b> سقوط و زمین خوردن</span></div>
+          </div>
+        </div>
+
+
       </div>
     </section>
   </main>
@@ -8718,6 +9121,9 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       showHealthL12: s.view==='health' && s.hles===12,
       showHealthL13: s.view==='health' && s.hles===13,
       showHealthL14: s.view==='health' && s.hles===14,
+      showHealthReview1: s.view==='health' && s.hles===101,
+      showHealthReview2: s.view==='health' && s.hles===102,
+      openHR1: ()=>this.openHLesson(101), openHR2: ()=>this.openHLesson(102),
       openH8: ()=>this.openHLesson(8), openH9: ()=>this.openHLesson(9), openH10: ()=>this.openHLesson(10),
       openH11: ()=>this.openHLesson(11), openH12: ()=>this.openHLesson(12), openH13: ()=>this.openHLesson(13), openH14: ()=>this.openHLesson(14),
       openH6: ()=>this.openHLesson(6), openH7: ()=>this.openHLesson(7),
@@ -8726,7 +9132,7 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       openH8: ()=>this.openHLesson(8), openH9: ()=>this.openHLesson(9),
       eyeInjuries: this.eyeInjuries, airFace: this.airFace, sleepHarm: this.sleepHarm,
       cariesFactors: this.cariesFactors.map((r,i)=>({ ...r, bg: i%2 ? 'rgba(7,46,35,.62)' : 'rgba(7,46,35,.8)' })),
-      showHealthSoon: s.view==='health' && !!s.hles && s.hles>14,
+      showHealthSoon: s.view==='health' && !!s.hles && s.hles>14 && s.hles<100,
       hSoonTitle: s.hles ? this.hOrdinals[s.hles] : '',
       healthLessonRef: this.setHealthLesson,
       openH1: ()=>this.openHLesson(1), openH2: ()=>this.openHLesson(2),
@@ -8777,6 +9183,8 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       pickChem:()=>this.setState({view:'chem',menuOpen:false}),
       pickIdent:()=>this.setState({view:'identity',menuOpen:false,lesson:null}),
       pickHealth:()=>this.setState({view:'health',menuOpen:false,hles:null}),
+      goHealthReview1:()=>{ this.setState({view:'health',menuOpen:false,hles:101}); try{ window.scrollTo(0,0); }catch(e){} },
+      goHealthReview2:()=>{ this.setState({view:'health',menuOpen:false,hles:102}); try{ window.scrollTo(0,0); }catch(e){} },
       identRef: this.setIdentity, healthRef: this.setHealth,
       identMiniRef: this.setIdentMini, healthMiniRef: this.setHealthMini,
       exams, hasNext: !!next, cdName: next? next.fa : '', cdJalali: next? next.jalali : '',
