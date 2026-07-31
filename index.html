@@ -45,10 +45,12 @@
 
   <!-- ===== LOADING SCREEN ===== -->
   <sc-if value="{{ booting }}" hint-placeholder-val="{{ true }}">
-  <div style="position:fixed;inset:0;z-index:200;background:#141210;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(16px,3vw,26px);padding:24px">
-    <img src="assets/logo-main.png" alt="" style="width:clamp(90px,22vw,150px);height:auto;object-fit:contain;animation:logoFloat 2.4s ease-in-out infinite,popIn .6s cubic-bezier(.2,1.35,.5,1) both;filter:drop-shadow(0 10px 26px rgba(0,0,0,.55))">
+  <div style="position:fixed;inset:0;z-index:200;background:#141210;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(20px,3.6vw,32px);padding:24px">
+    <div style="position:relative;width:clamp(160px,36vw,260px);animation:logoFloat 2.6s ease-in-out infinite,popIn .6s cubic-bezier(.2,1.35,.5,1) both">
+      <img src="assets/logo-main.png" alt="" style="display:block;width:100%;height:auto;object-fit:contain;filter:grayscale(1) brightness(.45) contrast(1.05);opacity:.5">
+      <img src="assets/logo-main.png" alt="" style="position:absolute;inset:0;width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 12px 28px rgba(0,0,0,.55));clip-path:inset({{ bootClipTop }}% 0 0 0);transition:clip-path .5s ease">
+    </div>
     <div style="font-weight:900;font-size:clamp(1.25rem,4.8vw,1.9rem);letter-spacing:-1px;color:#f2ebdd;font-family:'Vazirmatn',sans-serif">مرورهای فرناز</div>
-    <div class="en" style="font-weight:900;font-size:clamp(1.5rem,5.6vw,2.2rem);color:#ffc21a;letter-spacing:1px">{{ bootPct }}</div>
   </div>
   </sc-if>
 
@@ -69,7 +71,7 @@
       </button>
       <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:11px;cursor:pointer">
         <span style="font-weight:900;font-size:1.15rem;color:#fff;letter-spacing:-.5px">مرورها</span>
-        <img src="assets/logo-main.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated">
+        <img src="assets/logo-main.png" alt="" style="width:44px;height:44px;flex:none;object-fit:contain;image-rendering:pixelated">
       </div>
     </div>
   </div>
@@ -1029,25 +1031,677 @@
   </main>
   </sc-if>
 
-  <!-- ===== CHEMISTRY VIEW ===== -->
-  <sc-if value="{{ showChem }}">
+  <!-- ===== CHEMISTRY — CHAPTER GRID ===== -->
+  <sc-if value="{{ showChemGrid }}">
   <main style="{{ identMainStyle }}">
-    <section>
-      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-        <h2 style="font-weight:900;font-size:clamp(1.9rem,6vw,3.4rem);margin:0;letter-spacing:-1px">شیمی</h2>
-        <span class="en" style="font-family:'Space Mono',monospace;font-weight:700;font-size:13px;background:#141210;color:#fff;padding:4px 10px;border-radius:8px">CHEMISTRY</span>
-      </div>
-      <p style="display:none">حذف‌شده — شیمی را بعداً با هم اضافه می‌کنیم.</p>
-      <div style="position:relative;border:4px solid #141210;border-radius:24px;box-shadow:10px 10px 0 #141210;overflow:hidden;min-height:min(62vh,480px);background:#f2ebdd;display:flex;align-items:center;justify-content:center;padding:40px 22px">
-        <canvas ref="{{ chemRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated"></canvas>
-        <div style="position:relative;z-index:2;text-align:center;background:#141210;border:4px solid #141210;border-radius:18px;box-shadow:7px 7px 0 #b57bf5;padding:26px 32px;max-width:520px">
-          <div style="font-weight:900;font-size:clamp(1.6rem,6vw,2.6rem);line-height:1;letter-spacing:-1px;color:#f2ebdd">به‌زودی</div>
-          <div style="font-weight:700;font-size:15px;margin-top:12px;color:#f2ebdd;opacity:.8">محتوای شیمی در راه است</div>
+    <section style="position:relative;overflow:hidden;background:#24100b;border:4px solid #141210;border-radius:clamp(22px,4vw,44px);box-shadow:11px 11px 0 #141210;padding:clamp(20px,4vw,44px) clamp(14px,3.4vw,40px)">
+      <canvas ref="{{ chemRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block;-webkit-mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%);mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%)"></canvas>
+      <span style="position:absolute;inset:0;background:rgba(20,18,16,.34);pointer-events:none"></span>
+
+      <div style="position:relative;z-index:5;display:flex;flex-direction:column;gap:clamp(18px,3vw,30px)">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#141210;border:4px solid #b57bf5;border-radius:22px;box-shadow:8px 8px 0 #b57bf5;padding:clamp(12px,2.4vw,18px)">
+          <span style="flex:none;width:clamp(46px,10.5vw,64px);height:clamp(46px,10.5vw,64px);background:#b57bf5;border:4px solid #141210;border-radius:14px;background-image:url(assets/lg-wash.png);background-size:72% 72%;background-repeat:no-repeat;background-position:center;image-rendering:pixelated"></span>
+          <div style="flex:1;min-width:0">
+            <h2 style="margin:0;font-weight:900;font-size:clamp(1.35rem,5.2vw,2.6rem);letter-spacing:-1.5px;line-height:1.1;color:#f2ebdd">شیمی</h2>
+            <span class="en" style="display:block;margin-top:5px;font-size:11px;letter-spacing:2.5px;font-weight:700;color:#b57bf5">CHEMISTRY — 4 CHAPTERS</span>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));gap:clamp(12px,2.4vw,18px)">
+          <a onClick="{{ openC1 }}" style="position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.7);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;padding:13px;transition:transform .18s,box-shadow .18s" style-hover="transform:translate(2px,2px);box-shadow:4px 4px 0 #b57bf5">
+            <span style="width:34px;height:34px;flex:none;background:#b57bf5;color:#141210;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۱</span>
+            <img src="assets/lg-wash.png" alt="" style="width:100%;flex:1;min-height:0;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(3px 3px 0 rgba(20,18,16,.55));margin:6px 0 4px">
+            <span style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-weight:900;font-size:.98rem;line-height:1.35;color:#f2ebdd">مولکول‌ها در خدمت تندرستی</span>
+              <span class="en" style="font-size:9px;letter-spacing:2px;font-weight:700;color:#ffc21a">CHAPTER 01</span>
+            </span>
+          </a>
+
+          <div style="position:relative;overflow:hidden;aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.42);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #3a3632;padding:13px;opacity:.6">
+            <span style="width:34px;height:34px;flex:none;background:#3a3632;color:#f2ebdd;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۲</span>
+            <img src="assets/lg-mortar.png" alt="" style="width:100%;flex:1;min-height:0;object-fit:contain;image-rendering:pixelated;margin:6px 0 4px;filter:grayscale(1)">
+            <span style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-weight:900;font-size:.9rem;line-height:1.35;color:#f2ebdd">به‌زودی</span>
+              <span class="en" style="font-size:9px;letter-spacing:2px;font-weight:700;color:#f2ebdd">CHAPTER 02</span>
+            </span>
+          </div>
+
+          <div style="position:relative;overflow:hidden;aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.42);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #3a3632;padding:13px;opacity:.6">
+            <span style="width:34px;height:34px;flex:none;background:#3a3632;color:#f2ebdd;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۳</span>
+            <img src="assets/lg-microscope.png" alt="" style="width:100%;flex:1;min-height:0;object-fit:contain;image-rendering:pixelated;margin:6px 0 4px;filter:grayscale(1)">
+            <span style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-weight:900;font-size:.9rem;line-height:1.35;color:#f2ebdd">به‌زودی</span>
+              <span class="en" style="font-size:9px;letter-spacing:2px;font-weight:700;color:#f2ebdd">CHAPTER 03</span>
+            </span>
+          </div>
+
+          <div style="position:relative;overflow:hidden;aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.42);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #3a3632;padding:13px;opacity:.6">
+            <span style="width:34px;height:34px;flex:none;background:#3a3632;color:#f2ebdd;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۴</span>
+            <img src="assets/lg-glucose.png" alt="" style="width:100%;flex:1;min-height:0;object-fit:contain;image-rendering:pixelated;margin:6px 0 4px;filter:grayscale(1)">
+            <span style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-weight:900;font-size:.9rem;line-height:1.35;color:#f2ebdd">به‌زودی</span>
+              <span class="en" style="font-size:9px;letter-spacing:2px;font-weight:700;color:#f2ebdd">CHAPTER 04</span>
+            </span>
+          </div>
         </div>
       </div>
     </section>
   </main>
   </sc-if>
+
+  <!-- ===== CHEMISTRY — CHAPTER 1 ===== -->
+  <sc-if value="{{ showChem1 }}">
+  <main style="{{ identMainStyle }}">
+    <section style="position:relative;overflow:hidden;background:#24100b;border:4px solid #141210;border-radius:clamp(22px,4vw,44px);box-shadow:11px 11px 0 #141210;padding:clamp(20px,4vw,44px) clamp(14px,3.4vw,40px)">
+      <canvas ref="{{ chemLessonRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block;filter:{{ bgFilter }};-webkit-mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%);mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%)"></canvas>
+      <span style="position:absolute;inset:0;background:rgba(20,18,16,.5);pointer-events:none"></span>
+
+      <div style="position:relative;z-index:5;display:flex;flex-direction:column;gap:clamp(16px,3vw,28px)">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <button onClick="{{ backToChem }}" style="cursor:pointer;text-align:right;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(7,46,35,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#f2ebdd;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px">
+            <span style="font-size:1.5em;line-height:1;color:#ffc21a">→</span>
+            <span style="font-weight:900;font-size:.92rem">همهٔ فصل‌ها</span>
+          </button>
+          <span style="flex:1;min-width:10px"></span>
+          <button onClick="{{ toggleBg }}" title="ثابت و محو کردن بک‌گراند" style="cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:flex-end;background:none;border:0;box-shadow:none;min-height:52px;padding:0 4px">
+            <span style="position:relative;width:62px;height:44px;flex:none;display:block">
+              <span style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#3a3632;border:3px solid #f2ebdd;border-radius:9px;display:block"><span style="position:absolute;inset:3px;background:{{ bgTrack }};border-radius:5px;display:block"></span></span>
+              <span style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%) rotate({{ bgLeverRot }});transform-origin:bottom center;transition:transform .18s cubic-bezier(.2,1.3,.5,1);display:block">
+                <span style="display:block;width:8px;height:28px;background:#f2ebdd;border:3px solid #141210;border-radius:5px"></span>
+                <span style="position:absolute;top:-13px;left:-8px;width:20px;height:20px;background:#ffc21a;border:3px solid #141210;border-radius:50%;display:block"></span>
+              </span>
+            </span>
+          </button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#141210;border:4px solid #b57bf5;border-radius:22px;box-shadow:8px 8px 0 #b57bf5;padding:clamp(12px,2.4vw,18px)">
+          <img src="assets/lg-wash.png" alt="" style="flex:none;width:clamp(52px,12vw,74px);height:clamp(52px,12vw,74px);object-fit:contain;image-rendering:pixelated;filter:drop-shadow(4px 4px 0 rgba(20,18,16,.6))">
+          <div style="flex:1;min-width:0">
+            <span class="en" style="display:block;font-size:11px;letter-spacing:2.5px;font-weight:700;color:#b57bf5;margin-bottom:4px">CHEMISTRY — CHAPTER 1</span>
+            <h2 style="margin:0;font-weight:900;font-size:clamp(1.2rem,4.8vw,2.2rem);letter-spacing:-1.5px;line-height:1.2;color:#f2ebdd">مولکول‌ها در خدمت تندرستی</h2>
+          </div>
+        </div>
+
+        <!-- امید به زندگی -->
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #e53e3e;padding:clamp(14px,2.8vw,20px)">
+          <img src="assets/lg-chart-up.png" alt="" style="flex:none;width:34px;height:30px;object-fit:contain;image-rendering:pixelated">
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:900;font-size:1.02rem;color:#e53e3e;margin-bottom:7px">امید به زندگی</div>
+            <p style="margin:0 0 8px;font-weight:400;font-size:clamp(.92rem,3.3vw,1.02rem);line-height:1.9;color:#f2ebdd;text-wrap:pretty">شاخصی است که نشان می‌دهد انسان‌ها با توجه به خطراتی که در طول زندگی با آن مواجه‌اند، به‌طور میانگین چند سال عمر می‌کنند.</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">این شاخص در کشورهای گوناگون و حتی شهرهای یک کشور نیز متفاوت است.</span>
+              <span style="font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">شیب نمودار امید به زندگی در مناطق کم‌برخوردار نسبت به مناطق برخوردار بیشتر است.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- شبیه شبیه را حل می کند -->
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">نکته</span>
+          <span style="flex:1;min-width:220px;font-weight:900;font-size:.92rem;line-height:1.85;color:#141210">«شبیه، شبیه را حل می‌کند»؛ در فرایند انحلال، اگر ذره‌های حل‌شونده با مولکول‌های حلال جاذبهٔ مناسب برقرار کنند، حل‌شونده در حلال حل می‌شود؛ در غیر این صورت ذره‌های حل‌شونده در کنار هم باقی می‌مانند و در حلال پخش نمی‌شوند.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span>
+          <span style="flex:1;font-weight:700;font-size:.92rem;line-height:1.8;color:#f2ebdd">علت شسته‌شدن لکهٔ عسل با آب، برقراری پیوند هیدروژنی بین مولکول‌های عسل با آب است.</span>
+        </div>
+
+        <!-- چربی‌ها -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #2563ff;border-radius:20px;box-shadow:7px 7px 0 #2563ff;padding:12px 16px">
+          <img src="assets/lg-food.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">چربی‌ها</h3>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(11px,2.2vw,16px)">
+          <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px">
+            <div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">۱) اسید چرب</div>
+            <p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">کربوکسیلیک اسید با زنجیر کربنی بلند.</p>
+          </div>
+          <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px">
+            <div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">۲) استرهای بلندزنجیر</div>
+            <p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">نوع دیگری از ساختار چربی‌ها.</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="flex:none;width:7px;height:7px;border-radius:50%;background:#2563ff;margin-top:8px"></span>
+          <span style="flex:1;font-weight:700;font-size:.92rem;line-height:1.8;color:#f2ebdd">نیروی بین‌مولکولی غالب در چربی‌ها از نوع <b style="color:#ffc21a">ناقطبی (واندروالسی)</b> است.</span>
+        </div>
+
+        <!-- صابون -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #12b981;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:12px 16px">
+          <img src="assets/lg-wash.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">صابون</h3>
+        </div>
+
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <p style="margin:0 0 10px;font-weight:400;font-size:clamp(.92rem,3.3vw,1.02rem);line-height:1.9;color:#f2ebdd;text-wrap:pretty"><b style="color:#12b981">تعریف:</b> نمک اسید چرب. صابون ماده‌ای است که به‌علت دارا بودن بخش قطبی و ناقطبی، هم در آب و هم در چربی حل می‌شود.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
+              <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:14px;overflow:hidden">
+                <span style="background:#ffc21a;color:#141210;padding:8px 11px;font-weight:900;font-size:.88rem">صابون جامد</span>
+                <span class="en" style="background:rgba(20,18,16,.5);padding:10px;font-weight:900;font-size:1rem;color:#f2ebdd;text-align:center">RCOONa</span>
+              </div>
+              <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:14px;overflow:hidden">
+                <span style="background:#2563ff;color:#f2ebdd;padding:8px 11px;font-weight:900;font-size:.88rem">صابون مایع</span>
+                <span class="en" style="background:rgba(20,18,16,.5);padding:10px;font-weight:900;font-size:1rem;color:#f2ebdd;text-align:center">RCOOK <span style="opacity:.7;font-size:.8em">یا</span> RCOONH<sub>4</sub></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">نکته</span>
+          <span style="flex:1;min-width:220px;font-weight:900;font-size:.92rem;line-height:1.85;color:#141210">صابون جامد را از گرم‌کردن مخلوط روغن‌های گوناگون (مانند روغن زیتون، نارگیل و پیه) با سدیم هیدروکسید تهیه می‌کنند.</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #ff5c22;overflow:hidden">
+          <span style="background:#ff5c22;color:#141210;padding:10px 14px;font-weight:900;font-size:.96rem">نحوهٔ پاک‌شدن لکهٔ چربی به‌وسیلهٔ صابون</span>
+          <div style="background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#ff5c22;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">01</span><span style="font-weight:400;font-size:.92rem;line-height:1.85;color:#f2ebdd">حل‌شدن صابون در آب به کمک سر آب‌دوست خود (بخش قطبی).</span></div>
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#ff5c22;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">02</span><span style="font-weight:400;font-size:.92rem;line-height:1.85;color:#f2ebdd">ذره‌های صابون با بخش چربی‌دوست خود (ناقطبی) با مولکول‌های چربی جاذبه برقرار می‌کنند.</span></div>
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#ff5c22;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">03</span><span style="font-weight:400;font-size:.92rem;line-height:1.85;color:#f2ebdd">مولکول‌های صابون مانند پلی بین مولکول‌های آب و چربی قرار می‌گیرند و ذره‌های چربی کم‌کم جدا می‌شوند.</span></div>
+          </div>
+        </div>
+
+        <!-- عوامل موثر بر قدرت پاک کنندگی -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #ffc21a;border-radius:20px;box-shadow:7px 7px 0 #ffc21a;padding:12px 16px">
+          <img src="assets/lg-hand.png" alt="" style="width:38px;height:24px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">عوامل مؤثر بر قدرت پاک‌کنندگی صابون</h3>
+        </div>
+
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #ffc21a;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <p style="margin:0 0 9px;font-weight:400;font-size:clamp(.92rem,3.3vw,1.02rem);line-height:1.9;color:#f2ebdd;text-wrap:pretty">صابون همهٔ لکه‌ها را به یک اندازه از بین نمی‌برد، زیرا <b style="color:#ffc21a">نوع پارچه، دما، آنزیم، نوع آب</b> و نیز <b style="color:#ffc21a">نوع و مقدار صابون</b> بر روی قدرت پاک‌کنندگی آن تأثیر دارد.</p>
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:9px 12px">
+              <span style="font-weight:900;font-size:.9rem;line-height:1.75;color:#141210">با افزایش دما و افزودن آنزیم، خاصیت پاک‌کنندگی صابون افزایش می‌یابد.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- آب سخت -->
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #2563ff;overflow:hidden">
+          <span style="background:#2563ff;color:#f2ebdd;padding:10px 14px;font-weight:900;font-size:.96rem;display:flex;align-items:center;gap:8px"><img src="assets/lg-water.png" alt="" style="width:22px;height:26px;object-fit:contain;image-rendering:pixelated">آب سخت</span>
+          <div style="background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:10px">
+            <p style="margin:0;font-weight:400;font-size:.92rem;line-height:1.9;color:#f2ebdd">آب دریا و مناطق کویری که شور هستند، مقادیر چشمگیری از یون‌های <b style="color:#ffc21a">کلسیم (Ca<sup>2+</sup>)</b> و <b style="color:#ffc21a">منیزیم (Mg<sup>2+</sup>)</b> دارند؛ چنین آب‌هایی به آب سخت معروف‌اند.</p>
+            <p style="margin:0;font-weight:400;font-size:.92rem;line-height:1.9;color:#f2ebdd">صابون در این آب‌ها به‌خوبی کف نمی‌کند، زیرا صابون با یون‌های موجود در آب سخت رسوب تشکیل می‌دهد؛ لکه‌های سفید روی لباس پس از شستن نشانه‌ای از این رسوبات است.</p>
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:9px 12px">
+              <span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">قاعده</span>
+              <span style="font-weight:900;font-size:.9rem;line-height:1.75;color:#141210">هرچه املاح موجود در آب بیشتر باشد، قدرت پاک‌کنندگی صابون در آن کمتر خواهد بود.</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(20,18,16,.5);border:3px solid #141210;border-radius:14px;padding:9px 12px">
+              <span style="flex:none;background:#2563ff;color:#f2ebdd;border-radius:7px;padding:1px 9px;font-weight:900;font-size:.76rem">مثال</span>
+              <span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">قدرت پاک‌کنندگی صابون در آب چشمه بیشتر از آب دریا است.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- پاک کننده های غیر صابونی -->
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:900;font-size:1.02rem;color:#b57bf5;margin-bottom:9px">پاک‌کننده‌های غیرصابونی</div>
+            <p style="margin:0 0 10px;font-weight:400;font-size:clamp(.92rem,3.3vw,1.02rem);line-height:1.9;color:#f2ebdd;text-wrap:pretty">متشکل از بنزن و دیگر مواد اولیه در صنایع پتروشیمی، با فرمول همگانی زیر:</p>
+            <div style="display:flex;align-items:center;justify-content:center;background:#141210;border:4px solid #b57bf5;border-radius:16px;padding:14px;">
+              <span class="en" style="font-weight:900;font-size:clamp(1rem,3.6vw,1.3rem);color:#f2ebdd;letter-spacing:.5px">R–C<sub>6</sub>H<sub>4</sub>SO<sub>3</sub>Na</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #e53e3e;overflow:hidden">
+          <span style="background:#e53e3e;color:#f2ebdd;padding:10px 14px;font-weight:900;font-size:.96rem">خواص دیگر صابون‌ها</span>
+          <div style="background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#e53e3e;color:#f2ebdd;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">01</span><span style="font-weight:400;font-size:.92rem;line-height:1.85;color:#f2ebdd"><b style="color:#ffc21a">صابون گوگرددار:</b> برای از بین بردن جوش‌های صورت و همچنین قارچ‌های پوستی استفاده می‌شود.</span></div>
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#e53e3e;color:#f2ebdd;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">02</span><span style="font-weight:400;font-size:.92rem;line-height:1.85;color:#f2ebdd"><b style="color:#ffc21a">صابون کلردار:</b> به‌منظور افزایش خاصیت ضدعفونی‌کنندگی و میکروب‌کشی صابون‌ها استفاده می‌شود.</span></div>
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#e53e3e;color:#f2ebdd;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">03</span><span style="font-weight:400;font-size:.92rem;line-height:1.85;color:#f2ebdd"><b style="color:#ffc21a">صابون‌های دارای نمک فسفات:</b> برای افزایش قدرت پاک‌کنندگی به مواد شوینده اضافه می‌شود تا از واکنش صابون با یون‌های آب سخت جلوگیری کند.</span></div>
+          </div>
+        </div>
+
+        <!-- اسید و باز -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #12b981;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:12px 16px">
+          <img src="assets/lg-germ.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">اسید و باز</h3>
+        </div>
+
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <p style="margin:0 0 8px;font-weight:400;font-size:clamp(.92rem,3.3vw,1.02rem);line-height:1.9;color:#f2ebdd;text-wrap:pretty">پیش از آن‌که ساختار اسید و بازها شناخته شود، شیمی‌دان‌ها افزون بر ویژگی اسید و بازها، با برخی واکنش‌های آن‌ها نیز آشنا بودند.</p>
+            <p style="margin:0;font-weight:400;font-size:clamp(.92rem,3.3vw,1.02rem);line-height:1.9;color:#f2ebdd;text-wrap:pretty"><b style="color:#12b981">سوانت آرنیوس</b> نخستین کسی بود که اسیدها و بازها را بر مبنای علمی توصیف کرد؛ او روی رسانایی الکتریکی محلول‌های آبی کار می‌کرد. یافته‌های تجربی او نشان داد محلول اسیدها و بازها رسانای جریان الکتریکی هستند، هرچند میزان رسانایی آن‌ها با یکدیگر یکسان نیست.</p>
+          </div>
+        </div>
+
+        <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:14px 16px">
+          <div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:6px">باز آرنیوس</div>
+          <p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">مواد و ترکیباتی که با حل‌شدن در آب، غلظت یون هیدروکسید (OH<sup>−</sup>) را افزایش می‌دهند.</p>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">نکته</span>
+          <span style="flex:1;min-width:220px;font-weight:900;font-size:.9rem;line-height:1.8;color:#141210">برخی اکسیدها با آب واکنش می‌دهند: اکسیدهای فلزی در واکنش با آب <b>باز آرنیوس</b> و اکسیدهای نافلزی در واکنش با آب به‌طور معمول <b>اسید آرنیوس</b> تولید می‌کنند.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">نکته</span>
+          <span style="flex:1;min-width:220px;font-weight:900;font-size:.9rem;line-height:1.8;color:#141210">از انحلال ترکیبات مولکولی مانند <span class="en">NO</span>، <span class="en">N<sub>2</sub>O</span> و <span class="en">CO</span> اسید یا باز آرنیوس تولید نمی‌شود.</span>
+        </div>
+
+        <!-- رسانایی الکتریکی -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #2563ff;border-radius:20px;box-shadow:7px 7px 0 #2563ff;padding:12px 16px">
+          <img src="assets/lg-turbine.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">رسانایی الکتریکی و قدرت اسیدی</h3>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(11px,2.2vw,16px)">
+          <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px">
+            <div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">رسانای الکترونی</div>
+            <p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">رسانایی به‌وسیلهٔ الکترون انجام می‌شود.</p>
+          </div>
+          <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px">
+            <div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">رسانای یونی</div>
+            <p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">رسانایی به‌وسیلهٔ جابه‌جایی یون انجام می‌شود؛ یون‌ها باید بتوانند از نقطه‌ای به نقطهٔ دیگر جابه‌جا شوند تا بارهای الکتریکی نیز جابه‌جا شوند. مانند محلول آبی سدیم کلرید.</p>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(11px,2.2vw,16px)">
+          <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:18px;box-shadow:6px 6px 0 #12b981;overflow:hidden">
+            <span style="background:#12b981;color:#141210;padding:10px 12px;font-weight:900;font-size:.95rem">محلول الکترولیت</span>
+            <span style="flex:1;background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:12px;font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">محلول‌هایی که به‌دلیل وجود یون‌ها و حرکت آن‌ها، رسانای جریان برق هستند.</span>
+          </div>
+          <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:18px;box-shadow:6px 6px 0 #e53e3e;overflow:hidden">
+            <span style="background:#e53e3e;color:#f2ebdd;padding:10px 12px;font-weight:900;font-size:.95rem">محلول غیرالکترولیت</span>
+            <span style="flex:1;background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:12px;font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">موادی که انحلالشان در آب به‌شکل مولکولی است و محلولشان یون ندارد، پس رسانای جریان برق نیستند؛ مانند اتانول و شکر در آب.</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">نکته</span>
+          <span style="flex:1;min-width:220px;font-weight:900;font-size:.9rem;line-height:1.8;color:#141210">شیمی‌دان‌ها به کمک مدل آرنیوس، <span class="en">HCl</span> را یک اسید قوی و <span class="en">HF</span> را یک اسید ضعیف معرفی می‌کنند.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px">
+          <span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">نکته</span>
+          <span style="flex:1;min-width:220px;font-weight:900;font-size:.9rem;line-height:1.8;color:#141210">کربوکسیلیک‌اسیدها از جملهٔ اسیدهای ضعیف‌اند که تنها هیدروژن گروه کربوکسیل آن‌ها می‌تواند به‌صورت یون هیدرونیوم وارد محلول شود.</span>
+        </div>
+
+        <!-- ثابت تعادل و واکنش برگشت پذیر -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #ff5c22;border-radius:20px;box-shadow:7px 7px 0 #ff5c22;padding:12px 16px">
+          <img src="assets/lg-scale.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">ثابت تعادل و قدرت اسیدی</h3>
+        </div>
+
+        <div style="background:rgba(7,46,35,.74);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:14px 16px">
+          <div style="font-weight:900;font-size:.98rem;color:#ff5c22;margin-bottom:6px">واکنش‌های برگشت‌پذیر</div>
+          <p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">واکنش‌هایی که در آن‌ها همهٔ واکنش‌دهنده‌ها به فرآورده‌ها تبدیل نمی‌شوند، بلکه در شرایط معین مقدار آن‌ها در سامانه ثابت می‌ماند. این واکنش‌ها تا حدی پیش می‌روند و پس از آن، مقدار مواد شرکت‌کننده دیگر تغییر نمی‌کند.</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;overflow:hidden">
+          <span style="background:#b57bf5;color:#141210;padding:10px 14px;font-weight:900;font-size:.96rem">سامانهٔ تعادلی</span>
+          <div style="background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:9px">
+            <p style="margin:0;font-weight:400;font-size:.92rem;line-height:1.9;color:#f2ebdd">در یک واکنش برگشت‌پذیر که هم‌زمان واکنش‌های رفت و برگشت انجام می‌شوند، سرانجام مقدار واکنش‌دهنده‌ها و فرآورده‌ها ثابت می‌ماند؛ این ویژگی تنها زمانی رخ می‌دهد که سرعت واکنش رفت با برگشت برابر شود.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+              <span style="background:rgba(242,235,221,.13);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:700;font-size:.85rem">برگشت‌پذیر است</span>
+              <span style="background:rgba(242,235,221,.13);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:700;font-size:.85rem">سرعت رفت و برگشت هر گونه برابرند</span>
+              <span style="background:rgba(242,235,221,.13);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:700;font-size:.85rem">غلظت واکنش‌دهنده‌ها و فرآورده‌ها ثابت است</span>
+              <span style="background:rgba(242,235,221,.13);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:700;font-size:.85rem">نمونه: محلول اسید و بازهای ضعیف در آب</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(11px,2.2vw,16px)">
+          <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:18px;box-shadow:6px 6px 0 #e53e3e;overflow:hidden">
+            <span style="background:#e53e3e;color:#f2ebdd;padding:10px 12px;font-weight:900;font-size:.95rem">اسیدهای قوی</span>
+            <span class="en" style="flex:1;background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:12px;font-weight:900;font-size:1rem;line-height:2;color:#f2ebdd;text-align:center">HCl, HI, HBr, H<sub>2</sub>SO<sub>4</sub>, HNO<sub>3</sub></span>
+          </div>
+          <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:18px;box-shadow:6px 6px 0 #ffc21a;overflow:hidden">
+            <span style="background:#ffc21a;color:#141210;padding:10px 12px;font-weight:900;font-size:.95rem">ترتیب قدرت اسیدی اسیدهای ضعیف</span>
+            <span class="en" style="flex:1;background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:12px;font-weight:900;font-size:.92rem;line-height:2;color:#f2ebdd;text-align:center">HF &gt; HNO<sub>2</sub> &gt; HCOOH &gt; CH<sub>3</sub>COOH &gt; H<sub>2</sub>CO<sub>3</sub> &gt; HCN</span>
+          </div>
+        </div>
+
+        <!-- محلول آبی -->
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #12b981;overflow:hidden">
+          <span style="background:#12b981;color:#141210;padding:10px 14px;font-weight:900;font-size:.96rem">در محلول آبی</span>
+          <div style="background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(12px,2.4vw,16px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:14px;overflow:hidden;text-align:center">
+              <span style="background:#e53e3e;color:#f2ebdd;padding:7px;font-weight:900;font-size:.86rem">اسیدی</span>
+              <span style="background:rgba(20,18,16,.5);padding:10px 8px;font-weight:400;font-size:.85rem;line-height:1.8;color:#f2ebdd">اگر H<sub>3</sub>O<sup>+</sup> از OH<sup>−</sup> بیشتر باشد؛ کاغذ pH قرمز می‌شود.</span>
+            </div>
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:14px;overflow:hidden;text-align:center">
+              <span style="background:#2563ff;color:#f2ebdd;padding:7px;font-weight:900;font-size:.86rem">بازی</span>
+              <span style="background:rgba(20,18,16,.5);padding:10px 8px;font-weight:400;font-size:.85rem;line-height:1.8;color:#f2ebdd">اگر H<sub>3</sub>O<sup>+</sup> از OH<sup>−</sup> کمتر باشد؛ کاغذ pH آبی می‌شود.</span>
+            </div>
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:14px;overflow:hidden;text-align:center">
+              <span style="background:#ffc21a;color:#141210;padding:7px;font-weight:900;font-size:.86rem">خنثی</span>
+              <span style="background:rgba(20,18,16,.5);padding:10px 8px;font-weight:400;font-size:.85rem;line-height:1.8;color:#f2ebdd">اگر H<sub>3</sub>O<sup>+</sup> و OH<sup>−</sup> برابر باشند؛ رنگ کاغذ pH تغییر نمی‌کند.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- یونش آب -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #2563ff;border-radius:20px;box-shadow:7px 7px 0 #2563ff;padding:12px 16px">
+          <img src="assets/lg-water.png" alt="" style="width:26px;height:32px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">یونش آب</h3>
+        </div>
+
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #2563ff;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <p style="margin:0 0 10px;font-weight:400;font-size:clamp(.92rem,3.3vw,1.02rem);line-height:1.9;color:#f2ebdd;text-wrap:pretty">آزمایش‌های دقیق نشان می‌دهند که آب خالص رسانایی الکتریکی ناچیزی دارد. این ویژگی بیانگر وجود مقدار بسیار اندکی از یون‌های هیدرونیوم و هیدروکسید است (در همهٔ محلول‌ها این دو یون به نسبت‌های متفاوتی وجود دارند). در واقع یک نمونه آب خالص، مقدار بسیار ناچیزی از مولکول‌های آب به یون‌های هیدرونیوم و هیدروکسید یونیده می‌شود.</p>
+            <div style="display:flex;align-items:center;justify-content:center;background:#141210;border:4px solid #ffc21a;border-radius:16px;padding:14px;margin-bottom:10px">
+              <span class="en" style="font-weight:900;font-size:clamp(1.05rem,3.8vw,1.3rem);color:#f2ebdd">[H<sub>3</sub>O<sup>+</sup>] × [OH<sup>−</sup>] = 10<sup>−14</sup></span>
+            </div>
+            <p style="margin:0;font-weight:700;font-size:.9rem;line-height:1.85;color:#ffc21a">اندازه‌گیری‌ها در دمای اتاق نشان می‌دهد این حاصل‌ضرب در همهٔ محلول‌های آبی برقرار است.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #e53e3e;overflow:hidden">
+          <span style="background:#e53e3e;color:#f2ebdd;padding:10px 14px;font-weight:900;font-size:.96rem;display:flex;align-items:center;gap:8px"><img src="assets/lg-liver.png" alt="" style="width:22px;height:26px;object-fit:contain;image-rendering:pixelated">اسید معده و ضداسیدها</span>
+          <div style="background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:10px">
+            <p style="margin:0;font-weight:400;font-size:.92rem;line-height:1.9;color:#f2ebdd">یاخته‌های دیوارهٔ معده با ورود مواد غذایی، هیدروکلریک اسید ترشح می‌کنند؛ کار این اسید فعال‌کردن آنزیم‌ها و از‌بین‌بردن جانداران ذره‌بینی موجود در غذا است.</p>
+            <p style="margin:0;font-weight:400;font-size:.92rem;line-height:1.9;color:#f2ebdd">در بدن انسان روزانه بین ۲ تا ۳ لیتر شیرهٔ معده تولید می‌شود که غلظت یون هیدرونیوم در آن حدود <span class="en">0.03</span> مولار است؛ درون معده یک محیط بسیار اسیدی است که حتی می‌تواند فلز روی را در خود حل کند.</p>
+            <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(20,18,16,.5);border:3px solid #141210;border-radius:14px;padding:9px 12px">
+              <span style="flex:none;background:#e53e3e;color:#f2ebdd;border-radius:7px;padding:1px 9px;font-weight:900;font-size:.76rem">ضداسید</span>
+              <span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">داروهایی که برای جلوگیری از تخریب یاخته‌های دیوارهٔ معده بر اثر آسیب اسید استفاده می‌شوند. <b style="color:#ffc21a">شیر منیزی</b> (شامل منیزیم‌هیدروکسید) یکی از رایج‌ترین آن‌هاست که به‌شکل سوسپانسیون مصرف می‌شود.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- جدول سوسپانسیون/کلوئید/محلول -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #b57bf5;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;padding:12px 16px">
+          <img src="assets/lg-clipboard.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">جدول: سوسپانسیون، کلوئید و محلول</h3>
+        </div>
+
+        <div style="overflow-x:auto;border:4px solid #141210;border-radius:20px;box-shadow:8px 8px 0 #141210">
+          <div style="min-width:560px">
+            <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;background:#7a1420">
+              <span style="padding:11px 13px;font-weight:900;font-size:.85rem;color:#f2ebdd">ویژگی / نوع مخلوط</span>
+              <span style="padding:11px 13px;font-weight:900;font-size:.85rem;color:#f2ebdd;border-right:3px solid #141210">سوسپانسیون</span>
+              <span style="padding:11px 13px;font-weight:900;font-size:.85rem;color:#f2ebdd;border-right:3px solid #141210">کلوئید</span>
+              <span style="padding:11px 13px;font-weight:900;font-size:.85rem;color:#f2ebdd;border-right:3px solid #141210">محلول</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;background:rgba(7,46,35,.8);backdrop-filter:blur(12px);border-top:3px solid #141210">
+              <span style="padding:10px 13px;font-weight:900;font-size:.84rem;color:#ffc21a">رفتار در برابر نور</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">نور را پخش می‌کند</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">نور را پخش می‌کند</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">نور را عبور می‌دهد</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;background:rgba(7,46,35,.62);backdrop-filter:blur(12px);border-top:3px solid #141210">
+              <span style="padding:10px 13px;font-weight:900;font-size:.84rem;color:#ffc21a">پایداری</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">ته‌نشین می‌شود</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">پایدار است</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">پایدار است</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;background:rgba(7,46,35,.8);backdrop-filter:blur(12px);border-top:3px solid #141210">
+              <span style="padding:10px 13px;font-weight:900;font-size:.84rem;color:#ffc21a">همگن‌بودن</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">ناهمگن</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">ناهمگن</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">همگن</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;background:rgba(7,46,35,.62);backdrop-filter:blur(12px);border-top:3px solid #141210">
+              <span style="padding:10px 13px;font-weight:900;font-size:.84rem;color:#ffc21a">ذرات سازنده</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">ذرات ریز ماده</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">توده‌های مولکولی با اندازهٔ متفاوت</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">مولکول یا یون</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- جدول صابون / غیر صابونی -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #ff5c22;border-radius:20px;box-shadow:7px 7px 0 #ff5c22;padding:12px 16px">
+          <img src="assets/lg-wash.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">جدول: تفاوت‌های صابون با پاک‌کنندهٔ غیرصابونی</h3>
+        </div>
+
+        <div style="overflow-x:auto;border:4px solid #141210;border-radius:20px;box-shadow:8px 8px 0 #141210">
+          <div style="min-width:640px">
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:#7a1420">
+              <span style="padding:11px 10px;font-weight:900;font-size:.82rem;color:#f2ebdd;text-align:center">#</span>
+              <span style="padding:11px 13px;font-weight:900;font-size:.82rem;color:#f2ebdd;border-right:3px solid #141210">تفاوت</span>
+              <span style="padding:11px 13px;font-weight:900;font-size:.82rem;color:#f2ebdd;border-right:3px solid #141210">پاک‌کنندهٔ صابونی</span>
+              <span style="padding:11px 13px;font-weight:900;font-size:.82rem;color:#f2ebdd;border-right:3px solid #141210">پاک‌کنندهٔ غیرصابونی</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.8);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">1</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">فرمول بسته</span>
+              <span class="en" style="padding:10px 13px;border-right:3px solid #141210;font-weight:700;font-size:.86rem;color:#f2ebdd">RCOO<sup>−</sup>Na<sup>+</sup></span>
+              <span class="en" style="padding:10px 13px;border-right:3px solid #141210;font-weight:700;font-size:.86rem;color:#f2ebdd">RC<sub>6</sub>H<sub>4</sub>SO<sub>3</sub><sup>−</sup>Na<sup>+</sup></span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.62);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">2</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">فرمول گسترده</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;display:flex;flex-direction:column;align-items:center;gap:6px">
+                <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd">R–C(=O)–Ö:<sup>−</sup> Na<sup>+</sup></span>
+                <span style="font-weight:700;font-size:.72rem;color:#ffc21a">۵ جفت الکترون ناپیوندی</span>
+              </span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;display:flex;flex-direction:column;align-items:center;gap:6px">
+                <span class="en" style="font-weight:700;font-size:.8rem;color:#f2ebdd;text-align:center">R–C<sub>6</sub>H<sub>4</sub>–S(=O)(=O)–Ö:<sup>−</sup> Na<sup>+</sup></span>
+                <span style="font-weight:700;font-size:.72rem;color:#ffc21a">۹ جفت الکترون ناپیوندی</span>
+              </span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.8);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">3</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">بخش ناقطبی (آب‌گریز، چربی‌دوست)</span>
+              <span class="en" style="padding:10px 13px;border-right:3px solid #141210;font-weight:700;font-size:.86rem;color:#f2ebdd">R</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd"><span class="en">R–C<sub>6</sub>H<sub>4</sub>–</span> (شامل حلقهٔ بنزن)</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.62);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">4</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">بخش قطبی (آب‌دوست، چربی‌گریز)</span>
+              <span class="en" style="padding:10px 13px;border-right:3px solid #141210;font-weight:700;font-size:.86rem;color:#f2ebdd">–COO<sup>−</sup></span>
+              <span class="en" style="padding:10px 13px;border-right:3px solid #141210;font-weight:700;font-size:.86rem;color:#f2ebdd">–SO<sub>3</sub><sup>−</sup></span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.8);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">5</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">قدرت پاک‌کنندگی در آب سخت</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">در آب سخت رسوب می‌دهد و قدرت پاک‌کنندگی کاهش می‌یابد.</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">در آب سخت واکنش نمی‌دهد و رسوب نمی‌کند؛ خاصیت پاک‌کنندگی حفظ می‌شود.</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.62);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">6</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">نحوهٔ ساخت</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">از چربی (روغن‌های گیاهی یا جانوری) ساخته می‌شود.</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">از بنزن و مواد پتروشیمیایی دیگر طی واکنش‌های پیچیده تولید می‌شود.</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.8);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">7</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">حلقهٔ بنزن</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">ندارد و آروماتیک نیست.</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">دارد و آروماتیک است.</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.62);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">8</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">سیرشدگی قسمت هیدروکربنی</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">معمولاً سیرشده است.</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">با سه مولکول <span class="en">H<sub>2</sub></span> سیر می‌شود.</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.8);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">9</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">کربن بدون هیدروژن</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">یک کربن</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">دو کربن</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.62);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">10</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">تعداد اکسیژن</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">دو اکسیژن</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">سه اکسیژن</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:.4fr 1.1fr 1.6fr 1.6fr;background:rgba(7,46,35,.8);border-top:3px solid #141210">
+              <span class="en" style="padding:10px;font-weight:900;font-size:.82rem;color:#ffc21a;text-align:center">11</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.8rem;color:#f2ebdd">قدرت پاک‌کنندگی</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">کمتر</span>
+              <span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.82rem;line-height:1.7;color:#f2ebdd">بیشتر</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- محاسبات فصل ۱ -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #12b981;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:12px 16px">
+          <img src="assets/lg-chart-up.png" alt="" style="width:34px;height:30px;flex:none;object-fit:contain;image-rendering:pixelated">
+          <h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;line-height:1.3;color:#f2ebdd">محاسبات فصل ۱</h3>
+        </div>
+
+        <!-- تیپ اول -->
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #2563ff;overflow:hidden">
+          <span style="background:#2563ff;color:#f2ebdd;padding:10px 14px;font-weight:900;font-size:.96rem">تیپ اول: درجهٔ یونش و ثابت تعادل</span>
+          <div style="background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:14px">
+
+            <div style="display:flex;align-items:center;justify-content:center;gap:12px;background:#141210;border:4px solid #ffc21a;border-radius:16px;padding:12px 14px;flex-wrap:wrap">
+              <span style="font-weight:900;font-size:.92rem;color:#ffc21a">درجهٔ یونش</span>
+              <span style="font-weight:900;font-size:1.2rem;color:#f2ebdd">=</span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:5px">
+                <span style="font-weight:700;font-size:.84rem;color:#f2ebdd">شمار مولکول‌های یونیده‌شده</span>
+                <span style="width:100%;height:4px;background:#ffc21a;border-radius:2px"></span>
+                <span style="font-weight:700;font-size:.84rem;color:#f2ebdd">شمار کل مولکول‌های حل‌شده</span>
+              </span>
+              <span style="font-weight:900;font-size:1.2rem;color:#f2ebdd">→</span>
+              <span class="en" style="font-weight:900;font-size:1rem;color:#f2ebdd">a =</span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:5px">
+                <span class="en" style="font-weight:700;font-size:.9rem;color:#f2ebdd">[H<sup>+</sup>]</span>
+                <span style="width:100%;height:4px;background:#ffc21a;border-radius:2px"></span>
+                <span class="en" style="font-weight:700;font-size:.9rem;color:#f2ebdd">M</span>
+              </span>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:center;gap:12px;background:#141210;border:4px solid #12b981;border-radius:16px;padding:12px 14px;flex-wrap:wrap">
+              <span class="en" style="font-weight:900;font-size:.95rem;color:#12b981">k</span>
+              <span style="font-weight:900;font-size:1.2rem;color:#f2ebdd">=</span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:5px">
+                <span class="en" style="font-weight:700;font-size:.92rem;color:#f2ebdd">[H<sup>+</sup>][A<sup>−</sup>]</span>
+                <span style="width:100%;height:4px;background:#12b981;border-radius:2px"></span>
+                <span class="en" style="font-weight:700;font-size:.92rem;color:#f2ebdd">[HA]</span>
+              </span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:16px;overflow:hidden">
+              <span style="background:#ffc21a;color:#141210;padding:8px 12px;font-weight:900;font-size:.86rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span>مثال</span><span style="font-weight:400;font-size:.76rem;opacity:.75">(خرداد ۱۴۰۱)</span></span>
+              <div style="background:rgba(20,18,16,.5);padding:12px;display:flex;flex-direction:column;gap:8px">
+                <p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">اگر درصد یونش در محلول استیک‌اسید برابر <span class="en">3.2٪</span> و غلظت یون هیدرونیوم در آن <span class="en">1.92×10<sup>−2</sup></span> مول بر لیتر باشد، غلظت محلول را محاسبه کنید.</p>
+                <div style="display:flex;flex-direction:column;gap:7px;font-family:'Space Mono',monospace">
+                  <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd;line-height:2">a = [H<sup>+</sup>] / [CH<sub>3</sub>COOH] × 100 ⇒ 3.2 = (1.92×10<sup>−2</sup>) / [CH<sub>3</sub>COOH]</span>
+                  <span class="en" style="font-weight:900;font-size:.92rem;color:#ffc21a">⇒ [CH<sub>3</sub>COOH] = 0.6 mol/L</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:16px;overflow:hidden">
+              <span style="background:#12b981;color:#141210;padding:8px 12px;font-weight:900;font-size:.86rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span>مثال</span><span style="font-weight:400;font-size:.76rem;opacity:.75">(شهریور ۱۴۰۲)</span></span>
+              <div style="background:rgba(20,18,16,.5);padding:12px;display:flex;flex-direction:column;gap:8px">
+                <p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">در دمای معین، ۲ لیتر محلول نیترواسید (<span class="en">HNO<sub>2</sub></span>)، <span class="en">0.03</span> مول نیتریت (<span class="en">NO<sub>2</sub><sup>−</sup></span>) دارد؛ غلظت تعادلی <span class="en">HNO<sub>2</sub></span> را حساب کنید. (<span class="en">k<sub>a</sub> = 4.5×10<sup>−4</sup></span>)</p>
+                <div style="display:flex;flex-direction:column;gap:7px;font-family:'Space Mono',monospace">
+                  <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd;line-height:2">k<sub>a</sub> = [H<sup>+</sup>][NO<sub>2</sub><sup>−</sup>] / [HNO<sub>2</sub>] ⇒ (0.03 × 0.03) / [HNO<sub>2</sub>] = 4.5×10<sup>−4</sup></span>
+                  <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd">[H<sup>+</sup>] = [NO<sub>2</sub><sup>−</sup>] →</span>
+                  <span class="en" style="font-weight:900;font-size:.92rem;color:#ffc21a">[HNO<sub>2</sub>] = 2 mol/L</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- تیپ دوم -->
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;overflow:hidden">
+          <span style="background:#b57bf5;color:#141210;padding:10px 14px;font-weight:900;font-size:.96rem">تیپ دوم: مسائل pH</span>
+          <div style="background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:14px">
+
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+              <span class="en" style="background:#141210;border:3px solid #b57bf5;border-radius:12px;padding:8px 14px;font-weight:900;font-size:.9rem;color:#f2ebdd">[H<sup>+</sup>][OH<sup>−</sup>] = 10<sup>−14</sup></span>
+              <span class="en" style="background:#141210;border:3px solid #b57bf5;border-radius:12px;padding:8px 14px;font-weight:900;font-size:.9rem;color:#f2ebdd">pH = −log[H<sup>+</sup>]</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+              <span class="en" style="background:rgba(20,18,16,.5);border:3px solid #141210;border-radius:999px;padding:5px 14px;font-weight:700;font-size:.82rem;color:#f2ebdd">log 2 = 0.3</span>
+              <span class="en" style="background:rgba(20,18,16,.5);border:3px solid #141210;border-radius:999px;padding:5px 14px;font-weight:700;font-size:.82rem;color:#f2ebdd">log 3 = 0.5</span>
+              <span class="en" style="background:rgba(20,18,16,.5);border:3px solid #141210;border-radius:999px;padding:5px 14px;font-weight:700;font-size:.82rem;color:#f2ebdd">log 5 = 0.7</span>
+              <span class="en" style="background:rgba(20,18,16,.5);border:3px solid #141210;border-radius:999px;padding:5px 14px;font-weight:700;font-size:.82rem;color:#f2ebdd">log 7 = 0.85</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:16px;overflow:hidden">
+              <span style="background:#ffc21a;color:#141210;padding:8px 12px;font-weight:900;font-size:.86rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span>مثال</span><span style="font-weight:400;font-size:.76rem;opacity:.75">(شهریور ۱۴۰۳)</span></span>
+              <div style="background:rgba(20,18,16,.5);padding:12px;display:flex;flex-direction:column;gap:8px">
+                <p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">اگر <span class="en">pH</span> باز ضعیف <span class="en">BOH</span> برابر <span class="en">12.4</span> باشد (<span class="en">log 2 = 0.3</span>)، غلظت یون هیدروکسید را به‌دست آورید.</p>
+                <div style="display:flex;flex-direction:column;gap:7px;font-family:'Space Mono',monospace">
+                  <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd;line-height:2">[H<sup>+</sup>] = 10<sup>−pH</sup> = 10<sup>−12.4</sup> ⇒ 10<sup>−13</sup> × 2<sup>log2</sup></span>
+                  <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd">⇒ [H<sup>+</sup>] = 4×10<sup>−13</sup> mol/L</span>
+                  <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd">[H<sup>+</sup>][OH<sup>−</sup>] = 10<sup>−14</sup> ⇒ [OH<sup>−</sup>] = 10<sup>−14</sup> / (4×10<sup>−13</sup>)</span>
+                  <span class="en" style="font-weight:900;font-size:.92rem;color:#ffc21a">⇒ [OH<sup>−</sup>] = 0.025 mol/L</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:16px;overflow:hidden">
+              <span style="background:#2563ff;color:#f2ebdd;padding:8px 12px;font-weight:900;font-size:.86rem">مثال</span>
+              <div style="background:rgba(20,18,16,.5);padding:12px;display:flex;flex-direction:column;gap:8px">
+                <p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">برای تهیهٔ یک محلول با <span class="en">pH = 3.4</span>، چند گرم اسید <span class="en">HA</span> (<span class="en">a = 0.2</span>) را باید در <span class="en">500</span> میلی‌لیتر آب حل کنیم؟ (جرم مولی <span class="en">HA</span> برابر <span class="en">100 g/mol</span> فرض کنید و از تغییر حجم در اثر انحلال چشم‌پوشی کنید.)</p>
+                <div style="display:flex;flex-direction:column;gap:7px;font-family:'Space Mono',monospace">
+                  <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd;line-height:2">3.4 = −log[H<sup>+</sup>] ⇒ [H<sup>+</sup>] = 10<sup>−3.4</sup> = 10<sup>−4</sup>×10<sup>0.6</sup> = 4×10<sup>−4</sup> mol/L</span>
+                  <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd">⇒ (4×10<sup>−4</sup>) / [HA] = 0.2 ⇒ [HA] = 2×10<sup>−3</sup> mol/L</span>
+                  <span class="en" style="font-weight:700;font-size:.86rem;color:#f2ebdd">تعداد مول = [HA] × V = 2×10<sup>−3</sup> × (500/1000) = 10<sup>−3</sup> mol</span>
+                  <span class="en" style="font-weight:900;font-size:.92rem;color:#ffc21a">جرم = 10<sup>−3</sup> mol × 100 g/mol = 0.1 g</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- تیپ سوم -->
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #e53e3e;overflow:hidden">
+          <span style="background:#e53e3e;color:#f2ebdd;padding:10px 14px;font-weight:900;font-size:.96rem">تیپ سوم: خنثی‌شدن اسید و باز</span>
+          <div style="background:rgba(7,46,35,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:14px">
+
+            <div style="display:flex;align-items:center;justify-content:center">
+              <span class="en" style="background:#141210;border:3px solid #e53e3e;border-radius:12px;padding:8px 16px;font-weight:900;font-size:.95rem;color:#f2ebdd">H<sup>+</sup> + OH<sup>−</sup> → H<sub>2</sub>O</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:16px;overflow:hidden">
+              <span style="background:#ffc21a;color:#141210;padding:8px 12px;font-weight:900;font-size:.86rem">مثال</span>
+              <div style="background:rgba(20,18,16,.5);padding:12px;display:flex;flex-direction:column;gap:8px">
+                <p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">برای خنثی‌کردن <span class="en">200 mL</span> محلول <span class="en">KOH</span> با <span class="en">pH = 12</span>، به چند میلی‌لیتر محلول <span class="en">HCl</span> با <span class="en">pH = 2.5</span> احتیاج داریم؟</p>
+                <div style="display:flex;flex-direction:column;gap:7px;font-family:'Space Mono',monospace">
+                  <span class="en" style="font-weight:700;font-size:.85rem;color:#f2ebdd;line-height:2">pH + pOH = 14 ⇒ 12 + pOH = 14 ⇒ pOH = 2</span>
+                  <span class="en" style="font-weight:700;font-size:.85rem;color:#f2ebdd">pOH = −log[OH<sup>−</sup>] ⇒ [OH<sup>−</sup>] = 0.01 mol/L</span>
+                  <span class="en" style="font-weight:700;font-size:.85rem;color:#f2ebdd">[OH<sup>−</sup>] = n(OH<sup>−</sup>) / V ⇒ 0.01 = n(OH<sup>−</sup>) / 0.2 ⇒ n(OH<sup>−</sup>) = 0.002 mol</span>
+                  <span class="en" style="font-weight:700;font-size:.85rem;color:#f2ebdd">pH = 2.5 ⇒ −log[H<sup>+</sup>] = 2.5 ⇒ [H<sup>+</sup>] = 3×10<sup>−3</sup> mol/L</span>
+                  <span class="en" style="font-weight:700;font-size:.85rem;color:#f2ebdd">برای خنثی‌شدن: n(H<sup>+</sup>) = n(OH<sup>−</sup>) = 0.002 mol</span>
+                  <span class="en" style="font-weight:700;font-size:.85rem;color:#f2ebdd">[H<sup>+</sup>] = n(H<sup>+</sup>) / V(HCl) ⇒ 3×10<sup>−3</sup> = 0.002 / V(HCl)</span>
+                  <span class="en" style="font-weight:900;font-size:.92rem;color:#ffc21a">⇒ V(HCl) = 2/3 L ≈ 666.3 mL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;background:rgba(18,185,129,.92);border:4px solid #141210;border-radius:22px;box-shadow:7px 7px 0 #141210;padding:clamp(14px,2.8vw,20px);margin-top:8px">
+          <span style="font-weight:900;font-size:clamp(1rem,3.9vw,1.26rem);line-height:1.7;color:#141210;text-align:center">فصل اول شیمی تمام شد — آفرین فرناز خانوم!</span>
+        </div>
+
+        <button onClick="{{ backToChem }}" style="align-self:center;cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px;font-weight:900;font-size:.95rem;margin-top:2px"><span style="font-size:1.5em;line-height:1">←</span>بازگشت به فصل‌های شیمی</button>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===== CHEMISTRY — CHAPTER PLACEHOLDER (2-4) ===== -->
+  <sc-if value="{{ showChemSoon }}">
+  <main style="{{ identMainStyle }}">
+    <section style="position:relative;overflow:hidden;background:#24100b;border:4px solid #141210;border-radius:clamp(22px,4vw,44px);box-shadow:11px 11px 0 #141210;padding:clamp(20px,4vw,44px) clamp(14px,3.4vw,40px)">
+      <div style="position:relative;z-index:5;display:flex;flex-direction:column;gap:20px">
+        <button onClick="{{ backToChem }}" style="align-self:flex-start;cursor:pointer;text-align:right;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(7,46,35,.8);color:#f2ebdd;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px">
+          <span style="font-size:1.5em;line-height:1;color:#ffc21a">→</span><span style="font-weight:900;font-size:.92rem">همهٔ فصل‌ها</span>
+        </button>
+        <div style="text-align:center;background:#141210;border:4px solid #141210;border-radius:18px;box-shadow:7px 7px 0 #b57bf5;padding:36px 22px">
+          <div style="font-weight:900;font-size:clamp(1.6rem,6vw,2.2rem);line-height:1;letter-spacing:-1px;color:#f2ebdd">به‌زودی</div>
+          <div style="font-weight:700;font-size:14px;margin-top:12px;color:#f2ebdd;opacity:.8">محتوای این فصل در راه است</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
 
   <!-- ===== SOCIAL IDENTITY — LESSON GRID ===== -->
   <sc-if value="{{ showIdentGrid }}">
@@ -7702,7 +8356,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { view:'home', menuOpen:false, cat:'tenses', open:null, group:'all', q:'', now:Date.now(), pchap:1, pdfIdx:0, booting:true, lesson:null, winW: (typeof window!=='undefined' ? window.innerWidth : 1200), sectionLoading:false, loadingGif:0, loadingBg:'#ffe1ec', loadingDots:1 };
+  state = { view:'home', menuOpen:false, cat:'tenses', open:null, group:'all', q:'', now:Date.now(), pchap:1, pdfIdx:0, booting:true, lesson:null, cch:null, winW: (typeof window!=='undefined' ? window.innerWidth : 1200), sectionLoading:false, loadingGif:0, loadingBg:'#ffe1ec', loadingDots:1 };
   _scenes = [];
 
   faDigits(n){ const m='۰۱۲۳۴۵۶۷۸۹'; return String(n).replace(/[0-9]/g,d=>m[+d]); }
@@ -8077,6 +8731,7 @@ class Component extends DCLogic {
   setTerminalHome = (el)=>{ if(el){ if(this._termH) return; this._termH=this.buildTerminal(el); this._addScene(this._termH); } else if(this._termH){ this._removeScene(this._termH); this._termH=null; } };
   setHyper = (el)=>{ if(el){ if(this._hyper) return; this._hyper=this.buildHyper(el); this._addScene(this._hyper); } else if(this._hyper){ this._removeScene(this._hyper); this._hyper=null; } };
   setChem = (el)=>{ if(el){ if(this._chem) return; this._chem=this.buildSnow(el); this._addScene(this._chem); } else if(this._chem){ this._removeScene(this._chem); this._chem=null; } };
+  setChemLesson = (el)=>{ if(el){ if(this._chl) return; this._chl=this.buildChrome(el); this._addScene(this._chl); } else if(this._chl){ this._removeScene(this._chl); this._chl=null; } };
   setLangMini = (el)=>{ if(el){ if(this._m1) return; this._m1=this.buildDither(el); this._addScene(this._m1); } else if(this._m1){ this._removeScene(this._m1); this._m1=null; } };
   setPhysMini = (el)=>{ if(el){ if(this._m2) return; this._m2=this.buildHyper(el); this._addScene(this._m2); } else if(this._m2){ this._removeScene(this._m2); this._m2=null; } };
   setChemMini = (el)=>{ if(el){ if(this._m3) return; this._m3=this.buildSnow(el); this._addScene(this._m3); } else if(this._m3){ this._removeScene(this._m3); this._m3=null; } };
@@ -9288,7 +9943,12 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       openL4: ()=>this.openLesson(4), openL5: ()=>this.openLesson(5), openL6: ()=>this.openLesson(6),
       openL7: ()=>this.openLesson(7), openL8: ()=>this.openLesson(8), openL9: ()=>this.openLesson(9),
       openL10: ()=>this.openLesson(10),
-      pickChem:()=>this.goWithLoading(()=>this.setState({view:'chem',menuOpen:false})),
+      pickChem:()=>this.goWithLoading(()=>this.setState({view:'chem',menuOpen:false,cch:null})),
+      showChemGrid: s.view==='chem' && !s.cch,
+      showChem1: s.view==='chem' && s.cch===1,
+      showChemSoon: s.view==='chem' && !!s.cch && s.cch>1,
+      openC1: ()=>this.goWithLoading(()=>{ this.setState({cch:1}); try{ window.scrollTo(0,0); }catch(e){} }),
+      backToChem: ()=>this.goWithLoading(()=>{ this.setState({cch:null}); try{ window.scrollTo(0,0); }catch(e){} }),
       pickIdent:()=>this.goWithLoading(()=>this.setState({view:'identity',menuOpen:false,lesson:null})),
       pickHealth:()=>this.goWithLoading(()=>this.setState({view:'health',menuOpen:false,hles:null})),
       goHealthReview1:()=>this.goWithLoading(()=>{ this.setState({view:'health',menuOpen:false,hles:101}); try{ window.scrollTo(0,0); }catch(e){} }),
@@ -9326,7 +9986,7 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
         _select:()=>{ this.setState({ pdfIdx:i }); setTimeout(()=>this.renderPdf(), 0); },
         _style:this.chip((s.pdfIdx||0)===i, '#ffc21a') })),
       booting: !!s.booting,
-      bootPct: this.faDigits(Math.round(((s.bootDone||0)/Math.max(1,this.allPdfs().length))*100))+'٪',
+      bootClipTop: Math.max(0, 100 - Math.round(((s.bootDone||0)/Math.max(1,this.allPdfs().length))*100)),
       sectionLoading: !!s.sectionLoading,
       loadingBg: s.loadingBg || '#ffe1ec',
       loadingGifSrc: 'assets/' + (s.loadingGif==null?0:s.loadingGif) + '.gif',
@@ -9360,6 +10020,7 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       physReset:()=>{ try{ localStorage.removeItem('farnaz.phys.memo.v1'); }catch(e){} this.setState({ memo:{} }); },
       hyperRef: this.setHyper,
       chemRef: this.setChem,
+      chemLessonRef: this.setChemLesson,
       langMiniRef: this.setLangMini,
       physMiniRef: this.setPhysMini,
       chemMiniRef: this.setChemMini,
