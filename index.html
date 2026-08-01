@@ -1057,14 +1057,14 @@
             </span>
           </a>
 
-          <div style="position:relative;overflow:hidden;aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.42);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #3a3632;padding:13px;opacity:.6">
-            <span style="width:34px;height:34px;flex:none;background:#3a3632;color:#f2ebdd;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۲</span>
-            <img src="assets/lg-mortar.png" alt="" style="width:100%;flex:1;min-height:0;object-fit:contain;image-rendering:pixelated;margin:6px 0 4px;filter:grayscale(1)">
+          <a onClick="{{ openC2 }}" style="position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.7);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #2563ff;padding:13px;transition:transform .18s,box-shadow .18s" style-hover="transform:translate(2px,2px);box-shadow:4px 4px 0 #2563ff">
+            <span style="width:34px;height:34px;flex:none;background:#2563ff;color:#f2ebdd;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۲</span>
+            <img src="assets/lg-mortar.png" alt="" style="width:100%;flex:1;min-height:0;object-fit:contain;image-rendering:pixelated;margin:6px 0 4px;filter:drop-shadow(3px 3px 0 rgba(20,18,16,.55))">
             <span style="display:flex;flex-direction:column;gap:4px">
-              <span style="font-weight:900;font-size:.9rem;line-height:1.35;color:#f2ebdd">به‌زودی</span>
-              <span class="en" style="font-size:9px;letter-spacing:2px;font-weight:700;color:#f2ebdd">CHAPTER 02</span>
+              <span style="font-weight:900;font-size:.9rem;line-height:1.35;color:#f2ebdd">آسایش و رفاه در شیمی</span>
+              <span class="en" style="font-size:9px;letter-spacing:2px;font-weight:700;color:#ffc21a">CHAPTER 02</span>
             </span>
-          </div>
+          </a>
 
           <div style="position:relative;overflow:hidden;aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;background:rgba(7,46,35,.42);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #3a3632;padding:13px;opacity:.6">
             <span style="width:34px;height:34px;flex:none;background:#3a3632;color:#f2ebdd;border:3px solid #141210;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem">۳</span>
@@ -1677,6 +1677,288 @@
 
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;background:rgba(18,185,129,.92);border:4px solid #141210;border-radius:22px;box-shadow:7px 7px 0 #141210;padding:clamp(14px,2.8vw,20px);margin-top:8px">
           <span style="font-weight:900;font-size:clamp(1rem,3.9vw,1.26rem);line-height:1.7;color:#141210;text-align:center">فصل اول شیمی تمام شد — آفرین فرناز خانوم!</span>
+        </div>
+
+        <button onClick="{{ backToChem }}" style="align-self:center;cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px;font-weight:900;font-size:.95rem;margin-top:2px"><span style="font-size:1.5em;line-height:1">←</span>بازگشت به فصل‌های شیمی</button>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===== CHEMISTRY — CHAPTER 2 ===== -->
+  <sc-if value="{{ showChem2 }}">
+  <main style="{{ identMainStyle }}">
+    <section style="position:relative;overflow:hidden;background:#24100b;border:4px solid #141210;border-radius:clamp(22px,4vw,44px);box-shadow:11px 11px 0 #141210;padding:clamp(20px,4vw,44px) clamp(14px,3.4vw,40px)">
+      <canvas ref="{{ chemLessonRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block;filter:{{ bgFilter }};-webkit-mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%);mask-image:radial-gradient(122% 116% at 50% 50%,#000 42%,rgba(0,0,0,.72) 72%,transparent 98%)"></canvas>
+      <span style="position:absolute;inset:0;background:rgba(20,18,16,.5);pointer-events:none"></span>
+      <div style="position:relative;z-index:5;display:flex;flex-direction:column;gap:clamp(16px,3vw,26px)">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <button onClick="{{ backToChem }}" style="cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(7,46,35,.8);color:#f2ebdd;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px"><span style="font-size:1.5em;line-height:1;color:#ffc21a">→</span><span style="font-weight:900;font-size:.92rem">همهٔ فصل‌ها</span></button>
+          <span style="flex:1;min-width:10px"></span>
+          <button onClick="{{ toggleBg }}" title="بک‌گراند" style="cursor:pointer;background:none;border:0;box-shadow:none;min-height:52px;padding:0 4px">
+            <span style="position:relative;width:62px;height:44px;flex:none;display:block">
+              <span style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#3a3632;border:3px solid #f2ebdd;border-radius:9px;display:block"><span style="position:absolute;inset:3px;background:{{ bgTrack }};border-radius:5px;display:block"></span></span>
+              <span style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%) rotate({{ bgLeverRot }});transform-origin:bottom center;transition:transform .18s cubic-bezier(.2,1.3,.5,1);display:block">
+                <span style="display:block;width:8px;height:28px;background:#f2ebdd;border:3px solid #141210;border-radius:5px"></span>
+                <span style="position:absolute;top:-13px;left:-8px;width:20px;height:20px;background:#ffc21a;border:3px solid #141210;border-radius:50%;display:block"></span>
+              </span>
+            </span>
+          </button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#141210;border:4px solid #2563ff;border-radius:22px;box-shadow:8px 8px 0 #2563ff;padding:clamp(12px,2.4vw,18px)">
+          <img src="assets/lg-mortar.png" alt="" style="flex:none;width:clamp(52px,12vw,74px);height:clamp(52px,12vw,74px);object-fit:contain;image-rendering:pixelated">
+          <div style="flex:1;min-width:0"><span class="en" style="display:block;font-size:11px;letter-spacing:2.5px;font-weight:700;color:#2563ff;margin-bottom:4px">CHEMISTRY — CHAPTER 2</span><h2 style="margin:0;font-weight:900;font-size:clamp(1.2rem,4.8vw,2.2rem);letter-spacing:-1.5px;color:#f2ebdd">آسایش و رفاه در شیمی</h2></div>
+        </div>
+
+        <!-- اکسایش-کاهش پایه -->
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #e53e3e;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:900;font-size:1.02rem;color:#e53e3e;margin-bottom:7px">انجام واکنش با سفر الکترون</div>
+            <p style="margin:0 0 9px;font-weight:400;font-size:.94rem;line-height:1.9;color:#f2ebdd">یکی از راه‌های بهره‌گیری از انرژی ذخیره‌شده در فلزها، اتصال آن‌ها در شرایط مناسب به یکدیگر است. با اتصال تیغهٔ مسی و تیغه‌ای از جنس روی به میوه‌ای مانند لیمو می‌توان نوعی باتری ساخت.</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">اکسیژن نافلزی فعال است که با اغلب فلزات واکنش داده و آن‌ها را به اکسید فلز تبدیل می‌کند، اما با برخی فلزات مانند طلا و پلاتین واکنش نمی‌دهد.</span>
+              <span style="font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">اغلب فلزات در واکنش با نافلزات، الکترون از دست داده و کاهنده هستند.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(11px,2.2vw,16px)">
+          <div style="background:rgba(7,46,35,.74);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #e53e3e;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">اکسایش</div><p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">از دست دادن الکترون.</p></div>
+          <div style="background:rgba(7,46,35,.74);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #12b981;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">کاهش</div><p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">به‌دست‌آوردن الکترون.</p></div>
+          <div style="background:rgba(7,46,35,.74);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">اکسنده</div><p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">ماده‌ای که با گرفتن الکترون سبب اکسایش گونهٔ دیگر می‌شود.</p></div>
+          <div style="background:rgba(7,46,35,.74);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.98rem;color:#ffc21a;margin-bottom:5px">کاهنده</div><p style="margin:0;font-weight:400;font-size:.94rem;line-height:1.85;color:#f2ebdd">ماده‌ای که با دادن الکترون سبب کاهش گونهٔ دیگر می‌شود.</p></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:14px;padding:10px 13px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#ffc21a;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.92rem;line-height:1.8;color:#f2ebdd">هر یک از فرایندهای اکسایش و کاهش را می‌توان به‌صورت یک نیم‌واکنش نشان داد.</span></div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #ff5c22;overflow:hidden">
+          <span style="background:#ff5c22;color:#141210;padding:10px 14px;font-weight:900;font-size:.96rem">تعیین عدد اکسایش</span>
+          <div style="background:rgba(7,46,35,.78);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#ff5c22;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">A</span><span style="font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">ابتدا ساختار الکترون-نقطه‌ای گونه‌ها را رسم می‌کنیم.</span></div>
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#ff5c22;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">B</span><span style="font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">به ازای هر جفت الکترون پیوندی میان دو اتم یکسان، یک الکترون به هر اتم؛ میان دو اتم متفاوت، هر دو الکترون به اتم با خصلت نافلزی بیشتر؛ همهٔ الکترون‌های ناپیوندی به همان اتم نسبت داده می‌شود.</span></div>
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#ff5c22;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">C</span><span style="font-weight:400;font-size:.9rem;line-height:1.8;color:#f2ebdd">الکترون‌های نسبت‌داده‌شده به هر اتم شمرده و از شمار الکترون‌های ظرفیت کم می‌شود؛ عدد به‌دست‌آمده عدد اکسایش اتم است.</span></div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+              <span style="background:rgba(242,235,221,.13);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:700;font-size:.83rem">عدد اکسایش عناصر آزاد = صفر</span>
+              <span style="background:rgba(242,235,221,.13);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:700;font-size:.83rem">عدد اکسایش یون تک‌اتمی = بار آن</span>
+              <span style="background:rgba(242,235,221,.13);color:#f2ebdd;border:3px solid #141210;border-radius:999px;padding:2px 12px;font-weight:700;font-size:.83rem">اغلب نافلزات و فلزات واسطه، عدد اکسایش متغیر دارند</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- سلول گالوانی -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #12b981;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:12px 16px"><img src="assets/lg-turbine.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated"><h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;color:#f2ebdd">سلول گالوانی</h3></div>
+
+        <div style="display:flex;align-items:center;justify-content:center;background:#141210;border:4px solid #12b981;border-radius:16px;padding:12px"><span class="en" style="font-family:'Space Mono',monospace;font-weight:900;font-size:clamp(.95rem,3.4vw,1.15rem);color:#f2ebdd">Zn &gt; Fe &gt; Cu &gt; Au <span style="color:#ffc21a">(ترتیب قدرت کاهندگی)</span></span></div>
+
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:clamp(14px,2.8vw,20px)">
+          <p style="margin:0;font-weight:400;font-size:clamp(.92rem,3.3vw,1.02rem);line-height:1.9;color:#f2ebdd">دستگاهی است که می‌تواند بر اساس قدرت کاهندگی فلزات، انرژی الکتریکی تولید کند. <b style="color:#12b981">آند:</b> الکترودی که در آن نیم‌واکنش اکسایش انجام می‌شود. <b style="color:#e53e3e">کاتد:</b> الکترودی که در آن نیم‌واکنش کاهش انجام می‌شود.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:14px;padding:9px 12px"><span class="en" style="flex:none;background:#12b981;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">1</span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">در سلول گالوانی، آند قطب منفی و کاتد قطب مثبت است.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:14px;padding:9px 12px"><span class="en" style="flex:none;background:#12b981;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">2</span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">جهت حرکت الکترون‌ها در مدار بیرونی همواره از آند به کاتد است.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:14px;padding:9px 12px"><span class="en" style="flex:none;background:#12b981;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">3</span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">برای خنثی‌ماندن محلول هر دو ظرف، کاتیون‌ها از آند به کاتد و آنیون‌ها از کاتد به آند از دیوارهٔ متخلخل مهاجرت می‌کنند.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:14px;padding:9px 12px"><span class="en" style="flex:none;background:#12b981;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">4</span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">سلول گالوانی ویژگی باتری دارد اما برخلاف آن، انرژی را ذخیره نمی‌کند.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:14px;padding:9px 12px"><span class="en" style="flex:none;background:#12b981;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">5</span><span style="flex:1;font-weight:700;font-size:.88rem;line-height:1.8;color:#f2ebdd">ولتاژ معینی (<span class="en">emf</span>) دارد که با تغییر هر یک از اجزای سلول، تغییر می‌کند.</span></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:clamp(11px,2.2vw,16px)">
+          <div style="background:rgba(7,46,35,.74);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #2563ff;padding:13px 15px"><div style="font-weight:900;font-size:.94rem;color:#ffc21a;margin-bottom:5px">نیروی الکتروموتوری (emf)</div><p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">اگر به‌جای لامپ، ولت‌سنج در سلول قرار گیرد، ولتاژ نمایش‌داده‌شده اختلاف پتانسیل میان دو نیم‌سلول است.</p></div>
+          <div style="background:rgba(7,46,35,.74);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ffc21a;padding:13px 15px"><div style="font-weight:900;font-size:.94rem;color:#ffc21a;margin-bottom:5px">نیم‌سلول استاندارد هیدروژن</div><p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">چون اندازه‌گیری پتانسیل یک نیم‌سلول به‌تنهایی ممکن نیست، این نیم‌سلول به‌عنوان مبنا در نظر گرفته می‌شود.</p></div>
+          <div style="background:rgba(7,46,35,.74);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #b57bf5;padding:13px 15px"><div style="font-weight:900;font-size:.94rem;color:#ffc21a;margin-bottom:5px">پتانسیل استاندارد (<span class="en">E°</span>)</div><p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">پتانسیل نیم‌سلول نسبت به نیم‌سلول هیدروژن، در <span class="en">۲۵°C</span>، فشار یک اتمسفر و غلظت یک مولار.</p></div>
+          <div style="background:rgba(7,46,35,.74);border:4px solid #141210;border-radius:16px;box-shadow:5px 5px 0 #ff5c22;padding:13px 15px"><div style="font-weight:900;font-size:.94rem;color:#ffc21a;margin-bottom:5px">سری الکتروشیمیایی</div><p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">رتبه‌بندی فلزها بر اساس <span class="en">E°</span> در یک جدول.</p></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #e53e3e;overflow:hidden">
+          <span style="background:#e53e3e;color:#f2ebdd;padding:10px 14px;font-weight:900;font-size:.96rem">در سری الکتروشیمیایی</span>
+          <div style="background:rgba(7,46,35,.78);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:8px">
+            <span style="font-weight:400;font-size:.9rem;line-height:1.85;color:#f2ebdd">نیم‌واکنش‌ها به‌صورت کاهش نوشته می‌شوند؛ الکترون‌ها و گونهٔ اکسنده سمت چپ و گونهٔ کاهنده سمت راست قرار می‌گیرد.</span>
+            <span style="font-weight:400;font-size:.9rem;line-height:1.85;color:#f2ebdd">علامت <span class="en">E°</span> فلزهایی با قدرت کاهندگی بیشتر از هیدروژن، <b style="color:#ffc21a">منفی</b> و فلزهایی با قدرت کاهندگی کمتر از هیدروژن، <b style="color:#ffc21a">مثبت</b> است.</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(7,46,35,.6);border:3px solid #141210;border-radius:14px;padding:10px 13px"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#b57bf5;margin-top:8px"></span><span style="flex:1;font-weight:700;font-size:.92rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a">لیتیم</b>، فلزی ارزشمند برای ذخیرهٔ انرژی الکتریکی: کمترین چگالی و منفی‌ترین پتانسیل استاندارد را در میان فلزات دارد، ازاین‌رو با آن باتری‌هایی سبک، کوچک‌تر و با توانایی ذخیرهٔ انرژی بیشتر می‌سازند.</span></div>
+
+        <!-- سلول سوختی -->
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #2563ff;overflow:hidden">
+          <span style="background:#2563ff;color:#f2ebdd;padding:10px 14px;font-weight:900;font-size:.96rem">سلول سوختی (نوعی سلول گالوانی)</span>
+          <div style="background:rgba(7,46,35,.78);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:9px">
+            <p style="margin:0;font-weight:400;font-size:.9rem;line-height:1.85;color:#f2ebdd">افزون بر کارایی بیشتر، ردپای کربن‌دی‌اکسید را کاهش می‌دهد و دوستدار محیط‌زیست است. رایج‌ترین نوع آن، <b style="color:#ffc21a">سلول سوختی هیدروژن-اکسیژن</b> است که در آن گاز هیدروژن با اکسیژن کنترل‌شده واکنش می‌دهد و بخش قابل‌توجهی از انرژی شیمیایی به الکتریکی تبدیل می‌شود.</p>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#2563ff;color:#f2ebdd;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">1</span><span style="font-weight:700;font-size:.87rem;line-height:1.8;color:#f2ebdd">غشا</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#2563ff;color:#f2ebdd;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">2</span><span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a">کاتد:</b> قطب مثبت، ورود گاز اکسیژن، دارای کاتالیزگر؛ اکسیژن در واکنش با سوخت (هیدروژن) کاهش می‌یابد.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#2563ff;color:#f2ebdd;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">3</span><span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd"><b style="color:#ffc21a">آند:</b> قطب منفی، ورود سوخت (هیدروژن)، دارای کاتالیزگر؛ هیدروژن پیوسته اکسایش می‌یابد و یون <span class="en">H<sup>+</sup></span> تولید می‌کند.</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:9px 12px"><span style="font-weight:900;font-size:.86rem;line-height:1.75;color:#141210">در سلول‌های سوختی جدید به‌جای هیدروژن از گاز متان استفاده می‌شود، اما این سلول با تولید <span class="en">CO<sub>2</sub></span> اثر نامطلوبی بر محیط‌زیست دارد.</span></div>
+          </div>
+        </div>
+
+        <!-- سلول الکترولیتی -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #ffc21a;border-radius:20px;box-shadow:7px 7px 0 #ffc21a;padding:12px 16px"><img src="assets/lg-water.png" alt="" style="width:26px;height:32px;flex:none;object-fit:contain;image-rendering:pixelated"><h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;color:#f2ebdd">سلول الکترولیتی و برقکافت آب</h3></div>
+
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #ffc21a;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <p style="margin:0 0 9px;font-weight:400;font-size:.94rem;line-height:1.9;color:#f2ebdd">سلول‌هایی که با اعمال یک ولتاژ بیرونی و عبور جریان الکتریکی از درون محلول الکترولیت، می‌توان یک واکنش شیمیایی را برخلاف جهت طبیعی پیش راند. <b style="color:#ffc21a">برقکافت آب</b> نمونه‌ای از این واکنش‌هاست.</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">آب خالص رسانایی الکتریکی ناچیزی دارد، ازاین‌رو برای برقکافت باید اندکی الکترولیت به آن افزود.</span>
+              <span style="font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">هر دو الکترود کاتد و آند درون یک الکترولیت قرار دارند و اغلب از جنس گرافیت‌اند.</span>
+              <span style="font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">کاتد به قطب منفی و آند به قطب مثبت باتری وصل می‌شود؛ در کاتد کاهش و در آند اکسایش انجام می‌شود.</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px">
+          <div style="display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:9px 12px"><span style="font-weight:900;font-size:.86rem;color:#141210">کاتد → تولید <span class="en">OH<sup>−</sup></span> → خاصیت بازی</span></div>
+          <div style="display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:9px 12px"><span style="font-weight:900;font-size:.86rem;color:#141210">آند → تولید <span class="en">H<sup>+</sup></span> → خاصیت اسیدی</span></div>
+        </div>
+
+        <!-- تهیه سدیم و منیزیم -->
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:900;font-size:1rem;color:#b57bf5;margin-bottom:7px">تهیهٔ فلز سدیم</div>
+            <p style="margin:0;font-weight:400;font-size:.9rem;line-height:1.9;color:#f2ebdd">سدیم کاهنده‌ای بسیار قوی با <span class="en">E°</span> بسیار پایین است که در طبیعت به حالت آزاد یافت نمی‌شود و همواره به‌شکل یون سدیم است (پایداری بیشتر یون نسبت به اتم)، ازاین‌رو تولید آن انرژی مصرفی زیادی می‌طلبد. سدیم‌کلرید خالص در <span class="en">۸۰۱°C</span> ذوب می‌شود؛ افزودن کلسیم‌کلرید، دمای ذوب را تا حدود <span class="en">۵۷۶°C</span> پایین می‌آورد.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #12b981;overflow:hidden">
+          <span style="background:#12b981;color:#141210;padding:10px 14px;font-weight:900;font-size:.96rem">مراحل تهیهٔ منیزیم از آب دریا</span>
+          <div style="background:rgba(7,46,35,.78);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#12b981;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">01</span><span style="font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">یون منیزیم محلول در آب دریا با یون <span class="en">OH<sup>−</sup></span> به‌صورت رسوب <span class="en">Mg(OH)<sub>2</sub></span> درمی‌آید.</span></div>
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#12b981;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">02</span><span style="font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">پس از جداکردن و صاف‌کردن رسوب، با هیدروکلریک‌اسید واکنش داده می‌شود تا <span class="en">MgCl<sub>2</sub></span> ایجاد شود.</span></div>
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#12b981;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">03</span><span style="font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">پس از حرارت‌دادن، منیزیم‌کلرید خشک و سپس با حرارت بیشتر مذاب می‌شود؛ یون‌های منیزیم و کلرید محلول ایجاد می‌شوند.</span></div>
+            <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#12b981;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">04</span><span style="font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">گاز کلر پس از خشک‌شدن جمع‌آوری می‌شود و منیزیم پس از سردشدن به‌صورت فلز منیزیم جمع‌آوری می‌شود.</span></div>
+          </div>
+        </div>
+
+        <!-- خوردگی -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #ff5c22;border-radius:20px;box-shadow:7px 7px 0 #ff5c22;padding:12px 16px"><img src="assets/lg-hammer.png" alt="" style="width:32px;height:32px;flex:none;object-fit:contain;image-rendering:pixelated"><h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;color:#f2ebdd">خوردگی</h3></div>
+
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #ff5c22;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <p style="margin:0 0 9px;font-weight:400;font-size:.94rem;line-height:1.9;color:#f2ebdd">به فرایند تردشدن، خردشدن و فروریختن فلزها بر اثر اکسایش-کاهش گفته می‌شود؛ مانند زنگ‌زدن آهن و زنگار بر سطح مس.</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">آهن پرمصرف‌ترین فلز جهان است؛ سالانه حدود <span class="en">۲۰٪</span> آهن تولیدی صرف جایگزینی قطعات خورده‌شده می‌شود.</span>
+              <span style="font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">پتانسیل کاهشی اغلب فلزها منفی است اما پتانسیل کاهشی اکسیژن مثبت است؛ ازاین‌رو اکسیژن به‌عنوان اکسنده تمایل دارد با گرفتن الکترون از فلزها آن‌ها را اکسید کند.</span>
+              <span style="font-weight:400;font-size:.88rem;line-height:1.8;color:#f2ebdd">وقتی وسایل آهنی در هوای مرطوب قرار گیرند، واکنش اکسایش-کاهشی رخ می‌دهد که به‌طور طبیعی آهن را اکسید کرده و زیبایی و استحکام آن را از بین می‌برد.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px"><span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">نکته</span><span style="flex:1;min-width:220px;font-weight:900;font-size:.88rem;line-height:1.8;color:#141210">چون اکسیژن در محیط اسیدی <span class="en">E°</span> مثبت‌تری دارد، در محیط‌های اسیدی شدت خوردگی افزایش می‌یابد.</span></div>
+        <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:10px 13px"><span style="background:#141210;color:#ffc21a;border-radius:8px;padding:2px 10px;font-weight:900;font-size:.74rem">نکته</span><span style="flex:1;min-width:220px;font-weight:900;font-size:.88rem;line-height:1.8;color:#141210">چون <span class="en">E°</span> طلا در محیط اسیدی و خنثی از اکسیژن مثبت‌تر است، طلا حتی در محیط اسیدی هم با اکسیژن واکنش نمی‌دهد و خورده نمی‌شود.</span></div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #2563ff;overflow:hidden">
+          <span style="background:#2563ff;color:#f2ebdd;padding:10px 14px;font-weight:900;font-size:.96rem">فداکاری فلزها برای حفاظت از آهن (حفاظت کاتدی)</span>
+          <div style="background:rgba(7,46,35,.78);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:9px">
+            <p style="margin:0;font-weight:400;font-size:.9rem;line-height:1.85;color:#f2ebdd">ساده‌ترین راه، ایجاد یک پوشش محافظ برای جلوگیری از رسیدن اکسیژن و رطوبت به آهن است؛ رنگ‌زدن، قیراندودکردن و روکش‌دادن نمونه‌هایی از این روش‌اند.</p>
+            <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap;background:rgba(255,194,26,.9);border:3px solid #141210;border-radius:14px;padding:9px 12px"><span style="font-weight:900;font-size:.85rem;line-height:1.75;color:#141210">وقتی دو فلز در هوای مرطوب باهم تماس داشته باشند، برای اکسایش‌یافتن رقابت می‌کنند؛ فلز کاهنده‌تر در این رقابت برنده می‌شود.</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;margin-top:2px">
+              <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:14px;overflow:hidden"><span style="background:#12b981;color:#141210;padding:7px 10px;font-weight:900;font-size:.85rem">آهن سفید (گالوانیزه)</span><span style="background:rgba(20,18,16,.5);padding:10px;font-weight:400;font-size:.84rem;line-height:1.8;color:#f2ebdd">ورقهٔ آهنی پوشیده با فلز روی. اگر خراش بخورد، روی به دلیل پتانسیل کاهشی پایین‌تر از آهن، الکترون‌های خود را در اختیار اکسیژن می‌گذارد و آهن خورده نمی‌شود.</span></div>
+              <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:14px;overflow:hidden"><span style="background:#e53e3e;color:#f2ebdd;padding:7px 10px;font-weight:900;font-size:.85rem">حلبی</span><span style="background:rgba(20,18,16,.5);padding:10px;font-weight:400;font-size:.84rem;line-height:1.8;color:#f2ebdd">ورقهٔ آهنی پوشیده با لایهٔ نازک قلع. اگر خراش بخورد، چون <span class="en">E°</span> آهن کمتر از قلع است، آهن الکترون خود را به اکسیژن می‌دهد و به‌شدت خورده می‌شود.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- آبکاری -->
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;overflow:hidden">
+          <span style="background:#b57bf5;color:#141210;padding:10px 14px;font-weight:900;font-size:.96rem">آبکاری</span>
+          <div style="background:rgba(7,46,35,.78);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:9px">
+            <p style="margin:0;font-weight:400;font-size:.9rem;line-height:1.85;color:#f2ebdd">پوشاندن سطح یک فلز با لایهٔ نازکی از فلزهای ارزشمند و مقاوم در برابر خوردگی؛ این فرایند در سلول الکترولیتی انجام می‌شود. سطح اغلب وسایل فلزی آهنی و مسی را با نقره، کروم، نیکل و طلا می‌پوشانند.</p>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#b57bf5;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">01</span><span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">فلزی که پوشش روی آن می‌نشیند به قطب منفی (کاتد) و فلز پوشاننده به قطب مثبت (آند) وصل می‌شود.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#b57bf5;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">02</span><span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">جسم موردنظر باید حتماً رسانای جریان برق باشد.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#b57bf5;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">03</span><span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">الکترولیت از جنس محلول نمک فلز پوشاننده انتخاب می‌شود.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#b57bf5;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">04</span><span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">در آند، فلز پوشاننده اکسایش یافته و به‌صورت یون وارد محلول می‌شود.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#b57bf5;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">05</span><span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">در کاتد، یون‌های فلز پوشاننده الکترون گرفته و به‌صورت جامد روی جسم می‌نشینند.</span></div>
+              <div style="display:flex;align-items:flex-start;gap:9px"><span class="en" style="flex:none;background:#b57bf5;color:#141210;border-radius:7px;padding:1px 8px;font-weight:700;font-size:11px;margin-top:2px">06</span><span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">علت انتخاب الکترولیتِ نمک فلز پوشاننده: تا مولکول‌های آب پیش از یون‌های فلز پوشاننده در کاتد الکترون نگیرند و کاهش نیابند.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- فرایند هال -->
+        <div style="display:flex;gap:13px;align-items:flex-start;background:rgba(7,46,35,.76);border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #ffc21a;padding:clamp(14px,2.8vw,20px)">
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:900;font-size:1rem;color:#ffc21a;margin-bottom:7px">فرایند هال</div>
+            <p style="margin:0 0 8px;font-weight:400;font-size:.92rem;line-height:1.9;color:#f2ebdd">رایج‌ترین روش برای برقکافت نمک‌های مذاب آلومینیوم و به‌دست‌آوردن فلز آلومینیوم. برخی فلزها مانند آلومینیوم اکسایش می‌یابند اما خورده نمی‌شوند و برای مدت طولانی استحکام خود را حفظ می‌کنند؛ آلومینیوم نیز در طبیعت به شکل ترکیب یافت شده و از برقکافت نمک مذاب آن به‌دست می‌آید.</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">دیواره‌ها و کف ظرف نقش کاتد و میله‌ها نقش آند را دارند؛ هر دو از جنس گرافیت‌اند.</span>
+              <span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">به‌علت چگالی بیشتر آلومینیوم مذاب نسبت به آلومینیوم‌اکسید، آلومینیوم مذاب در کف ظرف جمع و از دریچه‌ای خارج می‌شود.</span>
+              <span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">یون‌های اکسیژن به سمت آند رفته و اکسایش می‌یابند؛ گاز اکسیژن با گرافیت آند در دمای بالا واکنش می‌دهد، پس حباب‌های گازی دیده‌شده کربن‌دی‌اکسید است.</span>
+              <span style="font-weight:400;font-size:.87rem;line-height:1.8;color:#f2ebdd">فرایند هال به‌دلیل مصرف زیاد انرژی الکتریکی هزینهٔ بالایی دارد؛ بازیافت فلز برخی هزینه‌ها را کاهش می‌دهد — تولید قوطی آلومینیومی از قوطی کهنه فقط به <span class="en">۷٪</span> انرژی لازم برای فرایند هال نیاز دارد.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- جدول مقایسه -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #e53e3e;border-radius:20px;box-shadow:7px 7px 0 #e53e3e;padding:12px 16px"><img src="assets/lg-clipboard.png" alt="" style="width:34px;height:34px;flex:none;object-fit:contain;image-rendering:pixelated"><h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;color:#f2ebdd">جدول: سلول گالوانی در برابر الکترولیتی</h3></div>
+
+        <div style="overflow-x:auto;border:4px solid #141210;border-radius:20px;box-shadow:8px 8px 0 #141210">
+          <div style="min-width:560px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:#7a1420"><span style="padding:11px 13px;font-weight:900;font-size:.86rem;color:#f2ebdd">سلول گالوانی</span><span style="padding:11px 13px;font-weight:900;font-size:.86rem;color:#f2ebdd;border-right:3px solid #141210">سلول الکترولیتی</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.8);border-top:3px solid #141210"><span style="padding:10px 13px;font-weight:900;font-size:.83rem;color:#ffc21a">فرایند خودبه‌خودی</span><span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.83rem;color:#ffc21a">فرایند غیرخودبه‌خودی</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.62);border-top:3px solid #141210"><span style="padding:10px 13px;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">واکنش انجام می‌شود، برق می‌دهد</span><span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">واکنش انجام نمی‌شود، برق می‌دهیم تا انجام شود</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.8);border-top:3px solid #141210"><span class="en" style="padding:10px 13px;font-weight:700;font-size:.8rem;line-height:1.7;color:#f2ebdd">انرژی شیمیایی → الکتریکی</span><span class="en" style="padding:10px 13px;border-right:3px solid #141210;font-weight:700;font-size:.8rem;line-height:1.7;color:#f2ebdd">انرژی الکتریکی → شیمیایی</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.62);border-top:3px solid #141210"><span style="padding:10px 13px;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">آند: محل اکسایش | کاتد: محل کاهش <i style="opacity:.7">(مشابه)</i></span><span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">آند: محل اکسایش | کاتد: محل کاهش <i style="opacity:.7">(مشابه)</i></span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.8);border-top:3px solid #141210"><span style="padding:10px 13px;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">کاتیون به کاتد، آنیون به آند <i style="opacity:.7">(مشابه)</i></span><span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">کاتیون به کاتد، آنیون به آند <i style="opacity:.7">(مشابه)</i></span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.62);border-top:3px solid #141210"><span class="en" style="padding:10px 13px;font-weight:700;font-size:.8rem;line-height:1.7;color:#f2ebdd">جهت حرکت e⁻: آند → کاتد</span><span class="en" style="padding:10px 13px;border-right:3px solid #141210;font-weight:700;font-size:.8rem;line-height:1.7;color:#f2ebdd">جهت حرکت e⁻: آند → کاتد</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.8);border-top:3px solid #141210"><span style="padding:10px 13px;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">آند: (−) | کاتد: (+) <i style="opacity:.7">(متفاوت)</i></span><span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">آند: (+) | کاتد: (−) <i style="opacity:.7">(متفاوت)</i></span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.62);border-top:3px solid #141210"><span style="padding:10px 13px;font-weight:900;font-size:.82rem;color:#ffc21a">فرآوردهٔ پایدارتر و ضعیف‌تر</span><span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.82rem;color:#ffc21a">فرآوردهٔ ناپایدارتر و قوی‌تر</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.8);border-top:3px solid #141210"><span style="padding:10px 13px;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">دو الکترود و دو الکترولیت <i style="opacity:.7">(متفاوت)</i></span><span style="padding:10px 13px;border-right:3px solid #141210;font-weight:400;font-size:.8rem;line-height:1.7;color:#f2ebdd">دو الکترود گرافیتی در یک الکترولیت <i style="opacity:.7">(متفاوت)</i></span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;background:rgba(7,46,35,.62);border-top:3px solid #141210"><span style="padding:10px 13px;font-weight:900;font-size:.82rem;color:#ffc21a">تشخیص: لامپ و دیوارهٔ متخلخل</span><span style="padding:10px 13px;border-right:3px solid #141210;font-weight:900;font-size:.82rem;color:#ffc21a">تشخیص: باتری</span></div>
+          </div>
+        </div>
+
+        <!-- محاسبات فصل ۲ -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#141210;border:4px solid #12b981;border-radius:20px;box-shadow:7px 7px 0 #12b981;padding:12px 16px"><img src="assets/lg-chart-up.png" alt="" style="width:34px;height:30px;flex:none;object-fit:contain;image-rendering:pixelated"><h3 style="margin:0;flex:1;min-width:0;font-weight:900;font-size:clamp(1.05rem,4vw,1.6rem);letter-spacing:-1px;color:#f2ebdd">محاسبات فصل ۲</h3></div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #2563ff;overflow:hidden">
+          <span style="background:#2563ff;color:#f2ebdd;padding:10px 14px;font-weight:900;font-size:.96rem">تیپ ۱: شمار مول‌های الکترون مبادله‌شده</span>
+          <div style="background:rgba(7,46,35,.78);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:16px;overflow:hidden">
+              <span style="background:#ffc21a;color:#141210;padding:8px 12px;font-weight:900;font-size:.86rem">مثال</span>
+              <div style="background:rgba(20,18,16,.5);padding:12px;display:flex;flex-direction:column;gap:9px">
+                <p style="margin:0;font-weight:400;font-size:.88rem;line-height:1.85;color:#f2ebdd">در واکنش فلز آلومینیوم با محلولی از یون‌های روی، به ازای مبادلهٔ <span class="en">1.204×10<sup>23</sup></span> الکترون، چند گرم آلومینیوم مصرف می‌شود؟</p>
+                <div style="display:flex;align-items:center;justify-content:center;background:#141210;border-radius:12px;padding:10px"><span class="en" style="font-family:'Space Mono',monospace;font-weight:700;font-size:.92rem;color:#f2ebdd">2Al(s) + 3Zn<sup>2+</sup>(aq) → 2Al<sup>3+</sup>(aq) + 3Zn(s)</span></div>
+                <div style="font-family:'Space Mono',monospace;display:flex;flex-direction:column;gap:8px;align-items:center">
+                  <span class="en" style="font-weight:700;font-size:.84rem;color:#f2ebdd">؟g Al = 1.204×10<sup>23</sup> ×</span>
+                  <span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center">
+                    <span class="en" style="display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:700;font-size:.82rem;color:#f2ebdd"><span>1 mol</span><span style="width:100%;height:3px;background:#2563ff;border-radius:2px"></span><span>6.02×10<sup>23</sup></span></span>
+                    <span class="en" style="font-weight:900;color:#f2ebdd">×</span>
+                    <span class="en" style="display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:700;font-size:.82rem;color:#f2ebdd"><span>2 mol Al</span><span style="width:100%;height:3px;background:#2563ff;border-radius:2px"></span><span>6 mol e⁻</span></span>
+                    <span class="en" style="font-weight:900;color:#f2ebdd">×</span>
+                    <span class="en" style="display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:700;font-size:.82rem;color:#f2ebdd"><span>27 g Al</span><span style="width:100%;height:3px;background:#2563ff;border-radius:2px"></span><span>1 mol Al</span></span>
+                  </span>
+                  <span class="en" style="font-weight:900;font-size:.95rem;color:#ffc21a">= 1.8 g</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;border:4px solid #141210;border-radius:20px;box-shadow:7px 7px 0 #b57bf5;overflow:hidden">
+          <span style="background:#b57bf5;color:#141210;padding:10px 14px;font-weight:900;font-size:.96rem">تیپ ۲: مسائل سلول‌های سوختی و گالوانی</span>
+          <div style="background:rgba(7,46,35,.78);padding:clamp(12px,2.4vw,16px);display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:center;justify-content:center;background:#141210;border:4px solid #b57bf5;border-radius:16px;padding:12px"><span class="en" style="font-family:'Space Mono',monospace;font-weight:700;font-size:.9rem;color:#f2ebdd">فلز آند + کاتیون کاتد → کاتیون آند + فلز کاتد</span></div>
+
+            <div style="display:flex;flex-direction:column;border:3px solid #141210;border-radius:16px;overflow:hidden">
+              <span style="background:#12b981;color:#141210;padding:8px 12px;font-weight:900;font-size:.86rem">مثال</span>
+              <div style="background:rgba(20,18,16,.5);padding:12px;display:flex;flex-direction:column;gap:9px">
+                <p style="margin:0;font-weight:400;font-size:.87rem;line-height:1.85;color:#f2ebdd">با واردکردن تیغهٔ روی در محلول آبی حاوی یون‌های <span class="en">Cu<sup>2+</sup></span>، در بازه‌ای معین (با فرض رسوب تمام مس تولیدشده بر سطح تیغهٔ روی)، <span class="en">0.2 gr</span> از جرم تیغهٔ آند کاسته می‌شود. شمار مول الکترون‌های مبادله‌شده تا این لحظه را بیابید.</p>
+                <p style="margin:0;font-weight:700;font-size:.83rem;line-height:1.8;color:#ffc21a">به ازای مصرف هر مول روی (جرم مولی ۶۵)، یک مول مس (جرم مولی ۶۴) می‌نشیند؛ پس به ازای هر مول <span class="en">Zn</span>، مقدار <span class="en">۶۵−۶۴=۱ gr</span> از جرم تیغه کم می‌شود.</p>
+                <div style="font-family:'Space Mono',monospace;display:flex;flex-direction:column;gap:8px;align-items:center">
+                  <span class="en" style="font-weight:700;font-size:.84rem;color:#f2ebdd">؟mol = 0.2 g <i style="opacity:.7">(اختلاف جرم)</i> ×</span>
+                  <span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center">
+                    <span class="en" style="display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:700;font-size:.82rem;color:#f2ebdd"><span>1 mol Zn</span><span style="width:100%;height:3px;background:#b57bf5;border-radius:2px"></span><span>1 gr (اختلاف جرم)</span></span>
+                    <span class="en" style="font-weight:900;color:#f2ebdd">×</span>
+                    <span class="en" style="display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:700;font-size:.82rem;color:#f2ebdd"><span>2 mol e⁻</span><span style="width:100%;height:3px;background:#b57bf5;border-radius:2px"></span><span>1 mol Zn</span></span>
+                  </span>
+                  <span class="en" style="font-weight:900;font-size:.95rem;color:#ffc21a">= 0.4 mol e⁻</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;background:rgba(37,99,255,.92);border:4px solid #141210;border-radius:22px;box-shadow:7px 7px 0 #141210;padding:clamp(14px,2.8vw,20px);margin-top:8px">
+          <span style="font-weight:900;font-size:clamp(1rem,3.9vw,1.26rem);line-height:1.7;color:#f2ebdd;text-align:center">فصل دوم شیمی تمام شد — آفرین فرناز خانوم!</span>
         </div>
 
         <button onClick="{{ backToChem }}" style="align-self:center;cursor:pointer;font-family:'Vazirmatn',sans-serif;display:flex;align-items:center;gap:11px;background:rgba(255,194,26,.94);color:#141210;border:4px solid #141210;border-radius:20px;box-shadow:5px 5px 0 #141210;min-height:52px;padding:7px 16px;font-weight:900;font-size:.95rem;margin-top:2px"><span style="font-size:1.5em;line-height:1">←</span>بازگشت به فصل‌های شیمی</button>
@@ -9946,8 +10228,10 @@ void main(){ time = iTime * 0.333333; vec2 uv = vUv;
       pickChem:()=>this.goWithLoading(()=>this.setState({view:'chem',menuOpen:false,cch:null})),
       showChemGrid: s.view==='chem' && !s.cch,
       showChem1: s.view==='chem' && s.cch===1,
-      showChemSoon: s.view==='chem' && !!s.cch && s.cch>1,
+      showChem2: s.view==='chem' && s.cch===2,
+      showChemSoon: s.view==='chem' && !!s.cch && s.cch>2,
       openC1: ()=>this.goWithLoading(()=>{ this.setState({cch:1}); try{ window.scrollTo(0,0); }catch(e){} }),
+      openC2: ()=>this.goWithLoading(()=>{ this.setState({cch:2}); try{ window.scrollTo(0,0); }catch(e){} }),
       backToChem: ()=>this.goWithLoading(()=>{ this.setState({cch:null}); try{ window.scrollTo(0,0); }catch(e){} }),
       pickIdent:()=>this.goWithLoading(()=>this.setState({view:'identity',menuOpen:false,lesson:null})),
       pickHealth:()=>this.goWithLoading(()=>this.setState({view:'health',menuOpen:false,hles:null})),
